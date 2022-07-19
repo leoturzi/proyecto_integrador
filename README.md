@@ -4,11 +4,11 @@ Temática del Sitio:
 
 Sitios de referencia:
 
-● https://musicplace.themerex.net/product-category/band-orchestra/
-● https://www.hoffmannmusica.com.ar/
-● https://www.bestmusic.com.ar/
-● https://www.mercadolibre.com.ar/
-● https://www.housemusic.com.ar/
+- https://musicplace.themerex.net/product-category/band-orchestra/
+- https://www.hoffmannmusica.com.ar/
+- https://www.bestmusic.com.ar/
+- https://www.mercadolibre.com.ar/
+- https://www.housemusic.com.ar/
 
 Integrantes:
 
