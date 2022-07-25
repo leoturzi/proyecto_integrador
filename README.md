@@ -1,14 +1,24 @@
 Grupo Nro: 3
-Nombre del grupo:
-Temática del Sitio:
+Nombre del grupo: Nueva era
+Temática del Sitio: Venta de intrumentos y accesorios musicales
 
-Sitios de referencia:
+Sitios de referencia y por qué los elegimos:
 
 - https://musicplace.themerex.net/product-category/band-orchestra/
+El display de los desplegables del nav.
+El filtro por precios.
+
 - https://www.hoffmannmusica.com.ar/
+El modal que brinda la información del pago para cada tarjeta, cuotas, costo de financiación.
+
 - https://www.bestmusic.com.ar/
+La disposición y la claridad en el detalle del producto
+
 - https://www.mercadolibre.com.ar/
+Lo completa y bien hecha que está la página del marketplace número 1 de Latino America
+
 - https://www.housemusic.com.ar/
+La prolijidad, la estética y la onda rockera del sitio.
 
 Integrantes:
 
