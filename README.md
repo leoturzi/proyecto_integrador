@@ -8,18 +8,33 @@ Proyecto integrador realizado en la escuela de programacion Digital House. El de
 
 **Leonardo Turzi** - "Tengo 30 años, vivo en Buenos Aires, Argentina. Soy Ingeniero, siempre me gusto la idea de encontrar soluciones que posibiliten la automatizacion de tareas, siempre buscando la forma mas facil de lograr los mejores resultados."
 
-## Sprint 1 - Objetivos
+## Contenido
+
+- [Sprint 1](#sprint-1)
+  - [Objetivos](#sprint-1---objetivos)
+  - [Entrega](#sprint-1---entrega)
+- [Sprint 2](#sprint-2)
+- [Sprint 3](#sprint-3)
+- [Sprint 4](#sprint-4)
+- [Sprint 5](#sprint-5)
+- [Sprint 6](#sprint-6)
+- [Sprint 7](#sprint-7)
+- [Sprint 8](#sprint-8)
+
+## Sprint 1
+
+### Sprint 1 - Objetivos
 
 [![sprint-1.png](https://i.postimg.cc/tT8hpXMV/sprint-1.png)](https://postimg.cc/KkrK5yFZ)
 
-### Entregables
+#### Entregables
 
-#### Informativo
+##### Informativo
 
 - Temática del sitio y público objetivo.
 - Listado de al menos 5 referentes.
 
-#### Wireframes
+##### Wireframes
 
 - Home
 - Detalle de producto
@@ -31,26 +46,32 @@ Proyecto integrador realizado en la escuela de programacion Digital House. El de
 
 - Boceto o diseño gráfico del sitio (logo, colores, tipografías, etc).
 
-## Sprint 1 - Entregas
+### Sprint 1 - Entrega
 
-### Tematica del sitio
+#### Tematica del sitio
 
 Venta de intrumentos y accesorios musicales
 
-### Sitios de referencia y por qué los elegimos:
-
-- Sitios
+#### Sitios de referencia
 
 1. *https://musicplace.themerex.net/product-category/band-orchestra/*
 2. *https://www.hoffmannmusica.com.ar/*
 3. *https://www.bestmusic.com.ar/*
 4. *https://www.mercadolibre.com.ar/*
-5. *https://www.housemusic.com.ar/*
+5. &https://www.housemusic.com.ar/*
 
-- Razones
+- El display de los desplegables del nav. Los filtros disponibles\*
+- El modal que brinda la información del pago para cada tarjeta, cuotas, costo de financiación.\*
+- La disposición y la claridad en el detalle del producto\*
+- Lo completa y bien hecha que está la página del marketplace número 1 de Latino America\*
+- La prolijidad, la estética y la onda rockera del sitio.\*
 
-1. El display de los desplegables del nav. Los filtros disponibles\*
-2. El modal que brinda la información del pago para cada tarjeta, cuotas, costo de financiación.\*
-3. La disposición y la claridad en el detalle del producto\*
-4. La prolijidad, la estética y la onda rockera del sitio.\*
-5. Lo completa y bien hecha que está la página del marketplace número 1 de Latino America\*
+#### Wireframes
+
+Los wireframes pueden ser visualizados en la carpeta [wireframes](https://github.com/leoturzi/proyecto_integrador/tree/dev/design/wireframes) dentro de la carpeta design, aca van a encontrar wireframes tanto para visualizacion mobile como desktop.
+
+#### Opcional
+
+En base a las ideas planteadas y los sitios de referencia, nos animamos a generar un boceto de como deberia verse nuestro sitio(version mobile). El mismo puede ser visualizado en el siguiente [link](https://github.com/leoturzi/proyecto_integrador/tree/dev/design/wireframes)
+
+[![Screenshot-2022-07-26-065944.png](https://i.postimg.cc/CM7wMS0X/Screenshot-2022-07-26-065944.png)](https://postimg.cc/SjnBD0Jf)
