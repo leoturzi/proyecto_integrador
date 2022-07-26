@@ -72,6 +72,6 @@ Los wireframes pueden ser visualizados en la carpeta [wireframes](https://github
 
 #### Opcional
 
-En base a las ideas planteadas y los sitios de referencia, nos animamos a generar un boceto de como deberia verse nuestro sitio(version mobile). El mismo puede ser visualizado en el siguiente [link](https://github.com/leoturzi/proyecto_integrador/tree/dev/design/wireframes)
+En base a las ideas planteadas y los sitios de referencia, nos animamos a generar un boceto de como deberia verse nuestro sitio(version mobile). El mismo puede ser visualizado en el siguiente [link](https://www.figma.com/file/jNu47ClKdRs5qZmaQTREZY/Digital-House?node-id=0%3A1)
 
 [![Screenshot-2022-07-26-065944.png](https://i.postimg.cc/CM7wMS0X/Screenshot-2022-07-26-065944.png)](https://postimg.cc/SjnBD0Jf)
