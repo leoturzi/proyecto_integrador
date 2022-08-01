@@ -12,3 +12,9 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
 	console.log("Server is running on port 3000");
 });
+
+// Agrego la ruta para el carrito
+
+app.get("/cart", (req, res) => {
+	res.sendFile(path.join(__dirname, "./views/cart.html"));
+});
