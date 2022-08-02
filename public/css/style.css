@@ -104,6 +104,7 @@ nav {
 	box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.25);
 	padding: 12px;
 	max-width: 562px;
+	margin: 0 auto;
 }
 .cart-title {
 	padding-left: 12px;
@@ -153,7 +154,7 @@ main {
 	justify-content: space-between;
 	align-items: center;
 }
-.card-card__product-name {
+.cart-card__product-name {
 	color: #807c7c;
 	font-size: 15px;
 	line-height: 1.7;
@@ -215,6 +216,60 @@ main {
 	border: none;
 	box-shadow: inset 3px 4px 20px 16px rgba(0, 0, 0, 0.1); */
 }
+
+/*Propiedades cart-envio comienzan*/
+
+.cart-card-envio {
+	display: flex;
+	justify-content: space-between;
+	padding: 26px 12px 20px 12px;
+	border-bottom: 0.7px solid #cfc7c7;
+}
+
+.cart-card-envio__texto {
+	color: #807c7c;
+	font-size: 15px;
+	line-height: 1.7;
+}
+
+.cart-card__localidad-select {
+	width: 120px;
+	height: 18px;
+	font-size: 14px;
+	color: #807c7c;
+}
+
+.cart-card__cp-input {
+	width: 60px;
+	height: 18px;
+	font-size: 14px;
+	color: #807c7c;
+}
+
+.cart-envio__title {
+	padding-left: 12px;
+	padding-top: 12px;
+	font-size: 26px; /*Algo vamos a tener que cambiar, para ver si así como está queda bien, o si conviene achicar para hacerlos más estéticos. El tema es que a este punto, el tamaño de esos subtitulos determina el ancho del card en sí*/
+}
+
+.cart-card-envio__left-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 10px; /*puede estar indistintamente en el left o el right*/
+}
+.cart-card-envio__right-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.cart-envio__codigo-postal {
+	align-self: flex-start;
+}
+
+/*Propiedades cart-envio terminan*/
 
 /* Propiedades MAIN HOME comienzan*/
 .hero {

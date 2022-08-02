@@ -52,90 +52,59 @@
 			<!-- Borre el div que contenía el main, y la clase .container -->
 			<main class="main-cart-page">
 				<div class="cart">
-					<h2 class="cart-title">Tu carrito</h2>
-					<article class="cart-card">
-						<div class="cart-card__img-container">
-							<img src="../images/small-cart-guitar01.jpg" alt="">
-						</div>
-						<div class="cart-card__description">
-							<p class="cart-card__product-name">Gibson 1958 Les Paul Standard LB Guitarra Eléctrica</p>
-							<div class="cart-card__lower-description">
-								<div class="cart-card__q-and-trash-container">
-									<select class="cart-card__quantity" name="price" id="">
-										<option value="1" selected>1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-									</select>
-									<i class="fa-solid fa-trash-can"></i>
-								</div>
-								<p class="cart-card__product-price">$130.000</p>
-							</div>
+					<h2 class="cart-envio__title">Opciones de Envío</h2>
+					<article class="cart-card-envio">
+						<div class="cart-card-envio__left-container">
+							<p class="cart-card-envio__texto" style="font-size:18px;">Costo estimado de envío</p>
+							<p class="cart-card-envio__texto">Destino A:_____</p>
 						</div>
 					</article>
-					<article class="cart-card">
-						<div class="cart-card__img-container">
-							<img src="../images/small-cart-guitar01.jpg" alt="">
+
+					<article class="cart-card-envio">
+						<div class="cart-card-envio__left-container">
+							<p class="cart-card-envio__texto">Localidad</p>
+							<select class="cart-card__localidad-select" name="localidad" id="">
+								<option value="CABA">Ciudad Autónoma de Buenos Aires</option>
+								<option value="PBA">Provincia de Buenos Aires</option>
+								<option value="Cba">Córdoba</option>
+								<option value="Corr">Corrientes</option>
+								<option value="SE">Santiago del Estero</option>
+								<option value="StaC">Santa Cruz</option>
+								<option value="StaF">Santa Fe</option>
+								<option value="Mi">Misiones</option>
+								<option value="Sal">Salta</option>
+								<option value="Fms">Formosa</option>
+							</select>
+							<p class="cart-card-envio__texto">Envío común</p>
+							<p class="cart-card-envio__texto">Envío express</p>
 						</div>
-						<div class="cart-card__description">
-							<p class="cart-card__product-name">Gibson 1958 Les Paul Standard LB Guitarra Eléctrica</p>
-							<div class="cart-card__lower-description">
-								<div class="cart-card__q-and-trash-container">
-									<select class="cart-card__quantity" name="price" id="">
-										<option value="1" selected>1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-									</select>
-									<i class="fa-solid fa-trash-can"></i>
-								</div>
-								<p class="cart-card__product-price">$130.000</p>
-							</div>
-						</div>
-					</article>
-					<article class="cart-card">
-						<div class="cart-card__img-container">
-							<img src="../images/small-cart-guitar01.jpg" alt="">
-						</div>
-						<div class="cart-card__description">
-							<p class="cart-card__product-name">Gibson 1958 Les Paul Standard LB Guitarra Eléctrica</p>
-							<div class="cart-card__lower-description">
-								<div class="cart-card__q-and-trash-container">
-									<select class="cart-card__quantity" name="price" id="">
-										<option value="1" selected>1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-									</select>
-									<i class="fa-solid fa-trash-can"></i>
-								</div>
-								<p class="cart-card__product-price">$130.000</p>
-							</div>
+						<div class="cart-card-envio__right-container">
+							<p class="cart-card-envio__texto cart-envio__codigo-postal">C.P.</p>
+							<input class="cart-card__cp-input" type="text" name="codigo_postal" id="">
+							<p class="cart-card-envio__texto">$1000</p>
+							<p class="cart-card-envio__texto">$3000</p>
 						</div>
 					</article>
+					
+					<h2 class="cart-envio__title">Resumen de Compra</h2>
+					<article class="cart-card-envio">	
+						<div class="cart-card-envio__left-container">
+							<p class="cart-card-envio__texto">Subtotal</p>
+							<p class="cart-card-envio__texto">Envío Express</p>
+							<p class="cart-card-envio__texto">IVA(21%)</p>
+						</div>
+						<div class="cart-card-envio__right-container">
+							<p class="cart-card-envio__texto">$390.000</p>
+							<p class="cart-card-envio__texto">$3000</p>
+							<p class="cart-card-envio__texto">$81.900</p>
+						</div>
+					</article>
+
 					<div class="cart-subtotal">
 						<p class="card-subtotal__text">Subtotal</p>
-						<p class="card-subtotal__price">$390.000</p>
+						<p class="card-subtotal__price">$474.900</p>
 					</div>
-					<button class="btn-cart__seguir-comprando">Seguir comprando</button>
+					
 					<button class="btn-cart__continuar">Continuar</button>
 				</div>
 			</main>
