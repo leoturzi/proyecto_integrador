@@ -9,15 +9,26 @@ app.get("/", (req, res) => {
 	res.sendFile(path.join(__dirname, "./views/index.html"));
 });
 
-app.listen(3000, () => {
-	console.log("Server is running on port 3000");
+// Ruta para el carrito
+app.get("/cart", (req, res) => {
+	res.sendFile(path.join(__dirname, "./views/cart.html"));
+});
+
+// Ruta detalle producto
+app.get("/producto-desc", (req, res) => {
+	res.sendFile(path.join(__dirname, "./views/productDetail.html"));
 });
 
 // Ruta para el carrito
 app.get("/cart", (req, res) => {
 	res.sendFile(path.join(__dirname, "./views/cart.html"));
 });
+
 // Ruta para opciones de envío, del carrito
 app.get("/cart-envio", (req, res) => {
 	res.sendFile(path.join(__dirname, "./views/cart-envio.html"));
+});
+
+app.listen(3000, () => {
+	console.log("Server is running on port 3000");
 });

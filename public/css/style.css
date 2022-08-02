@@ -282,8 +282,9 @@ main {
 .marcas {
 	width: 90%;
 	margin: auto;
-	padding-top: 20px;
+	padding: 20px 0px;
 }
+
 .categorias-text,
 .interes-text {
 	display: flex;
@@ -405,6 +406,68 @@ main {
 	width: 110px;
 	padding: 10px;
 }
+
+/* PRODUCTO DETALLE INICIO*/
+
+.producto-detalle {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	justify-content: space-between;
+	padding: 10px;
+	margin: auto;
+	/* max-width: 160px; */
+	box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.25);
+}
+
+.producto-detalle-card-info_nombre {
+	padding-top: 15px;
+	border-top: 2px solid #d9d9d9;
+	margin-bottom: 5px;
+}
+
+.producto-detalle-card-info_desc {
+	margin-bottom: 5px;
+}
+
+.producto-detalle-card-info_precio {
+	margin-bottom: 20px;
+	font-size: 26px;
+	letter-spacing: 2px;
+}
+
+.producto-detalle-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.producto-detalle-card-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.btn-detalle {
+	margin: 0 20px;
+	padding: 10px 0;
+	font-size: 20px;
+}
+
+.producto-detalle-metodos-pago,
+.producto-detalle-descripcion {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+	padding-top: 10px;
+	border-top: 2px solid #d9d9d9;
+}
+
+.producto-detalle-descripcion p {
+	padding: 10px 0;
+}
+
+/* PRODUCTO DETALLE FIN*/
+
 /* FOOTER */
 
 footer {
