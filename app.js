@@ -29,9 +29,14 @@ app.get("/cart-envio", (req, res) => {
 	res.sendFile(path.join(__dirname, "./views/cart-envio.html"));
 });
 
-// Ruta para opciones de envío, del carrito
+// Ruta para login
 app.get("/login", (req, res) => {
 	res.sendFile(path.join(__dirname, "./views/login.html"));
+});
+
+// Ruta para register
+app.get("/register", (req, res) => {
+	res.sendFile(path.join(__dirname, "./views/register.html"));
 });
 
 app.listen(3000, () => {
