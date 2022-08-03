@@ -135,6 +135,11 @@ main {
 	color: var(--text);
 }
 
+/* .container {
+	max-width: 768px;
+	margin: 0 auto;
+} */
+
 .cart-card__img-container {
 	width: 150px;
 }
@@ -467,6 +472,51 @@ main {
 }
 
 /* PRODUCTO DETALLE FIN*/
+
+/* FORMULARIO LOGIN */
+
+.login-container {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	margin: auto;
+	border: 1px solid #d9d9d9;
+	padding: 20px;
+	box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.25);
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	margin: 10px 0;
+}
+
+.input-container label {
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.input-container input {
+	width: 100%;
+	border: 1px solid #d9d9d9;
+	border-radius: 2px;
+	padding: 4px 5px;
+}
+
+.login-container button {
+	font-size: 20px;
+	margin: 20px 0 10px 0;
+}
+
+.login-container p {
+	font-size: 14px;
+}
+
+.login-container .registro {
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 1px solid #d9d9d9;
+}
 
 /* FOOTER */
 
