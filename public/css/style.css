@@ -617,6 +617,10 @@ footer section {
 	color: var(--text);
 }
 
+.footer-cont div:last-child {
+	display: none;
+}
+
 .disclaimer p:nth-child(1),
 .disclaimer p:nth-child(2) {
 	font-size: 12px;
@@ -799,6 +803,10 @@ footer section {
 		flex-direction: row;
 		justify-content: space-between;
 		gap: 2rem;
+	}
+
+	.footer-cont div:last-child {
+		display: block;
 	}
 
 	.footer-cont-item {
