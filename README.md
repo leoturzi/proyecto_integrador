@@ -14,6 +14,8 @@ Proyecto integrador realizado en la escuela de programacion Digital House. El de
   - [Objetivos](#sprint-1---objetivos)
   - [Entrega](#sprint-1---entrega)
 - [Sprint 2](#sprint-2)
+  - [Objetivos](#sprint-2---objetivos)
+  - [Entrega](#sprint-2---entrega)
 - [Sprint 3](#sprint-3)
 - [Sprint 4](#sprint-4)
 - [Sprint 5](#sprint-5)
@@ -75,3 +77,24 @@ Los wireframes pueden ser visualizados en la carpeta [wireframes](https://github
 En base a las ideas planteadas y los sitios de referencia, nos animamos a generar un boceto de como deberia verse nuestro sitio(version mobile). El mismo puede ser visualizado en el siguiente [link](https://www.figma.com/file/jNu47ClKdRs5qZmaQTREZY/Digital-House?node-id=0%3A1)
 
 [![Screenshot-2022-07-26-065944.png](https://i.postimg.cc/CM7wMS0X/Screenshot-2022-07-26-065944.png)](https://postimg.cc/SjnBD0Jf)
+
+## Sprint 2
+
+### Sprint 2 - Objetivos
+
+[![image.png](https://i.postimg.cc/mknRhXf0/image.png)](https://postimg.cc/jnyBFhjX)
+
+#### Entregables
+
+##### Informativo
+
+- Archivo retro.md
+- Enlace al tablero de trabajo en el archivo README.md.
+
+##### Aplicacion Node.js+Express
+
+- Home (index.html)
+- Detalle del producto (productDetail.html)
+- Carrito de compras (productCart.html)
+- Formulario de registro (register.html)
+- Formulario de login (login.html)
