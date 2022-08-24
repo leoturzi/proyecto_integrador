@@ -1,0 +1,30 @@
+<%- include('./partials/head')%>
+<%- include('./partials/header')%>
+<%- include('./partials/nav')%>
+		<div class="container">
+			<main>
+				<form action="" class="login-container">
+					<h3>Login</h3>
+					<div class="input-container">
+						<label for="username">Usuario</label>
+						<input type="text" id="username" name="username" placeholder="Usuario" />
+					</div>
+					<div class="input-container">
+						<label for="username">Password</label>
+						<input type="password" id="password" name="password" placeholder="Contraseña" />
+					</div>
+					<div class="input-recordarsesion">
+						<input
+						type="checkbox"
+						id="tyc"
+						name="tyc"
+						placeholder="Contraseña"
+						/>
+						<label for="tyc">Recordar datos de sesión</label>
+					</div>
+					<button type="submit" class="btn">Iniciar Sesión</button>
+					<p><a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a></p>
+					<p class="registro">Aun no tenes cuenta? <a href="#" class="forgot-password">Registrate</a></p>
+				</form>
+			</main>
+			<%- include('./partials/footer') %>
