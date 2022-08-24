@@ -15,13 +15,8 @@ app.get("/cart", (req, res) => {
 });
 
 // Ruta detalle producto
-app.get("/producto-desc", (req, res) => {
-	res.sendFile(path.join(__dirname, "./views/productDetail.html"));
-});
-
-// Ruta para el carrito
-app.get("/cart", (req, res) => {
-	res.sendFile(path.join(__dirname, "./views/cart.html"));
+app.get("/product-detail", (req, res) => {
+	res.sendFile(path.join(__dirname, "./views/product-detail.html"));
 });
 
 // Ruta para opciones de envío, del carrito
