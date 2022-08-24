@@ -1,6 +1,6 @@
 const registerController = {
     show : (req, res) => {
-        res.render('register');
+        res.render('users/register');
     }
 };
 module.exports = registerController;

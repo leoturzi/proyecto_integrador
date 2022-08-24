@@ -1,6 +1,6 @@
 const loginController = {
     show : (req, res) => {
-        res.render('login');
+        res.render('users/login');
     }
 };
 module.exports = loginController;
