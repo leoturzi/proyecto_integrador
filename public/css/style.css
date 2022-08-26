@@ -689,6 +689,17 @@ footer section {
 .login-container p {
 	text-align: center;
 }
+/*Footer fixed*/
+.flex-wrapper {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	justify-content: flex-start;
+  }
+  
+  .footer--fixed {
+	margin-top: auto;
+  }
 
 @media screen and (min-width: 576px) {
 	main {
@@ -703,8 +714,6 @@ footer section {
 		margin: 0px auto;
 	}
 }
-
-/* Desktop ---> screen > 768px*/
 
 @media screen and (min-width: 768px) {
 	.cart-card__localidad-select {
@@ -875,12 +884,6 @@ footer section {
 	.display-lg {
 		display: flex;
 	}
-	.footer--fixed {
-		position: fixed; 
-		bottom: 0;
-		left: 0;
-		right: 0;
-}
 	footer section {
 		width: 100%;
 		margin: auto;
