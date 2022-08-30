@@ -1,0 +1,66 @@
+<%- include('../partials/head', {title})%>
+<%- include('../partials/header')%>
+<%- include('../partials/nav')%>
+<div class="container container-product-edit--fixed">
+    <main>
+        <section>
+            <form action="" method="POST" class="product-edit-form-container">
+                <h1>Editar de Producto</h1>
+                <div class="input-container">
+                    <label for="idDelProducto">Número de ID</label>
+                    <input type="text" name="idDelProducto" value="product.id">
+                </div>
+                <div class="input-container">
+                    <label for="nombreDelProducto">Nombre</label>
+                    <input type="text" name="nombreDelProducto" value="product.name">
+                </div>
+                <div class="input-container">
+                    <label for="categoriaDelProducto">Categoría (Viento, madera, cuerda, metal, percusión)</label>
+                    <input type="text" name="categoriaDelProducto" value="product.category">
+                </div>
+                <div class="input-container">
+                    <label for="marcaDelProducto">Marca</label>
+                    <input type="text" name="marcaDelProducto" value="product.brand">
+                </div>
+                <div class="input-container">
+                    <label for="descripcionDelProducto">Descripción breve</label>
+                    <textarea name="descBreveDelProducto" cols="30" rows="3">product.shortDesc - Hola, soy un textarea, no tengo atributo value</textarea>
+                </div>
+                <div class="input-container">
+                    <label for="descripcionDelProducto">Descripción detallada</label>
+                    <textarea name="descDetalladaDelProducto" cols="30" rows="10">product.longDesc</textarea>
+                </div>
+                <div class="input-container">
+                    <label for="colorDelProducto">Colores disponibles</label>
+                    <input type="text" name="colorDelProducto" value="product.colors">
+                </div>
+                <div class="input-container">
+                    <label for="precioDelProducto">Precio</label>
+                    <input type="text" name="precioDelProducto" value="product.price">
+                </div>
+                <div class="input-container">
+                    <div>
+                        <img src="" alt="product.imgUrl">
+                    </div>
+                    <label for="imagenDelProducto">Imágen</label>
+                    <input type="file" name="imagenDelProducto">
+                </div>
+                <div class="input-container">
+                    <label for="envioDelProducto">Envío Gratis (SI/NO)</label>
+                    <input type="text" name="imagenDelProducto" value="product.dispatch">
+                </div>
+                <div class="input-container">
+                    <label for="descuentoDelProducto">Descuento </label>
+                    <input type="text" name="descuentoDelProducto" value="product.discount">
+                </div>
+                <div class="btn-product-create-container">
+                    <button class="btn btn-product-edit">Guardar Cambios</button>
+                    <a href="/product-create" class="btn btn-product-edit btn-anchor">Crear Producto</a>
+                    <a href="/" class="btn btn-product-edit btn-anchor">Eliminar Producto</a>
+                    <a href="/" class="btn btn-product-edit btn-anchor">Volver</a>
+                </div>
+            </form>
+        </section>
+    </main>
+</div>
+<%- include('../partials/footer') %>

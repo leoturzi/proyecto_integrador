@@ -1,0 +1,63 @@
+<%- include('../partials/head', {title})%>
+<%- include('../partials/header')%>
+<%- include('../partials/nav')%>
+<div class="container container-product-create--fixed">
+	<main>
+		<section>
+			<form action="" method="POST" class="product-create-form-container">
+				<h1>Formulario de Creación de Producto</h1>
+				<div class="input-container">
+					<label for="idDelProducto">Número de ID</label>
+					<input type="text" name="idDelProducto">
+				</div>
+				<div class="input-container">
+					<label for="nombreDelProducto">Nombre</label>
+					<input type="text" name="nombreDelProducto">
+				</div>
+				<div class="input-container">
+					<label for="categoriaDelProducto">Categoría (Viento, madera, cuerda, metal, percusión)</label>
+					<input type="text" name="categoriaDelProducto">
+				</div>
+				<div class="input-container">
+					<label for="marcaDelProducto">Marca</label>
+					<input type="text" name="marcaDelProducto">
+				</div>
+				<div class="input-container">
+					<label for="descripcionDelProducto">Descripción breve</label>
+					<textarea name="descBreveDelProducto" cols="30" rows="3"></textarea>
+				</div>
+				<div class="input-container">
+					<label for="descripcionDelProducto">Descripción detallada</label>
+					<textarea name="descDetalladaDelProducto" cols="30" rows="10"></textarea>
+				</div>
+				<div class="input-container">
+                    <label for="colorDelProducto">Colores disponibles</label>
+                    <input type="text" name="colorDelProducto" value="product.colors">
+                </div>
+				<div class="input-container">
+					<label for="precioDelProducto">Precio</label>
+					<input type="text" name="precioDelProducto">
+				</div>
+				<div class="input-container">
+					<label for="imagenDelProducto">Imágen</label>
+					<input type="file" name="imagenDelProducto">
+				</div>
+				<div class="input-container">
+					<label for="envioDelProducto">Envío Gratis (SI/NO)</label>
+					<input type="text" name="imagenDelProducto">
+				</div>
+				<div class="input-container">
+					<label for="descuentoDelProducto">Descuento </label>
+					<input type="text" name="descuentoDelProducto">
+				</div>
+				<div class="btn-product-create-container">
+					<button class="btn btn-product-create">Crear Producto</button>
+					<a href="/" class="btn btn-product-create btn-anchor"><div>Volver</div></a>
+				</div>
+			</form>
+				</div>
+			</div>
+		</section>
+	</main>
+</div>
+<%- include('../partials/footer') %>

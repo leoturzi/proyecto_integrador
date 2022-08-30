@@ -6,6 +6,8 @@ const productDetailRouter = require('./routes/product-detail');
 const cartEnvioRouter = require('./routes/cart-envio');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register')
+const productCreateRouter = require('./routes/product-create');
+const productEditRouter = require('./routes/product-edit');
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -27,5 +29,9 @@ app.use("/cart-envio", cartEnvioRouter);
 app.use("/login", loginRouter);
 // Router para register
 app.use("/register", registerRouter);
+// Router product-create
+app.use("/product-create", productCreateRouter);
+// Router product-edit
+app.use("/product-edit", productEditRouter);
 
 
