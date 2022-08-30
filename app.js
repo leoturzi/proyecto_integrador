@@ -1,13 +1,10 @@
 const express = require("express");
 const path = require("path");
-const indexRouter = require('./routes/index');
+const mainRouter = require('./routes/main');
+const productsRouter = require('./routes/products');
+const usersRouter = require('./routes/users');
 const cartRouter = require('./routes/cart');
-const productDetailRouter = require('./routes/product-detail');
-const cartEnvioRouter = require('./routes/cart-envio');
-const loginRouter = require('./routes/login');
-const registerRouter = require('./routes/register')
-const productCreateRouter = require('./routes/product-create');
-const productEditRouter = require('./routes/product-edit');
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -18,20 +15,12 @@ app.listen(3000, () => {
 	console.log("Server is running on port 3000");
 });
 // Router index
-app.use('/', indexRouter)
+app.use('/', mainRouter)
+// Router products
+app.use("/product", productsRouter);
+// Router users
+app.use("/user", usersRouter);
 // Router cart
 app.use("/cart", cartRouter);
-// Router product-detail
-app.use("/product-detail", productDetailRouter);
-// Router cart-envio
-app.use("/cart-envio", cartEnvioRouter);
-// Router para login
-app.use("/login", loginRouter);
-// Router para register
-app.use("/register", registerRouter);
-// Router product-create
-app.use("/product-create", productCreateRouter);
-// Router product-edit
-app.use("/product-edit", productEditRouter);
 
 

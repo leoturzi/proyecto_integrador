@@ -1,6 +1,10 @@
 const cartController = {
-    show: (req, res) => {
-        res.render('products/cart',{title:'Cart'});
+    cart: (req, res) => {
+        res.render('cart/cart',{title:'Cart'});
+    },
+    dispatch: (req, res) => {
+        res.render('cart/cart-dispatch', {title:'Dispatch'});
     }
-};
-module.exports = cartController;
+}
+
+module.exports =cartController;
