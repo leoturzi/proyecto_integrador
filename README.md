@@ -17,6 +17,8 @@ Proyecto integrador realizado en la escuela de programacion Digital House. El de
   - [Objetivos](#sprint-2---objetivos)
   - [Entrega](#sprint-2---entrega)
 - [Sprint 3](#sprint-3)
+  - [Objetivos](#sprint-3---objetivos)
+  - [Entrega](#sprint-3---entrega)
 - [Sprint 4](#sprint-4)
 - [Sprint 5](#sprint-5)
 - [Sprint 6](#sprint-6)
@@ -78,6 +80,8 @@ En base a las ideas planteadas y los sitios de referencia, nos animamos a genera
 
 [![Screenshot-2022-07-26-065944.png](https://i.postimg.cc/CM7wMS0X/Screenshot-2022-07-26-065944.png)](https://postimg.cc/SjnBD0Jf)
 
+-----------------------------------
+
 ## Sprint 2
 
 ### Sprint 2 - Objetivos
@@ -98,3 +102,49 @@ En base a las ideas planteadas y los sitios de referencia, nos animamos a genera
 - Carrito de compras (productCart.html)
 - Formulario de registro (register.html)
 - Formulario de login (login.html)
+
+----------------------------------------
+
+## Sprint 3
+
+### Sprint 3 - Objetivos
+
+[![Sprint-3-Template-engines-img.jpg](https://i.postimg.cc/d3bq92Vw/Sprint-3-Template-engines-img.jpg)](https://postimg.cc/1VKhmNFj)
+
+- Reutilizar partials (header, menú, footer, nav, etc.)
+- Mostrar el contenido dinámicamente a través de un motor de templates (Express + EJS)
+
+### Entregables
+
+##### Informativo
+
+- Archivo retro.md
+- Enlace al tablero de trabajo actualizado en el archivo README.md.
+
+##### Motor de templates
+
+- Sitio actualizado con todas las vistas y rutas implementando el template engine:
+  - Implementar el módulo EJS, actualizar la extensión de los archivos de vistas;
+  - Modificar los controladores para que utilicen el método *render()*;
+  - Implementación de partials o áreas comunes del sitio.
+
+##### Reestructuración de directorios y archivos de vistas (opcional)
+
+- Separar las vistas en carpetas para una mejor organización y proyección de escalabilidad del sitio:
+  - Usuarios: src/views/users
+  - Productos: src/views/products
+
+##### Páginas de creación y edición de productos
+
+- Formulario al que accede el usuario administrador para cargar nuevos productos y
+editar los existentes
+- Ejemplo de estructura:
+  - Nombre del producto ( name )
+  - Descripción ( description )
+  - Imagen ( image )
+  - Categoría ( category )
+  - Colores (o cualquier otro campo similar como: tamaños, talles, etc)
+  - Precio ( price )
+
+
+-------------------

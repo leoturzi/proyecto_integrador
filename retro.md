@@ -1,30 +1,27 @@
-# Retrospectiva al Sprint 2:
+# Retrospectiva al Sprint 3:
 
 # Flujo de trabajo:
-- Comunicación casi diaria, solo lo necesario, ya que cada miembro tiene responsabilidades que atender día a día, y necesitan sacarle provecho al tiempo de la manera más efeciente.
+- Comunicación fluída
 - Uso del tablero Trello --> https://trello.com/b/WLK3JMNd/digital-house
 - Planteo de dudas y ajustes de criterios vía Slack
 
 # Comenzar a hacer:
-- Coordinar horarios de trabajo sincrónicos en la semana con mayor frecuencia
-- Unificar y explicar maneras de trabajar
-- Definir de manera completa y anticipada el Backlog de Trello
+- Coordinar horarios de trabajo sincrónicos cada 7 o 14 días, con mayor frecuencia
 
 # Hacer más:
-- Anotar y segmentar todo lo que tengamos que hacer de manera más prolija(trello)
-- Trabajar de la misma manera incluso terminado el sprint, resolviendo problemas en el presente para sacarnos peso en el futuro
+- Unificar y explicar maneras de trabajar
+- Seguir pensando y estructurando soluciones incluso terminado el sprint, para sacarnos peso en el futuro
 - Uso y actualización de tickets Trello
-- Planteo de dudas y ajustes de criterios vía Slack
-- Planteo y resolución de dudas acerca de temas avanzados a implementar en el futuro (barras de búsqueda, filtros, bases de datos)
 
 # Continuar haciendo:
+- Planteo de dudas y ajustes de criterios vía Slack
+- Definir de manera completa y anticipada el Backlog de Trello
 - Trabajando de manera consistente
 - Trabajar con criterio
-- Realizar criticar y saber recibirlas 
-- Comunicarnos
+- Dar y recibir críticas constructivas
 - Concretar objetivos
 - Cumplir con los Sprints
-- Trabajar a una buena velocidad de resolución de los sprints
+- Trabajar a una buena velocidad de resolución
 - Implementación de avisos de Git vía mail, para mayor orden, evitar grandes conflictos
 - Implementación de bots de avisos de pull y revisión de tablero de trabajo.
 
