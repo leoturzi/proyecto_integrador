@@ -17,6 +17,8 @@ Proyecto integrador realizado en la escuela de programacion Digital House. El de
   - [Objetivos](#sprint-2---objetivos)
   - [Entrega](#sprint-2---entrega)
 - [Sprint 3](#sprint-3)
+  - [Objetivos](#sprint-3---objetivos)
+  - [Entrega](#sprint-3---entrega)
 - [Sprint 4](#sprint-4)
 - [Sprint 5](#sprint-5)
 - [Sprint 6](#sprint-6)
@@ -137,12 +139,12 @@ En base a las ideas planteadas y los sitios de referencia, nos animamos a genera
 - Formulario al que accede el usuario administrador para cargar nuevos productos y
 editar los existentes
 - Ejemplo de estructura:
-  ● Nombre del producto ( name )
-  ● Descripción ( description )
-  ● Imagen ( image )
-  ● Categoría ( category )
-  ● Colores (o cualquier otro campo similar como: tamaños, talles, etc)
-  ● Precio ( price )
+  - Nombre del producto ( name )
+  - Descripción ( description )
+  - Imagen ( image )
+  - Categoría ( category )
+  - Colores (o cualquier otro campo similar como: tamaños, talles, etc)
+  - Precio ( price )
 
 
 -------------------

@@ -1092,7 +1092,8 @@ Márgenes top y bottom al container del main, con media queries
 	.producto-detalle {
 		width: 100%;
 	}
-	.container-login--fixed {
+	.container-login--fixed,
+	.container-results--fixed {
 		margin-bottom: 170px;
 	}
 }
@@ -1103,7 +1104,8 @@ Márgenes top y bottom al container del main, con media queries
 		margin-top: 80px;
 		margin-bottom: 120px;
 	}
-	.container-login--fixed {
+	.container-login--fixed,
+	.container-results--fixed {
 		margin-top: 80px;
 		margin-bottom: 170px;
 	}
@@ -1115,7 +1117,8 @@ Márgenes top y bottom al container del main, con media queries
 	.container-product-create--fixed {
 		margin-bottom: 240px;
 	}
-	.container-login--fixed {
+	.container-login--fixed,
+	.container-results--fixed {
 		margin-bottom: 300px;
 	}
 }
@@ -1133,7 +1136,8 @@ Márgenes top y bottom al container del main, con media queries
 	.container-product-create--fixed {
 		margin-bottom: 340px;
 	}
-	.container-login--fixed {
+	.container-login--fixed,
+	.container-results--fixed {
 		margin-bottom: 550px;
 	}
 }
@@ -1148,7 +1152,8 @@ Márgenes top y bottom al container del main, con media queries
 	.container-product-create--fixed {
 		margin-bottom: 590px;
 	}
-	.container-login--fixed {
+	.container-login--fixed,
+	.container-results--fixed {
 		margin-bottom: 750px;
 	}
 }

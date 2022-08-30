@@ -4,16 +4,16 @@ const productsController = require('../controllers/productsController')
 
 router.get('/', productsController.list);
 
-router.get('/create', productsController.createForm)
+router.get('/create', productsController.create)
 
 router.get('/:id', productsController.detail)
 
-router.post('/', productsController.create)
+router.post('/', productsController.store)
 
-router.get('/:id/edit', productsController.editForm)
+router.get('/:id/edit', productsController.edit)
 
-router.post('/:id', productsController.edit) // PUT
+router.put('/:id', productsController.update)
 
-router.post('/:id', productsController.delete) // DELETE
+router.delete('/:id', productsController.delete)
 
 module.exports = router

@@ -2,19 +2,19 @@ const productsController = {
     list : (req, res) => {
         // ToDo
     },
-    createForm: (req, res) => {
+    create: (req, res) => {
         res.render('products/product-create', {title:'New Product'});
     },
     detail: (req, res) => {
         res.render('products/product-detail', {title:'Detail'});
     },
-    create: (req, res) => {
+    store: (req, res) => {
         //Todo
     },
-    editForm : (req, res) => {
+    edit : (req, res) => {
         res.render('products/product-edit', {title:'Edit Product'});
     },
-    edit: (req, res) => {
+    update: (req, res) => {
         // ToDo
     },
     delete: (req, res) => {
