@@ -4,20 +4,24 @@
 <div class="container container-product-list--fixed">
 	<main>
 		<ul class="listado-nowrap">
-			<% for (let i = 0; i< 24; i++) { %>
-			<li class="producto">
-				<img
-					src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-					alt="Gibson Les Paul"
-					class="producto-img"
-				/>
-				<p class="producto-precio">$ 150.000</p>
-				<p class="producto-envio">Envio gratis</p>
-				<p class="producto-nombre">
-					Gibson 1958 Les Paul Standar LB Guitarra electrica
-				</p>
-				<button class="btn">Comprar</button>
-			</li>
+			<% for (let product of products) { %>
+			<a href="/products/<%=product.id%>" class="producto-link">
+				<li class="producto producto--aligned">
+					<img
+						src="/images/products/<%= product.image %>"
+						alt="<%= product.name %>"
+						class="producto-img"
+					/>
+					<p class="producto-precio"> <%= product.price %></p>
+					<% if (product.dispatch) { %>
+					<p class="producto-envio">Envio gratis</p>
+					<% } %>
+					<p class="producto-nombre">
+						<%= product.name %>
+					</p>
+					<button class="btn">Comprar</button>
+				</li>
+			</a>
 			<% } %>
 		</ul>
 	</main>
