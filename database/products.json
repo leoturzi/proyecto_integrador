@@ -3,13 +3,14 @@
     "id": 1,
     "name": "Deluxe Asat FULLERTON",
     "brand": "GyL",
-    "price": 104533.20,
+    "price": 104533.2,
     "category": "guitar",
     "shortDesc": "G&L Fullerton Deluxe Asat Special MP Guitarra Eléctrica Turqoise",
     "longDesc": "El legado del legendario Leo Fender, G&L Guitars continúa produciendo instrumentos excepcionales en el siglo XXI, adhiriéndose estrechamente a la visión de su icónico fundador. Una piedra angular de su línea de guitarras eléctricas, la guitarra eléctrica Fullerton Deluxe ASAT Special es una guitarra estilo T fabricada en EE. UU. que abarca por completo el estilo vintage y la funcionalidad moderna en igual medida. La guitarra eléctrica G&L ASAT Special presenta un cuerpo de Swamp Ash, con su hermosa veta brillando en todo su esplendor. Sin embargo, esta elección de material no es solo por su valor estético, ya que Swamp Ash ofrece un sonido equilibrado con bajos cálidos, agudos nítidos y mucha resonancia natural. Su peso ligero es otra ventaja, haciendo de esta guitarra una opción perfecta para presentaciones en vivo.",
     "image": "01-FullertonTurqoise.jpg",
     "dispatch": false,
     "discount": 0.16,
+    "lastVisited": false,
     "color": "Turqoise"
   },
   {
@@ -23,6 +24,7 @@
     "image": "02-TributeLegacy.jpg",
     "dispatch": true,
     "discount": 0.14,
+    "lastVisited": false,
     "color": "White"
   },
   {
@@ -36,6 +38,7 @@
     "image": "03-ClassicBluesboy.jpg",
     "dispatch": true,
     "discount": 0.08,
+    "lastVisited": false,
     "color": "Brown"
   },
   {
@@ -49,6 +52,7 @@
     "image": "04-StandardIV.jpg",
     "dispatch": true,
     "discount": 0.07,
+    "lastVisited": false,
     "color": "White"
   },
   {
@@ -62,6 +66,7 @@
     "image": "05-DeluxeIVEbony.jpg",
     "dispatch": true,
     "discount": 0.19,
+    "lastVisited": false,
     "color": "Ebony"
   },
   {
@@ -75,6 +80,7 @@
     "image": "06-EB3Cherry.jpg",
     "dispatch": true,
     "discount": 0.07,
+    "lastVisited": true,
     "color": "Red"
   },
   {
@@ -88,6 +94,7 @@
     "image": "07-SA77.jpg",
     "dispatch": false,
     "discount": 0.1,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -101,6 +108,7 @@
     "image": "08-CassioTone.jpg",
     "dispatch": true,
     "discount": 0.06,
+    "lastVisited": true,
     "color": "White"
   },
   {
@@ -114,6 +122,7 @@
     "image": "09-CTS1.jpg",
     "dispatch": true,
     "discount": 0.02,
+    "lastVisited": false,
     "color": "Red"
   },
   {
@@ -127,19 +136,21 @@
     "image": "10-FenderFA125.jpg",
     "dispatch": false,
     "discount": 0.03,
+    "lastVisited": false,
     "color": "Black"
   },
   {
     "id": 11,
     "name": "BATERÍA FT900BBK 5PCS",
     "brand": "Memphis",
-    "price": 181625.90,
+    "price": 181625.9,
     "category": "drums",
     "shortDesc": "BATERÍA ACÚSTICA FT900BBK 5PCS NEGRA MEMPHIS",
     "longDesc": "Introdúcete al mundo de la percusión con este estupendo kit de batería de Memphis, trae todo lo básico para que puedas empezar a tocar con un producto de calidad sin gastarte una gran cantidad de dinero. No esperes más y ven a Nueva Era por tu primer kit de batería. Te esperamos.",
     "image": "11-FT900.jpg",
     "dispatch": true,
     "discount": 0.05,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -153,19 +164,21 @@
     "image": "12-CL50RS.jpg",
     "dispatch": true,
     "discount": 0.15,
+    "lastVisited": false,
     "color": "Coffee"
   },
   {
     "id": 13,
     "name": "FLAUTA TRAVERSA FL306SE",
     "brand": "Bressant",
-    "price": 14645.70,
+    "price": 14645.7,
     "category": "flute",
     "shortDesc": "FLAUTA TRAVERSA FL306SE EN MI BRESSANT",
     "longDesc": "Las Flautas Traversas están diseñadas para estudiantes que inician sus estudios musicales. Dada la fiabilidad que ofrece Bressant hacen que este instrumento sea recomendado por numerosos profesionales a sus alumnos. Fabricado con materiales de alta calidad. No dejes pasar esta oportunidad que te ofrece Nueva Era y aprender a tocar este fantástico instrumento de viento Bressant. ",
     "image": "13-FL306SE.jpg",
     "dispatch": true,
     "discount": 0.16,
+    "lastVisited": false,
     "color": "Silver"
   },
   {
@@ -179,6 +192,7 @@
     "image": "14-FL250.jpg",
     "dispatch": true,
     "discount": 0.06,
+    "lastVisited": false,
     "color": "Silver"
   },
   {
@@ -192,19 +206,21 @@
     "image": "15-AIRBOARD.jpg",
     "dispatch": false,
     "discount": 0.08,
+    "lastVisited": false,
     "color": "Black"
   },
   {
     "id": 16,
     "name": " CL125 BRESSANT",
     "brand": "Bressant",
-    "price": 179383.80,
+    "price": 179383.8,
     "category": "clarinet",
     "shortDesc": "CLARINETE CL125 CLARINETE BLANCO BRESSANT",
     "longDesc": "Estos clarinetes están diseñados para estudiantes que inician sus estudios musicales. Dada la fiabilidad que ofrece Bressant en su funcionamiento hacen que este instrumento sea recomendado por numerosos profesionales a sus alumnos. Fabricado con materiales de alta calidad. No dejes pasar esta oportunidad que te ofrece Nueva Era y adquiere un clarinete Bressant a un precio inigualable y fabricada con los mejores materiales del mercado.",
     "image": "16-CL125.jpg",
     "dispatch": true,
     "discount": 0.08,
+    "lastVisited": false,
     "color": "White"
   },
   {
@@ -218,6 +234,7 @@
     "image": "17-CL10EBONITE.jpg",
     "dispatch": false,
     "discount": 0.02,
+    "lastVisited": false,
     "color": "Ebony"
   },
   {
@@ -231,6 +248,7 @@
     "image": "18-AS220S.jpg",
     "dispatch": true,
     "discount": 0.04,
+    "lastVisited": false,
     "color": "Silver"
   },
   {
@@ -244,6 +262,7 @@
     "image": "19-TS820Z.jpg",
     "dispatch": false,
     "discount": 0.1,
+    "lastVisited": false,
     "color": "Coffee"
   },
   {
@@ -257,19 +276,21 @@
     "image": "20-HOHNERCX12LC.jpg",
     "dispatch": true,
     "discount": 0.07,
+    "lastVisited": false,
     "color": "Black"
   },
   {
     "id": 21,
     "name": "MIDNIGHT BLUES C",
     "brand": "Fender",
-    "price": 56007.50,
+    "price": 56007.5,
     "category": "harmonica",
     "shortDesc": "ARMÓNICA MIDNIGHT BLUES EN C FENDER",
     "longDesc": "La armónica diatónica de 10 orificios Midnight Blues ofrece un tono brillante y atrevido y una calidad profesional sin concesiones. Con lengüetas remachadas en bronce fosforoso y peines ABS ecológicos, la armónica Midnight Blues de Fender es una opción confiable para los artistas de cualquier escenario. También cuenta con una cubierta azul oscuro de edición limitada para complementar su forma tradicional, con la confiabilidad duradera de cualquier instrumento Fender genuino.",
     "image": "21-MIDNIGHT.jpg",
     "dispatch": false,
     "discount": 0.04,
+    "lastVisited": true,
     "color": "Teal"
   },
   {
@@ -283,6 +304,7 @@
     "image": "22-TT811L.jpg",
     "dispatch": false,
     "discount": 0.12,
+    "lastVisited": true,
     "color": "Golden"
   },
   {
@@ -296,6 +318,7 @@
     "image": "23-OTR450.jpg",
     "dispatch": false,
     "discount": 0.08,
+    "lastVisited": false,
     "color": "Golden"
   },
   {
@@ -309,6 +332,7 @@
     "image": "24-OB500N.jpg",
     "dispatch": true,
     "discount": 0.18,
+    "lastVisited": true,
     "color": "Ebony"
   },
   {
@@ -322,6 +346,7 @@
     "image": "25-TP210.jpg",
     "dispatch": true,
     "discount": 0.07,
+    "lastVisited": false,
     "color": "Golden"
   },
   {
@@ -335,6 +360,7 @@
     "image": "26-YSV104.jpg",
     "dispatch": true,
     "discount": 0.05,
+    "lastVisited": true,
     "color": "Black"
   },
   {
@@ -348,6 +374,7 @@
     "image": "27-SVD2044.jpg",
     "dispatch": true,
     "discount": 0.16,
+    "lastVisited": true,
     "color": "Brown"
   },
   {
@@ -361,6 +388,7 @@
     "image": "28-VL1.jpg",
     "dispatch": true,
     "discount": 0.3,
+    "lastVisited": false,
     "color": "Brown"
   },
   {
@@ -374,6 +402,7 @@
     "image": "29-FIDELIO.jpg",
     "dispatch": true,
     "discount": 0.14,
+    "lastVisited": false,
     "color": "Brown"
   },
   {
@@ -387,6 +416,7 @@
     "image": "30-ALFRED.jpg",
     "dispatch": false,
     "discount": 0.09,
+    "lastVisited": false,
     "color": "Brown"
   },
   {
@@ -400,19 +430,21 @@
     "image": "31-MP840.jpg",
     "dispatch": true,
     "discount": 0.11,
+    "lastVisited": false,
     "color": "Black"
   },
   {
     "id": 32,
     "name": "FUNDA ATRIL SMSB-6500 CON ASA ON STAGE",
     "brand": "On Stage",
-    "price": 33095.30,
+    "price": 33095.3,
     "category": "accesory",
     "shortDesc": "FUNDA ATRIL SMSB-6500 CON ASA ON STAGE",
     "longDesc": "Fabricada en lona negra, con asa y correa hombrera. Puede alojar la mayoría de modelos de atriles plegables, incluyendo todos los de las series SM7122 y SM7222. ",
     "image": "32-SMSB.jpg",
     "dispatch": true,
     "discount": 0.13,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -426,19 +458,21 @@
     "image": "33-Rockstand.jpg",
     "dispatch": true,
     "discount": 0.18,
+    "lastVisited": false,
     "color": "Black"
   },
   {
     "id": 34,
     "name": "FFL05BK FLANGER ",
     "brand": "Flanger",
-    "price": 147589.80,
+    "price": 147589.8,
     "category": "accesory",
     "shortDesc": "ATRIL DE PARTITURAS NEGRO FFL05BK FLANGER ",
     "longDesc": "Atril plegable Flanger, ajustable en altura y posición para colocación fácil y óptima. Fabricados en aluminio, resistentes y ligeros, para facilitar su transporte y la duración del atril.",
     "image": "34-FFL0.jpg",
     "dispatch": false,
     "discount": 0.15,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -452,6 +486,7 @@
     "image": "35-AG03.jpg",
     "dispatch": true,
     "discount": 0.15,
+    "lastVisited": false,
     "color": "Grey"
   },
   {
@@ -465,6 +500,7 @@
     "image": "36-DM300.jpg",
     "dispatch": true,
     "discount": 0.04,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -478,6 +514,7 @@
     "image": "37-P3S.jpg",
     "dispatch": false,
     "discount": 0.05,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -491,6 +528,7 @@
     "image": "38-CM400.jpg",
     "dispatch": false,
     "discount": 0.19,
+    "lastVisited": false,
     "color": "Golden"
   },
   {
@@ -504,6 +542,7 @@
     "image": "39-KM1UGS.jpg",
     "dispatch": false,
     "discount": 0.03,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -517,6 +556,7 @@
     "image": "40-MULTIPATRON.jpg",
     "dispatch": true,
     "discount": 0.1,
+    "lastVisited": true,
     "color": "Black"
   },
   {
@@ -530,6 +570,7 @@
     "image": "41-Pathfinder.jpg",
     "dispatch": true,
     "discount": 0.09,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -543,6 +584,7 @@
     "image": "42-KATANA.jpg",
     "dispatch": false,
     "discount": 0.04,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -556,6 +598,7 @@
     "image": "43-JVM210C.jpg",
     "dispatch": false,
     "discount": 0.16,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -569,6 +612,7 @@
     "image": "44-CR60C.jpg",
     "dispatch": false,
     "discount": 0.05,
+    "lastVisited": false,
     "color": "Orange"
   },
   {
@@ -582,6 +626,7 @@
     "image": "45-VT20X.jpg",
     "dispatch": false,
     "discount": 0.08,
+    "lastVisited": false,
     "color": "Black"
   },
   {
@@ -595,6 +640,7 @@
     "image": "46-Imperial.jpg",
     "dispatch": false,
     "discount": 0.13,
+    "lastVisited": false,
     "color": "Blue"
   },
   {
@@ -608,6 +654,7 @@
     "image": "47-BULLETSSS.jpg",
     "dispatch": false,
     "discount": 0.04,
+    "lastVisited": false,
     "color": "Red"
   },
   {
@@ -621,6 +668,7 @@
     "image": "48-ED2.jpg",
     "dispatch": false,
     "discount": 0.11,
+    "lastVisited": false,
     "color": "Light Brown"
   }
 ]

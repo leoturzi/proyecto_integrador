@@ -86,6 +86,10 @@ nav {
 	outline: none;
 }
 
+.unsuccessful-query-text {
+	color: red;
+}
+
 /* HEADER FIN */
 
 /* NAV MENU INICIO */

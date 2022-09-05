@@ -5,220 +5,36 @@
 	<main>
         <section class="interes">
 			<div class="interes-text">
-				<h3>Resultados: "Gibson 1958"</h3>
+				<h3>Resultados de la búsqueda: "<%= productsQuery %>"</h3>
 			</div>
+			<% if (productsQuery.length > 0) { %>
             <ul class="listado">
-				<li class="producto">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto display-lg">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto display-lg">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto display-xl">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto display-xxl">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
+				<% for (let product of queryProducts) { %>
+				<a href="/products/<%=product.id%>" class="producto-link">
+					<li class="producto producto--aligned">
+						<img
+							src="/images/products/<%= product.image %>"
+							alt="<%= product.name %>"
+							class="producto-img"
+						/>
+						<p class="producto-precio"> <%= product.price %></p>
+						<% if (product.dispatch) { %>
+						<p class="producto-envio">Envio gratis</p>
+						<% } %>
+						<p class="producto-nombre">
+							<%= product.name %>
+						</p>
+						<button class="btn">Comprar</button>
+					</li>
+				</a>
+				<% } %>
 			</ul>
-			<ul class="listado">
-				<li class="producto">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto display-lg">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto display-lg">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto display-xl">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="producto display-xxl">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="producto-img"
-					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-			</ul>
+			<% } else { %>	
+				<div>
+					<p class="unsuccessful-query-text">No se encontraron resultados que coincidan con tu búsqueda.</p>
+					<p>Inténtalo de nuevo con otras palabras clave</p>
+				</div>
+			<% }%>
 		</section>
     </main>
 </div>
