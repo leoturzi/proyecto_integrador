@@ -31,8 +31,19 @@
 							<%= product.longDesc %>
 						</p>
 					</div>
+
+					<a href="/products/<%= product.id %>/edit" class="btn btn-product-edit btn-anchor">EDITAR PRODUCTO</a>
+					<a href="" class="btn btn-product-edit btn-anchor">
+					<form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+						<button type="submit" class="btn btn-detalle btn-especial01">ELIMINAR</button>
+					</form>
+					</a>
+					<a href="/products" class="btn btn-product-edit btn-anchor">VOLVER</a>
+
 				</div>
+				
 			</div>
+			
 		</section>
 		<section class="interes">
 			<div class="interes-text">

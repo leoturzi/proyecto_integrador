@@ -4,51 +4,51 @@
 <div class="container container-product-create--fixed">
 	<main>
 		<section>
-			<form action="" method="POST" class="product-create-form-container">
+			<form action="/products" method="POST" enctype="multipart/form-data" class="product-create-form-container">
 				<h1>Formulario de Creación de Producto</h1>
 				<div class="input-container">
-					<label for="idDelProducto">Número de ID</label>
-					<input type="text" name="idDelProducto">
+					<label for="name">Nombre</label>
+					<input type="text" name="name" id="name">
 				</div>
 				<div class="input-container">
-					<label for="nombreDelProducto">Nombre</label>
-					<input type="text" name="nombreDelProducto">
+					<label for="category">Categoría (drums, guitar, trumpet, bass, oboe, clarinet, amplifier, microphone)</label>
+					<input type="text" name="category" id="category">
 				</div>
 				<div class="input-container">
-					<label for="categoriaDelProducto">Categoría (Viento, madera, cuerda, metal, percusión)</label>
-					<input type="text" name="categoriaDelProducto">
+					<label for="brand">Marca</label>
+					<input type="text" name="brand" id="brand">
 				</div>
 				<div class="input-container">
-					<label for="marcaDelProducto">Marca</label>
-					<input type="text" name="marcaDelProducto">
+					<label for="shortDesc">Descripción breve</label>
+					<textarea name="shortDesc" cols="30" rows="3" id="shortDesc"></textarea>
 				</div>
 				<div class="input-container">
-					<label for="descripcionDelProducto">Descripción breve</label>
-					<textarea name="descBreveDelProducto" cols="30" rows="3"></textarea>
+					<label for="longDesc">Descripción detallada</label>
+					<textarea name="longDesc" cols="30" rows="10" id="longDesc"></textarea>
 				</div>
 				<div class="input-container">
-					<label for="descripcionDelProducto">Descripción detallada</label>
-					<textarea name="descDetalladaDelProducto" cols="30" rows="10"></textarea>
-				</div>
-				<div class="input-container">
-                    <label for="colorDelProducto">Colores disponibles</label>
-                    <input type="text" name="colorDelProducto" value="product.colors">
+                    <label for="color">Colores disponibles</label>
+                    <input type="text" name="color" id="color">
                 </div>
 				<div class="input-container">
-					<label for="precioDelProducto">Precio</label>
-					<input type="text" name="precioDelProducto">
+					<label for="price">Precio</label>
+					<input type="text" name="price" id="price">
 				</div>
 				<div class="input-container">
-					<label for="imagenDelProducto">Imágen</label>
-					<input type="file" name="imagenDelProducto">
+					<label for="image">Imágen</label>
+					<input type="file" name="image" id="image">
 				</div>
 				<div class="input-container">
-					<label for="envioDelProducto">Envío Gratis (SI/NO)</label>
-					<input type="text" name="imagenDelProducto">
+					<label for="dispatch">Envío Gratis (Si/No)</label>
+					<input type="text" name="dispatch" id="dispatch">
 				</div>
 				<div class="input-container">
-					<label for="descuentoDelProducto">Descuento </label>
-					<input type="text" name="descuentoDelProducto">
+					<label for="discount">Descuento </label>
+					<input type="text" name="discount" id="discount">
+				</div>
+				<div class="input-container">
+					<label for="lastVisited">Ultima Visita (Si/No)</label>
+					<input type="text" name="lastVisited" id="lastVisited">
 				</div>
 				<div class="btn-product-create-container">
 					<button class="btn btn-product-create">Crear Producto</button>

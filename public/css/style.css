@@ -487,6 +487,12 @@ main {
 	border-radius: 5px;
 }
 
+.btn-especial01 {
+	background-color: transparent;
+	box-shadow: none;
+	cursor: pointer;
+}
+
 .anuncios-cont {
 	width: 100%;
 	position: relative;
@@ -779,6 +785,19 @@ footer section {
 .login-container p {
 	text-align: center;
 }
+
+.radio-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.edit-panel-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+
 /* Arreglo de Footer primera solución
 
 Clase para el div que contiene al main. Y -en los EJS- extendiendo ese div hasta que abarque al footer
@@ -804,6 +823,7 @@ En los containers que abarcan a cada main, agregar la clase correspondiente:
 
 Márgenes top y bottom al container del main, con media queries
 */
+
 
 @media screen and (min-width: 576px) {
 	main {
