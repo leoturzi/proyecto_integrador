@@ -1,6 +1,6 @@
 const productsController = {
     list : (req, res) => {
-        // ToDo
+        res.render('products/products', {title:'All Products'});
     },
     create: (req, res) => {
         res.render('products/product-create', {title:'New Product'});

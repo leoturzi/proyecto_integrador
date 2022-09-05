@@ -307,6 +307,21 @@ main {
 	padding: 20px 0px;
 }
 
+.categorias-container {
+	padding: 10px;
+	width: 176px;
+	height: 176px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.categorias-img {
+	width: 90%;
+	height: 90%;
+	box-shadow: -3px 4px 10px 1px rgba(0, 0, 0, 0.15), 3px 4px 10px 1px rgba(0, 0, 0, 0.15) ;
+}
+
 .interes {
 	display: flex;
 	flex-direction: column;
@@ -397,6 +412,12 @@ main {
 }
 
 /* PRODUCTOS */
+
+.listado-nowrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 
 .listado {
 	display: flex;
@@ -1094,31 +1115,36 @@ Márgenes top y bottom al container del main, con media queries
 	}
 	.container-login--fixed,
 	.container-results--fixed {
-		margin-bottom: 170px;
+		margin-bottom: 470px;
 	}
 }
 @media screen and (min-width:1700px) {
+	.container,
 	.container-register--fixed,
 	.container-product-edit--fixed,
 	.container-product-create--fixed {
 		margin-top: 80px;
-		margin-bottom: 120px;
+		margin-bottom: 420px;
 	}
 	.container-login--fixed,
 	.container-results--fixed {
 		margin-top: 80px;
-		margin-bottom: 170px;
+		margin-bottom: 570px;
 	}
 }
 
 @media screen and (min-width:1850px) {
 	.container-register--fixed,
 	.container-product-edit--fixed,
-	.container-product-create--fixed {
-		margin-bottom: 240px;
+	.container-product-create--fixed, 
+	.container-product-list--fixed {
+		margin-bottom: 940px;
 	}
 	.container-login--fixed,
 	.container-results--fixed {
+		margin-bottom: 600px;
+	}
+	.container-product-detail--fixed {
 		margin-bottom: 300px;
 	}
 }
@@ -1126,34 +1152,38 @@ Márgenes top y bottom al container del main, con media queries
 @media screen and (min-width:2060px) {
 	.container-cart-envio--fixed {
 		margin-top: 50px;
-		margin-bottom: 50px;
+		margin-bottom: 650px;
 	}
 	.container-product-detail--fixed {
-		margin-bottom: 100px;
+		margin-bottom: 700px;
 	}
 	.container-register--fixed,
 	.container-product-edit--fixed,
-	.container-product-create--fixed {
-		margin-bottom: 340px;
+	.container-product-create--fixed,
+	.container-product-list--fixed {
+		margin-bottom: 1240px;
 	}
 	.container-login--fixed,
 	.container-results--fixed {
-		margin-bottom: 550px;
+		margin-bottom: 950px;
 	}
 }
 
 @media screen and (min-width:2260px) {
 	.container-product-detail--fixed {
 		margin-top: 80px;
-		margin-bottom: 120px;
+		margin-bottom: 920px;
 	}
-	.container-register--fixed,
 	.container-product-edit--fixed,
 	.container-product-create--fixed {
-		margin-bottom: 590px;
+		margin-bottom: 1190px;
 	}
+	.container-product-list--fixed {
+		margin-bottom: 840px;
+	}
+	.container-register--fixed,
 	.container-login--fixed,
 	.container-results--fixed {
-		margin-bottom: 750px;
+		margin-bottom: 1250px;
 	}
 }

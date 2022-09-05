@@ -17,9 +17,9 @@ app.listen(3000, () => {
 // Router index
 app.use('/', mainRouter)
 // Router products
-app.use("/product", productsRouter);
+app.use("/products", productsRouter);
 // Router users
-app.use("/user", usersRouter);
+app.use("/users", usersRouter);
 // Router cart
 app.use("/cart", cartRouter);
 
