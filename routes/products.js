@@ -31,7 +31,7 @@ router.get('/:id', productsController.detail)
 //Editar
 router.get('/:id/edit', productsController.edit)
 //Actualizar
-router.put('/:id', productsController.update)
+router.put('/:id', uploadFile.single('newImage'), productsController.update)
 
 //Borrar
 router.delete('/:id', productsController.delete)

@@ -23,15 +23,13 @@ const productsController = {
             longDesc : req.body.longDesc,
             image: "",
             dispatch : "",
-            discount: parseInt(req.body.discount),
+            discount: parseFloat(req.body.discount),
             lastVisited: "",
             color: req.body.color
         }
-        req.body.lastVisited.toLowerCase() == "si" ? newProduct.lastVisited = true : false; 
-        req.body.dispatch.toLowerCase() == "si" ? newProduct.dispatch = true : false; 
-        if (req.file) {
-            newProduct.image = req.file.filename;
-        };
+        req.body.lastVisited.toLowerCase() == "si" ? newProduct.lastVisited = true : newProduct.lastVisited = false; 
+        req.body.dispatch.toLowerCase() == "si" ? newProduct.dispatch = true : newProduct.dispatch = false; 
+        req.file ? newProduct.image = req.file.filename : newProduct.image = "";
         products.push(newProduct);
         products = JSON.stringify(products, null, ' ');
         fs.writeFileSync(productsFilePath, products);
@@ -39,14 +37,49 @@ const productsController = {
     },
     detail: (req, res) => {
         const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        productToDetail = products.find(p => {return p.id == parseInt(req.params.id)});
+        let productToDetail = products.find(p => {return p.id == parseInt(req.params.id)});
         res.render('products/product-detail', {product: productToDetail, title:'Detail'});
     },
     edit : (req, res) => {
-        res.render('products/product-edit', {title:'Edit Product'});
+        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        let productToEdit = products.find(p => {return p.id == parseInt(req.params.id)});
+        res.render('products/product-edit', { product: productToEdit, title:'Edit Product'});
     },
     update: (req, res) => {
-        // ToDo
+        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        // De los productos dejame solamente todos los ids. Sobre ese array de ids, buscame el índice de aquel que coincida con el id pasado por parámetro. Para después sobreescribir los cambios refiriendo a esa posición en el array products.
+        let productIndex = products.map(p => p.id).indexOf(parseInt(req.params.id))
+        // Ahora en vez del índice busco el objeto (producto) entero
+        let productToUpdate = products.find(p => {return p.id == parseInt(req.params.id)});
+        // Vuelco las propiedades del producto original en lo que va a ser el producto actualizado, usando spread. El resto de las propiedades (nuevas) las sobreescribo
+        let productUpdated = {
+            ...productToUpdate,
+            name : req.body.name,
+            brand : req.body.brand,
+            price: parseInt(req.body.price), 
+            category : req.body.category,
+            shortDesc : req.body.shortDesc,
+            longDesc : req.body.longDesc,
+            dispatch : "",
+            discount: parseFloat(req.body.discount),
+            lastVisited: "",
+            color: req.body.color
+        }
+        req.body.lastVisited.toLowerCase() == "si" ? productUpdated.lastVisited = true : productUpdated.lastVisited = false; 
+        req.body.dispatch.toLowerCase() == "si" ? productUpdated.dispatch = true : productUpdated.dispatch = false; 
+
+        //Si se sube una nueva imágen, y además el producto original tenía una imágen asignada (y no estaba vacío = ""), entonces borrame la imágen que había, para poder asignarle la nueva imágen subida.
+        if (req. file) {
+            if (productUpdated.image!="") {
+                fs.unlinkSync('./public/images/products/' + productUpdated.image)
+            }
+            // Si no había imágen asignada, no hay nada que borrar, y directamente va a asignarle la nueva imágen a la propiedad image
+            productUpdated.image = req.file.filename;
+        }
+        products[productIndex] = productUpdated;
+        products = JSON.stringify(products, null, ' ');
+        fs.writeFileSync(productsFilePath, products);
+        res.redirect(`/products/${productUpdated.id}`)
     },
     delete: (req, res) => {
         let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));

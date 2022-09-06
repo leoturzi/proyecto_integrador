@@ -6,7 +6,7 @@
 		<section class="producto-detalle">
 			<div class="producto-detalle-card">
 				<img
-					src="/images/products/<%= product.image %>"
+					src="/images/products/<%= product.image || 'default.jpg' %>"
 					alt="<%= product.name %>"
 				/>
 				<div class="producto-detalle-card-info">

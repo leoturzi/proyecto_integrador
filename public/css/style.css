@@ -611,6 +611,10 @@ main {
 	padding: 4px 5px;
 }
 
+.edit-img {
+	width: 300px;
+}
+
 /* .btn-product-create-container,
 .btn-product-edit-container {
 	

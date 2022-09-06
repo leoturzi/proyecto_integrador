@@ -13,7 +13,7 @@
 				<a href="/products/<%=product.id%>" class="producto-link">
 					<li class="producto producto--aligned">
 						<img
-							src="/images/products/<%= product.image %>"
+							src="/images/products/<%= product.image || 'default.jpg' %>"
 							alt="<%= product.name %>"
 							class="producto-img"
 						/>
