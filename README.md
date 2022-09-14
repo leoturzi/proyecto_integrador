@@ -20,6 +20,8 @@ Proyecto integrador realizado en la escuela de programacion Digital House. El de
   - [Objetivos](#sprint-3---objetivos)
   - [Entrega](#sprint-3---entrega)
 - [Sprint 4](#sprint-4)
+  - [Objetivos](#sprint-4---objetivos)
+  - [Entrega](#sprint-4---entrega)
 - [Sprint 5](#sprint-5)
 - [Sprint 6](#sprint-6)
 - [Sprint 7](#sprint-7)
@@ -146,5 +148,70 @@ editar los existentes
   - Colores (o cualquier otro campo similar como: tamaños, talles, etc)
   - Precio ( price )
 
+
+-------------------
+
+## Sprint 4
+
+### Sprint 4 - Objetivos
+
+[![Sprint-4-Template-engines-img.jpg](https://i.postimg.cc/c1KwVSfK/Sprint-4-JSON-y-m-todos-de-HTTP.jpg)](https://postimg.cc/w3p1mnfH)
+
+- Durante esta iteración su foco será el de modificar el sitio para que muestre productos
+dinámicamente a través de una fuente de datos (JSON).
+
+- Definir los campos necesarios para los productos y generar archivo JSON
+
+- Como paso previo a tener una base de datos relacional, vamos a estar trabajando con
+archivos JSON. 
+
+- Producto Base:
+● Identificador : id
+● Nombre del producto: name
+● Descripción: description
+● Imagen: image
+● Categoría: category
+● Colores (o cualquier otro campo similar como: talle): colors
+● Precio: price
+
+- Usuario Base:
+● Identificador: id
+● Nombre: firstName
+● Apellido: lastName
+● Email: email
+● Contraseña: password
+● Categoría: category
+● Imagen: image
+
+### Entregables
+
+##### Informativo
+
+- Archivo retro.md
+- Enlace al tablero de trabajo actualizado en el archivo README.md.
+
+##### Base de datos JSON
+
+- Carpeta data con archivo products.json con los datos de productos
+generados, y un archivo users.json con los datos de usuarios generados.
+
+##### CRUD de productos
+
+- Generar 7 rutas:
+
+1. /products (GET)
+Listado de productos
+2. /products/create (GET)
+Formulario de creación de productos
+3. /products/:id (GET)
+Detalle de un producto particular
+4. /products (POST)
+Acción de creación (a donde se envía el formulario)
+5. /products/:id/edit (GET)
+Formulario de edición de productos
+6. /products/:id (PUT)
+Acción de edición (a donde se envía el formulario):
+7. /products/:id (DELETE)
+Acción de borrado
 
 -------------------
