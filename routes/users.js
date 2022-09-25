@@ -1,13 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const usersController = require('../controllers/usersController');
-const multer = require('multer');
-const path = require('path');
-//Falta configurar multer
+
+// middlewares
+const uploadFile = require('../middlewares/multerRegister');
+
 //Express validator ya está instalado, falta setear
 
 router.get('/login', usersController.login);
+// mostrar vista registro
 router.get('/register', usersController.register);
-router.get('/user', usersController.userProfile);
+// procesar datos de registro
+router.post(
+	'/register',
+	uploadFile.single('avatar'),
+	usersController.processRegister
+);
+
+// router.get('/user', usersController.userProfile);
 
 module.exports = router;
