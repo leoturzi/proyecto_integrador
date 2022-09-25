@@ -8,4 +8,6 @@ const path = require('path');
 
 router.get('/login', usersController.login);
 router.get('/register', usersController.register);
+router.get('/user', usersController.userProfile);
+
 module.exports = router;
