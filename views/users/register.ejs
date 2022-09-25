@@ -2,14 +2,25 @@
 <%- include('../partials/nav')%>
 <div class="container container-register--fixed">
 	<main>
-		<form action="" class="login-container" enctype="multipart/form-data">
+		<form
+			action="/users/register"
+			method="POST"
+			class="login-container"
+			enctype="multipart/form-data"
+		>
 			<h3>Register</h3>
 			<div class="input-container">
-				<label for="username">Nombre</label>
-				<input type="text" id="nombre" name="nombre" placeholder="Usuario" />
+				<label for="nombre">Nombre</label>
+				<input
+					type="text"
+					id="nombre"
+					name="nombre"
+					placeholder="Usuario"
+					enctype="multipart/form-data"
+				/>
 			</div>
 			<div class="input-container">
-				<label for="username">Apellido</label>
+				<label for="apellido">Apellido</label>
 				<input
 					type="text"
 					id="apellido"
