@@ -1,18 +1,12 @@
-<%- include('../partials/head', {title})%>
-<%- include('../partials/header')%>
+<%- include('../partials/head', {title})%> <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
 <div class="container container-register--fixed">
 	<main>
-		<form action="" class="login-container">
+		<form action="" class="login-container" enctype="multipart/form-data">
 			<h3>Register</h3>
 			<div class="input-container">
 				<label for="username">Nombre</label>
-				<input
-					type="text"
-					id="nombre"
-					name="nombre"
-					placeholder="Usuario"
-				/>
+				<input type="text" id="nombre" name="nombre" placeholder="Usuario" />
 			</div>
 			<div class="input-container">
 				<label for="username">Apellido</label>
@@ -24,11 +18,11 @@
 				/>
 			</div>
 			<div class="input-container">
-				<label for="username">Email</label>
+				<label for="email">Email</label>
 				<input type="email" id="email" name="email" placeholder="Usuario" />
 			</div>
 			<div class="input-container">
-				<label for="username">Password</label>
+				<label for="password">Password</label>
 				<input
 					type="password"
 					id="password"
@@ -36,17 +30,19 @@
 					placeholder="Contraseña"
 				/>
 			</div>
+			<div class="input-container">
+				<label for="avatar">Avatar</label>
+				<input type="file" id="avatar" name="avatar" />
+			</div>
 			<div class="input-tyc">
 				<label for="tyc">Acepto Terminos y Condiciones</label>
-				<input
-					type="checkbox"
-					id="tyc"
-					name="tyc"
-					placeholder="Contraseña"
-				/>
+				<input type="checkbox" id="tyc" name="tyc" placeholder="Contraseña" />
 			</div>
 			<button type="submit" class="btn">Registrarme</button>
-			<p class="registro">Ya tenés cuenta? <a href="/users/login/" class="forgot-password">Iniciá Sesión</a></p>
+			<p class="registro">
+				Ya tenés cuenta?
+				<a href="/users/login/" class="forgot-password">Iniciá Sesión</a>
+			</p>
 		</form>
 	</main>
 </div>
