@@ -17,7 +17,11 @@
 					name="nombre"
 					placeholder="Usuario"
 					enctype="multipart/form-data"
+					value="<%= locals.oldData ? oldData.nombre : null %>"
 				/>
+				<% if (locals.errors && errors.nombre) { %>
+				<div class="text-danger"><%= errors.nombre.msg %></div>
+				<% } %>
 			</div>
 			<div class="input-container">
 				<label for="apellido">Apellido</label>
@@ -25,12 +29,25 @@
 					type="text"
 					id="apellido"
 					name="apellido"
-					placeholder="Usuario"
+					placeholder="Apellido"
+					value="<%= locals.oldData ? oldData.apellido : null %>"
 				/>
+				<% if (locals.errors && errors.apellido) { %>
+				<div class="text-danger"><%= errors.apellido.msg %></div>
+				<% } %>
 			</div>
 			<div class="input-container">
 				<label for="email">Email</label>
-				<input type="email" id="email" name="email" placeholder="Usuario" />
+				<input
+					type="email"
+					id="email"
+					name="email"
+					placeholder="Email"
+					value="<%= locals.oldData ? oldData.email : null %>"
+				/>
+				<% if (locals.errors && errors.email) { %>
+				<div class="text-danger"><%= errors.email.msg %></div>
+				<% } %>
 			</div>
 			<div class="input-container">
 				<label for="password">Password</label>
@@ -40,6 +57,9 @@
 					name="password"
 					placeholder="Contraseña"
 				/>
+				<% if (locals.errors && errors.password) { %>
+				<div class="text-danger"><%= errors.password.msg %></div>
+				<% } %>
 			</div>
 			<div class="input-container">
 				<label for="avatar">Avatar</label>
