@@ -8,10 +8,16 @@ const { validations } = require('../middlewares/registerValidator');
 
 //Express validator ya está instalado, falta setear
 
+// Formulario Login vista
 router.get('/login', usersController.login);
-// mostrar vista registro
+
+// Procesar Login
+router.post('/login', usersController.loginProcess);
+
+// Formulario Registro vista
 router.get('/register', usersController.register);
-// procesar datos de registro
+
+// Procesar Registro
 router.post(
 	'/register',
 	uploadFile.single('avatar'),

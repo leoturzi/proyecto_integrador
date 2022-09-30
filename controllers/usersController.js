@@ -6,6 +6,7 @@ const usersController = {
 	login: (req, res) => {
 		res.render('users/login', { title: 'Login' });
 	},
+	loginProcess: (req, res) => {},
 	register: (req, res) => {
 		res.render('users/register', { title: 'Register' });
 	},

@@ -51,6 +51,5 @@ const User = {
 		return true;
 	},
 };
-console.log(User.getData());
 
 module.exports = User;
