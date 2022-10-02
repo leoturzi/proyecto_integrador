@@ -6,19 +6,19 @@ include('../partials/header')%> <%- include('../partials/nav')%>
 			<h3>Tu informacion</h3>
 
 			<div class="img-profile">
-				<img src="/images/users/default.jpg" alt="" />
+				<img src="/images/users/<%= user.avatar %> " alt="" />
 			</div>
 			<div class="info-profile">
 				<h3>Nombre:</h3>
-				<p>Leonardo</p>
+				<p><%= user.nombre %></p>
 				<h3>Apellido</h3>
-				<p>Turzi</p>
+				<p><%= user.apellido %></p>
 				<h3>Email</h3>
-				<p>leogturzi@gmail.com</p>
+				<p><%= user.email %></p>
 				<div class="profile-options">
 					<button class="btn">Editar Datos Personales</button>
 					<button class="btn">Cambiar Password</button>
-					<button class="btn">Eliminar cuenta</button>
+					<button class="btn"><a href="logout">Log Out</a></button>
 				</div>
 			</div>
 		</div>

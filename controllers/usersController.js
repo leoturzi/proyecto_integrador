@@ -16,10 +16,9 @@ const usersController = {
 		if (userToLogin) {
 			const pwdMatch = bcrypt.compareSync(password, userToLogin.password);
 			if (pwdMatch) {
+				delete userToLogin.password;
+				req.session.userLogged = userToLogin;
 				res.redirect('/');
-				// return res.render('main/index', {
-				// 	title: 'Home',
-				// });
 			} else {
 				return res.render('users/login', {
 					title: 'Login',
@@ -78,7 +77,15 @@ const usersController = {
 		return res.redirect('/users/login');
 	},
 	userProfile: (req, res) => {
-		res.render('users/userProfile', { title: 'Profile' });
+		// return res.send(req.session.userLogged);
+		return res.render('users/userProfile', {
+			title: 'Profile',
+			user: req.session.userLogged,
+		});
+	},
+	logout: (req, res) => {
+		req.session.destroy();
+		res.redirect('/');
 	},
 };
 module.exports = usersController;
