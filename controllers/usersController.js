@@ -4,9 +4,43 @@ const User = require('../models/User');
 
 const usersController = {
 	login: (req, res) => {
-		res.render('users/login', { title: 'Login' });
+		// return res.send('hola');
+		return res.render('users/login', { title: 'Login' });
 	},
-	loginProcess: (req, res) => {},
+	loginProcess: (req, res) => {
+		// volcamos valores del form en variables
+		const { username, password, recordarUsuario } = req.body;
+
+		const userToLogin = User.findByField('email', username);
+
+		if (userToLogin) {
+			const pwdMatch = bcrypt.compareSync(password, userToLogin.password);
+			if (pwdMatch) {
+				res.redirect('/');
+				// return res.render('main/index', {
+				// 	title: 'Home',
+				// });
+			} else {
+				return res.render('users/login', {
+					title: 'Login',
+					errors: {
+						email: {
+							msg: 'Las credenciales son invalidas',
+						},
+					},
+				});
+			}
+		} else {
+			return res.render('users/login', {
+				title: 'Login',
+				errors: {
+					email: {
+						msg: 'No se encontro el email en la base de datos',
+					},
+				},
+			});
+		}
+	},
 	register: (req, res) => {
 		res.render('users/register', { title: 'Register' });
 	},
