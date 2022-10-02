@@ -16,8 +16,16 @@ const usersController = {
 		if (userToLogin) {
 			const pwdMatch = bcrypt.compareSync(password, userToLogin.password);
 			if (pwdMatch) {
+				// borramos password de los datos de session
 				delete userToLogin.password;
+				// salvamos los datos de session
 				req.session.userLogged = userToLogin;
+				// validamos si debemos persistir la session usando cookies
+				if (req.body.recordarUsuario) {
+					res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 });
+				}
+
+				// redirigimos al home
 				res.redirect('/');
 			} else {
 				return res.render('users/login', {
@@ -84,8 +92,9 @@ const usersController = {
 		});
 	},
 	logout: (req, res) => {
+		res.clearCookie('userEmail');
 		req.session.destroy();
-		res.redirect('/');
+		return res.redirect('/');
 	},
 };
 module.exports = usersController;
