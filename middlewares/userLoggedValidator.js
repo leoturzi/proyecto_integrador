@@ -1,22 +1,22 @@
 const User = require('../models/User');
 
-function guestValidator(req, res, next) {
-	// res.locals.isLogged = false;
+function userLoggedValidator(req, res, next) {
+	res.locals.isLogged = false;
+	if (req.session.userLogged) {
+		res.locals.isLogged = true;
+		next();
+	} else if (req.cookies.userEmail) {
+		const emailInCookie = req.cookies.userEmail;
 
-	const emailInCookie = req.cookies.userEmail;
-	console.log(emailInCookie);
-	// buscamos en nuestra db
-	const userFromCookie = User.findByField('email', emailInCookie);
+		// buscamos en nuestra db
+		const userFromCookie = User.findByField('email', emailInCookie);
+		res.locals.isLogged = true;
+		req.session.userLogged = userFromCookie;
 
-	req.session.userLogged = userFromCookie;
-
-	// if (userFromCookie) {
-	// 	delete userFromCookie.password;
-	// 	req.session.userLogged = userFromCookie;
-	// 	res.locals.isLogged = true;
-	// 	res.locals.userLogged = req.session.userLogged;
-	// }
-	next();
+		next();
+	} else {
+		next();
+	}
 }
 
-module.exports = guestValidator;
+module.exports = userLoggedValidator;
