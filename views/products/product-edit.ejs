@@ -3,62 +3,64 @@
 <%- include('../partials/nav')%>
 <div class="container container-product-edit--fixed">
     <main>
-        <section>
-            <form action="" method="POST" class="product-edit-form-container">
-                <h1>Editar de Producto</h1>
+        <section class="product-edit-form-container">
+            <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data" >
+                <h1>Editando <%= product.name %></h1>
                 <div class="input-container">
-                    <label for="idDelProducto">Número de ID</label>
-                    <input type="text" name="idDelProducto" value="product.id">
+					<label for="name">Nombre</label>
+					<input type="text" name="name" id="name" value="<%= product.name%>">
+				</div>
+				<div class="input-container">
+					<label for="category">Categoría (drums, guitar, trumpet, bass, oboe, clarinet, amplifier, microphone)</label>
+					<input type="text" name="category" id="category" value="<%= product.category%>">
+				</div>
+				<div class="input-container">
+					<label for="brand">Marca</label>
+					<input type="text" name="brand" id="brand" value="<%= product.brand %>">
+				</div>
+				<div class="input-container">
+					<label for="shortDesc">Descripción breve</label>
+					<textarea name="shortDesc" cols="30" rows="3" id="shortDesc"> <%= product.shortDesc%>"</textarea>
+				</div>
+				<div class="input-container">
+					<label for="longDesc">Descripción detallada</label>
+					<textarea name="longDesc" cols="30" rows="10" id="longDesc"> <%= product.longDesc%> </textarea>
+				</div>
+				<div class="input-container">
+                    <label for="color">Color</label>
+                    <input type="text" name="color" id="color" value="<%= product.color%>">
                 </div>
+				<div class="input-container">
+					<label for="price">Precio</label>
+					<input type="text" name="price" id="price" value="<%= product.price%>">
+				</div>
                 <div class="input-container">
-                    <label for="nombreDelProducto">Nombre</label>
-                    <input type="text" name="nombreDelProducto" value="product.name">
-                </div>
-                <div class="input-container">
-                    <label for="categoriaDelProducto">Categoría (Viento, madera, cuerda, metal, percusión)</label>
-                    <input type="text" name="categoriaDelProducto" value="product.category">
-                </div>
-                <div class="input-container">
-                    <label for="marcaDelProducto">Marca</label>
-                    <input type="text" name="marcaDelProducto" value="product.brand">
-                </div>
-                <div class="input-container">
-                    <label for="descripcionDelProducto">Descripción breve</label>
-                    <textarea name="descBreveDelProducto" cols="30" rows="3">product.shortDesc - Hola, soy un textarea, no tengo atributo value</textarea>
-                </div>
-                <div class="input-container">
-                    <label for="descripcionDelProducto">Descripción detallada</label>
-                    <textarea name="descDetalladaDelProducto" cols="30" rows="10">product.longDesc</textarea>
-                </div>
-                <div class="input-container">
-                    <label for="colorDelProducto">Colores disponibles</label>
-                    <input type="text" name="colorDelProducto" value="product.colors">
-                </div>
-                <div class="input-container">
-                    <label for="precioDelProducto">Precio</label>
-                    <input type="text" name="precioDelProducto" value="product.price">
-                </div>
-                <div class="input-container">
-                    <div>
-                        <img src="" alt="product.imgUrl">
-                    </div>
-                    <label for="imagenDelProducto">Imágen</label>
-                    <input type="file" name="imagenDelProducto">
-                </div>
-                <div class="input-container">
-                    <label for="envioDelProducto">Envío Gratis (SI/NO)</label>
-                    <input type="text" name="imagenDelProducto" value="product.dispatch">
-                </div>
-                <div class="input-container">
-                    <label for="descuentoDelProducto">Descuento </label>
-                    <input type="text" name="descuentoDelProducto" value="product.discount">
-                </div>
+					<label for="image">Imágen actual</label>
+                    <img class="edit-img" src="/images/products/<%= product.image%>" alt="">
+				</div>
+				<div class="input-container">
+					<label for="newImage">Actualizar imágen</label>
+					<input type="file" name="newImage" id="newImage">
+				</div>
+				<div class="input-container">
+					<label for="dispatch">Envío Gratis (Si/No)</label>
+					<input type="text" name="dispatch" id="dispatch" value="<%= product.dispatch ? 'Si' : 'No' %>">
+				</div>
+				<div class="input-container">
+					<label for="discount">Descuento </label>
+					<input type="text" name="discount" id="discount" value="<%= product.discount %>">
+				</div>
+				<div class="input-container">
+					<label for="lastVisited">Ultima Visita (Si/No)</label>
+					<input type="text" name="lastVisited" id="lastVisited" value="<%= product.lastVisited ? 'Si' : 'No' %>">
+				</div>
                 <div class="btn-product-create-container">
-                    <button class="btn btn-product-edit">Guardar Cambios</button>
-                    <a href="/product/create" class="btn btn-product-edit btn-anchor">Crear Producto</a>
-                    <a href="/" class="btn btn-product-edit btn-anchor">Eliminar Producto</a>
-                    <a href="/" class="btn btn-product-edit btn-anchor">Volver</a>
+                    <button type="submit" class="btn btn-product-edit">Guardar Cambios</button>
                 </div>
+            </form>
+            <form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-product-edit">Eliminar</button>
+				<a href="/products" class="btn btn-product-edit btn-anchor">Volver</a>
             </form>
         </section>
     </main>

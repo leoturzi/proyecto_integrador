@@ -15,7 +15,7 @@
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 /* HEADER INICIO */
 
@@ -86,7 +86,19 @@ nav {
 	outline: none;
 }
 
+.unsuccessful-query-text {
+	color: red;
+}
+
 /* HEADER FIN */
+
+/* 404 not found */
+
+.not-found {
+	text-align: center;
+}
+
+/* 404 not found */
 
 /* NAV MENU INICIO */
 
@@ -159,6 +171,10 @@ main {
 	margin: 0px auto;
 }
 
+.container {
+	min-height: calc(100vh - 479px);
+}
+
 .cart-card__img-container {
 	width: 90px;
 }
@@ -211,8 +227,8 @@ main {
 
 .cart-card__color-modifier,
 .cart-card__envio {
-		display: none;
-	}
+	display: none;
+}
 
 .cart-card__cp-input,
 .cart-card__localidad-select {
@@ -307,6 +323,22 @@ main {
 	padding: 20px 0px;
 }
 
+.categorias-container {
+	padding: 10px;
+	width: 176px;
+	height: 176px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.categorias-img {
+	width: 90%;
+	height: 90%;
+	box-shadow: -3px 4px 10px 1px rgba(0, 0, 0, 0.15),
+		3px 4px 10px 1px rgba(0, 0, 0, 0.15);
+}
+
 .interes {
 	display: flex;
 	flex-direction: column;
@@ -362,14 +394,14 @@ main {
 }
 
 .hero-titulo h1 {
-	font-family: "Lobster", "sans-serif";
+	font-family: 'Lobster', 'sans-serif';
 	font-size: 3rem;
 	font-weight: 400;
 	text-align: center;
 }
 
 .hero-titulo h2 {
-	font-family: "Roboto", "sans-serif";
+	font-family: 'Roboto', 'sans-serif';
 	text-align: center;
 	font-size: 1rem;
 }
@@ -398,6 +430,12 @@ main {
 
 /* PRODUCTOS */
 
+.listado-nowrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
 .listado {
 	display: flex;
 	flex-wrap: wrap;
@@ -413,11 +451,22 @@ main {
 	box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, 0.25);
 }
 
-	.display-lg,
-	.display-xl,
-	.display-xxl {
-		display: none;
-	}	
+.producto-link {
+	text-decoration: none;
+	color: unset;
+	display: flex;
+	justify-content: space-between;
+}
+
+.producto--aligned {
+	justify-content: space-between;
+}
+
+.display-lg,
+.display-xl,
+.display-xxl {
+	display: none;
+}
 
 .producto-precio {
 	font-style: normal;
@@ -449,6 +498,12 @@ main {
 	font-weight: bold;
 	box-shadow: inset 0px 0px 20px 6px rgba(0, 0, 0, 0.3);
 	border-radius: 5px;
+}
+
+.btn-especial01 {
+	background-color: transparent;
+	box-shadow: none;
+	cursor: pointer;
 }
 
 .anuncios-cont {
@@ -569,6 +624,10 @@ main {
 	padding: 4px 5px;
 }
 
+.edit-img {
+	width: 300px;
+}
+
 /* .btn-product-create-container,
 .btn-product-edit-container {
 	
@@ -668,6 +727,50 @@ main {
 	font-size: 14px;
 }
 
+/* USER PROFILE VIEW */
+
+.img-profile {
+	background-color: white;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-self: center;
+}
+
+.img-profile img {
+	overflow: hidden;
+	object-fit: cover;
+}
+
+.info-profile p {
+	text-align: start !important;
+}
+
+.profile-options {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile-options button:nth-child(3) {
+	background-color: red;
+}
+
+.profile-options form button {
+	background-color: red;
+	width: 100%;
+	cursor: pointer;
+}
+
+.btn a {
+	text-decoration: none;
+	color: white;
+}
+
+/* END USER PROFILE VIEW*/
+
 /* FOOTER */
 
 footer {
@@ -743,6 +846,18 @@ footer section {
 .login-container p {
 	text-align: center;
 }
+
+.radio-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.edit-panel-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
 /* Arreglo de Footer primera solución
 
 Clase para el div que contiene al main. Y -en los EJS- extendiendo ese div hasta que abarque al footer
@@ -819,7 +934,7 @@ Márgenes top y bottom al container del main, con media queries
 	.producto {
 		width: 144px;
 	}
-	
+
 	.marcas {
 		align-items: center;
 	}
@@ -938,13 +1053,13 @@ Márgenes top y bottom al container del main, con media queries
 	}
 
 	.hero-titulo h1 {
-		font-family: "Lobster", "sans-serif";
+		font-family: 'Lobster', 'sans-serif';
 		font-size: 4rem;
 		font-weight: 400;
 	}
 
 	.hero-titulo h2 {
-		font-family: "Roboto", "sans-serif";
+		font-family: 'Roboto', 'sans-serif';
 		text-align: center;
 		font-size: 1.5rem;
 	}
@@ -1011,7 +1126,6 @@ Márgenes top y bottom al container del main, con media queries
 	.producto-detalle-metodos-pago h3 {
 		margin: 4px 0px;
 	}
-
 }
 
 @media screen and (min-width: 1200px) {
@@ -1025,7 +1139,7 @@ Márgenes top y bottom al container del main, con media queries
 	.cart-envio__codigo-postal {
 		align-self: auto;
 	}
-	.cart-card-envio__right-container p{
+	.cart-card-envio__right-container p {
 		font-weight: 700;
 	}
 	.cart-card__color-modifier,
@@ -1038,7 +1152,7 @@ Márgenes top y bottom al container del main, con media queries
 		font-size: 18px;
 		line-height: 2.5;
 	}
-	
+
 	.cart-subtotal {
 		font-size: 32px;
 	}
@@ -1073,7 +1187,7 @@ Márgenes top y bottom al container del main, con media queries
 	.display-xl {
 		display: flex;
 	}
-	.producto-detalle-metodos-pago{
+	.producto-detalle-metodos-pago {
 		flex-direction: row;
 		justify-content: space-between;
 	}
@@ -1092,68 +1206,76 @@ Márgenes top y bottom al container del main, con media queries
 	.producto-detalle {
 		width: 100%;
 	}
-	.container-login--fixed,
+	/* .container-login--fixed,
 	.container-results--fixed {
-		margin-bottom: 170px;
-	}
+		margin-bottom: 470px;
+	} */
 }
-@media screen and (min-width:1700px) {
-	.container-register--fixed,
+@media screen and (min-width: 1700px) {
+	/* .container-register--fixed,
 	.container-product-edit--fixed,
 	.container-product-create--fixed {
 		margin-top: 80px;
-		margin-bottom: 120px;
+		margin-bottom: 420px;
 	}
 	.container-login--fixed,
 	.container-results--fixed {
 		margin-top: 80px;
-		margin-bottom: 170px;
-	}
+		margin-bottom: 570px;
+	} */
 }
 
-@media screen and (min-width:1850px) {
-	.container-register--fixed,
+@media screen and (min-width: 1850px) {
+	/* .container-register--fixed,
 	.container-product-edit--fixed,
-	.container-product-create--fixed {
-		margin-bottom: 240px;
+	.container-product-create--fixed, 
+	.container-product-list--fixed {
+		margin-bottom: 940px;
 	}
 	.container-login--fixed,
 	.container-results--fixed {
+		margin-bottom: 600px;
+	}
+	.container-product-detail--fixed {
 		margin-bottom: 300px;
-	}
+	} */
 }
 
-@media screen and (min-width:2060px) {
-	.container-cart-envio--fixed {
+@media screen and (min-width: 2060px) {
+	/* .container-cart-envio--fixed {
 		margin-top: 50px;
-		margin-bottom: 50px;
+		margin-bottom: 650px;
 	}
 	.container-product-detail--fixed {
-		margin-bottom: 100px;
+		margin-bottom: 700px;
 	}
 	.container-register--fixed,
 	.container-product-edit--fixed,
-	.container-product-create--fixed {
-		margin-bottom: 340px;
+	.container-product-create--fixed,
+	.container-product-list--fixed {
+		margin-bottom: 1240px;
 	}
 	.container-login--fixed,
 	.container-results--fixed {
-		margin-bottom: 550px;
-	}
+		margin-bottom: 950px;
+	} */
 }
 
-@media screen and (min-width:2260px) {
-	.container-product-detail--fixed {
+@media screen and (min-width: 2260px) {
+	/* .container-product-detail--fixed {
 		margin-top: 80px;
-		margin-bottom: 120px;
+		margin-bottom: 920px;
 	}
-	.container-register--fixed,
 	.container-product-edit--fixed,
 	.container-product-create--fixed {
-		margin-bottom: 590px;
+		margin-bottom: 1190px;
 	}
+	.container-product-list--fixed {
+		margin-bottom: 840px;
+	}
+	.container-register--fixed,
 	.container-login--fixed,
 	.container-results--fixed {
-		margin-bottom: 750px;
-	}
+		margin-bottom: 1250px;
+	} */
 }

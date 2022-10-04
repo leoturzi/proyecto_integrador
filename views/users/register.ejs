@@ -1,52 +1,79 @@
-<%- include('../partials/head', {title})%>
-<%- include('../partials/header')%>
+<%- include('../partials/head', {title})%> <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
 <div class="container container-register--fixed">
 	<main>
-		<form action="" class="login-container">
+		<form
+			action="/users/register"
+			method="POST"
+			class="login-container"
+			enctype="multipart/form-data"
+		>
 			<h3>Register</h3>
 			<div class="input-container">
-				<label for="username">Nombre</label>
+				<label for="nombre">Nombre</label>
 				<input
 					type="text"
 					id="nombre"
 					name="nombre"
 					placeholder="Usuario"
+					enctype="multipart/form-data"
+					value="<%= locals.oldData ? oldData.nombre : null %>"
 				/>
+				<% if (locals.errors && errors.nombre) { %>
+				<div class="text-danger"><%= errors.nombre.msg %></div>
+				<% } %>
 			</div>
 			<div class="input-container">
-				<label for="username">Apellido</label>
+				<label for="apellido">Apellido</label>
 				<input
 					type="text"
 					id="apellido"
 					name="apellido"
-					placeholder="Usuario"
+					placeholder="Apellido"
+					value="<%= locals.oldData ? oldData.apellido : null %>"
 				/>
+				<% if (locals.errors && errors.apellido) { %>
+				<div class="text-danger"><%= errors.apellido.msg %></div>
+				<% } %>
 			</div>
 			<div class="input-container">
-				<label for="username">Email</label>
-				<input type="email" id="email" name="email" placeholder="Usuario" />
+				<label for="email">Email</label>
+				<input
+					type="email"
+					id="email"
+					name="email"
+					placeholder="Email"
+					value="<%= locals.oldData ? oldData.email : null %>"
+				/>
+				<% if (locals.errors && errors.email) { %>
+				<div class="text-danger"><%= errors.email.msg %></div>
+				<% } %>
 			</div>
 			<div class="input-container">
-				<label for="username">Password</label>
+				<label for="password">Password</label>
 				<input
 					type="password"
 					id="password"
 					name="password"
 					placeholder="Contraseña"
 				/>
+				<% if (locals.errors && errors.password) { %>
+				<div class="text-danger"><%= errors.password.msg %></div>
+				<% } %>
+			</div>
+			<div class="input-container">
+				<label for="avatar">Avatar</label>
+				<input type="file" id="avatar" name="avatar" />
 			</div>
 			<div class="input-tyc">
 				<label for="tyc">Acepto Terminos y Condiciones</label>
-				<input
-					type="checkbox"
-					id="tyc"
-					name="tyc"
-					placeholder="Contraseña"
-				/>
+				<input type="checkbox" id="tyc" name="tyc" placeholder="Contraseña" />
 			</div>
 			<button type="submit" class="btn">Registrarme</button>
-			<p class="registro">Ya tenés cuenta? <a href="#" class="forgot-password">Iniciá Sesión</a></p>
+			<p class="registro">
+				Ya tenés cuenta?
+				<a href="/users/login/" class="forgot-password">Iniciá Sesión</a>
+			</p>
 		</form>
 	</main>
 </div>

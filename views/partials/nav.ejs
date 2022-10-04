@@ -1,20 +1,25 @@
 <nav>
-    <ul class="nav-menu">
-        <li><a href="#">Mi Cuenta</a></li>
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li>
-            <a href="#">Productos</a>
-        </li>
-        <li>
-            <a href="#">Ofertas</a>
-        </li>
-        <li>
-            <a href="#">Nosotros</a>
-        </li>
-        <li>
-            <a href="#">Contacto</a>
-        </li>
-    </ul>
+	<ul class="nav-menu">
+		<li><a href="#">Mi Cuenta</a></li>
+		<li>
+			<a href="/">Home</a>
+		</li>
+		<li>
+			<a href="/products/">Productos</a>
+		</li>
+		<li>
+			<a href="#">Ofertas</a>
+		</li>
+		<li>
+			<a href="#">Nosotros</a>
+		</li>
+		<li>
+			<a href="#">Contacto</a>
+		</li>
+		<% if (locals && locals.isLogged) { %>
+		<li>
+			<a href="/products/create">Vender</a>
+		</li>
+		<% } %>
+	</ul>
 </nav>

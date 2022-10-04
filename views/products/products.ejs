@@ -1,0 +1,29 @@
+<%- include('../partials/head', {title})%>
+<%- include('../partials/header')%>
+<%- include('../partials/nav')%>
+<div class="container container-product-list--fixed">
+	<main>
+		<ul class="listado-nowrap">
+			<% for (let product of products) { %>
+			<a href="/products/<%=product.id%>" class="producto-link">
+				<li class="producto producto--aligned">
+					<img
+						src="/images/products/<%= product.image || 'default.jpg' %>"
+						alt="<%= product.name %>"
+						class="producto-img"
+					/>
+					<p class="producto-precio"> $<%= product.price %></p>
+					<% if (product.dispatch) { %>
+					<p class="producto-envio">Envio gratis</p>
+					<% } %>
+					<p class="producto-nombre">
+						<%= product.name %>
+					</p>
+					<button class="btn">Comprar</button>
+				</li>
+			</a>
+			<% } %>
+		</ul>
+	</main>
+</div>
+<%- include('../partials/footer') %>

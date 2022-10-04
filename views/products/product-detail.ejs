@@ -6,18 +6,18 @@
 		<section class="producto-detalle">
 			<div class="producto-detalle-card">
 				<img
-					src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-					alt="Gibson Les Paul"
+					src="/images/products/<%= product.image || 'default.jpg' %>"
+					alt="<%= product.name %>"
 				/>
 				<div class="producto-detalle-card-info">
 					<h3 class="producto-detalle-card-info_nombre">
-						Gibson 1958 Les Paul Standard LB Guitarra Eléctrica
+						<%= product.name %>
 					</h3>
 					<p class="producto-detalle-card-info_desc">
-						Semi Hueca c/Corte Mics Humb c/FUNDA BLK
+						<%= product.shortDesc %>
 					</p>
 					<div class="producto-detalle-card-info_precio">
-						<p>$130.000</p>
+						<p>$<%= product.price %></p>
 					</div>
 
 					<button class="btn btn-detalle">Comprar</button>
@@ -28,15 +28,22 @@
 					<div class="producto-detalle-descripcion">
 						<h3>Descripcion</h3>
 						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							Beatae architecto amet dolorem facilis nostrum reprehenderit
-							ratione. Repellat, modi iste. Architecto, repellat corporis?
-							Perferendis dolor, exercitationem quae nisi numquam nesciunt
-							vel?
+							<%= product.longDesc %>
 						</p>
 					</div>
+
+					<a href="/products/<%= product.id %>/edit" class="btn btn-product-edit btn-anchor">EDITAR PRODUCTO</a>
+					<a href="" class="btn btn-product-edit btn-anchor">
+					<form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+						<button type="submit" class="btn btn-detalle btn-especial01">ELIMINAR</button>
+					</form>
+					</a>
+					<a href="/products" class="btn btn-product-edit btn-anchor">VOLVER</a>
+
 				</div>
+				
 			</div>
+			
 		</section>
 		<section class="interes">
 			<div class="interes-text">
