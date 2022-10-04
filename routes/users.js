@@ -28,14 +28,24 @@ router.post(
 	usersController.processRegister
 );
 
-router.get('/profile', authValidator, usersController.userProfile);
+// Formulario Edicion vista
+router.get('/edit/:id', authValidator, usersController.edit);
 
-router.get('/logout', usersController.logout);
+// Procesar update
+router.put(
+  "/update/:id",
+  uploadFile.single("avatar"),
+  editUserValidations,
+  usersController.update
+);
 
-// Lo dejo con método GET porque para el DELETE necesitamos un <form>. Mas adelante
+// Procesar delete
 router.delete('/delete/:id', authValidator, usersController.delete);
 
-router.get('/edit/:id', authValidator, usersController.edit);
-router.put('/update/:id', uploadFile.single('avatar'), editUserValidations, usersController.update);
+// Perfil de Usuario Vista
+router.get('/profile', authValidator, usersController.userProfile);
+
+// Procesar Logout
+router.get('/logout', usersController.logout);
 
 module.exports = router;
