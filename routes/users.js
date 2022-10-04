@@ -5,6 +5,7 @@ const usersController = require('../controllers/usersController');
 // middlewares
 const uploadFile = require('../middlewares/multerRegister');
 const { validations } = require('../middlewares/registerValidator');
+const { editUserValidations } = require('../middlewares/editUserValidator');
 const guestValidator = require('../middlewares/guestValidator');
 const authValidator = require('../middlewares/authValidator');
 
@@ -30,5 +31,11 @@ router.post(
 router.get('/profile', authValidator, usersController.userProfile);
 
 router.get('/logout', usersController.logout);
+
+// Lo dejo con método GET porque para el DELETE necesitamos un <form>. Mas adelante
+router.delete('/delete/:id', authValidator, usersController.delete);
+
+router.get('/edit/:id', authValidator, usersController.edit);
+router.put('/update/:id', uploadFile.single('avatar'), editUserValidations, usersController.update);
 
 module.exports = router;

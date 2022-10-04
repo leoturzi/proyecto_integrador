@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../utils/User');
 
 function userLoggedValidator(req, res, next) {
 	res.locals.isLogged = false;

@@ -758,6 +758,17 @@ main {
 	background-color: red;
 }
 
+.profile-options form button {
+	background-color: red;
+	width: 100%;
+	cursor: pointer;
+}
+
+.btn a {
+	text-decoration: none;
+	color: white;
+}
+
 /* END USER PROFILE VIEW*/
 
 /* FOOTER */

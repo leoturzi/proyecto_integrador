@@ -16,9 +16,12 @@ include('../partials/header')%> <%- include('../partials/nav')%>
 				<h3>Email</h3>
 				<p><%= user.email %></p>
 				<div class="profile-options">
-					<button class="btn">Editar Datos Personales</button>
+					<button class="btn"><a href="edit/<%=user.id %>">Editar Datos de Perfil</a></button>
 					<button class="btn">Cambiar Password</button>
 					<button class="btn"><a href="logout">Log Out</a></button>
+					<form action="/users/delete/<%= user.id %>?_method=DELETE" method="POST">
+						<button class="btn">Borrar perfil</button>
+					</form>
 				</div>
 			</div>
 		</div>

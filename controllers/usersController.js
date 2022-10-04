@@ -1,6 +1,7 @@
 const { validationResult } = require('../middlewares/registerValidator');
 const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+const User = require('../utils/User');
+const fs = require('fs');
 
 const usersController = {
 	login: (req, res) => {
@@ -22,7 +23,7 @@ const usersController = {
 				req.session.userLogged = userToLogin;
 				// validamos si debemos persistir la session usando cookies
 				if (req.body.recordarUsuario) {
-					res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60 });
+					res.cookie('userEmail', req.body.username, { maxAge: 1000 * 60  * 30});
 				}
 
 				// redirigimos al home
@@ -96,5 +97,50 @@ const usersController = {
 		req.session.destroy();
 		return res.redirect('/');
 	},
+	edit : (req, res) => {
+		console.log(req.params.id)
+		let userToEdit = User.findByPk(parseInt(req.params.id));
+		res.render('users/editUser', {userToEdit : userToEdit, title: 'Edit User'})
+	},
+	update : (req, res) => {
+		let userToEdit = User.findByPk(parseInt(req.params.id));
+		let errors = validationResult(req);
+		if (!errors.isEmpty()) {
+		  console.log(errors.mapped());
+		  return res.render("users/editUser", { title: 'Edit User',
+			userToEdit,
+			errors: errors.mapped(),
+		  });
+		} else {
+		  let users = User.findAll()
+		  // Array de objetos --> array de IDs --> buscame el índice.
+		  let userToEditIndex = users.map((u) => u.id).indexOf(parseInt(req.params.id));
+		  let userEdited = {
+			id : userToEdit.id, // Se mantiene
+			tyc : userToEdit.tyc, // Se mantiene
+			nombre: req.body.nombre,
+			apellido: req.body.apellido,
+			email: req.body.email,
+			password : userToEdit.password,
+			avatar : userToEdit.avatar // En principio se mantiene...
+		  };
+	 
+		  if (req.file) { // ...pero si el usuario cambia de avatar, borra el anterior...
+			fs.unlinkSync("./public/images/users/" + userEdited.avatar);
+			userEdited.avatar = req.file.filename; // ...y solo en ese caso lo asigna al objeto.
+		  }
+	 
+		  users[userToEditIndex] = userEdited;
+		  users = JSON.stringify(users, null, " ");
+		  fs.writeFileSync(User.fileName, users);
+		  res.redirect("/");
+		}
+	  },	
+	delete: (req,res) => {
+		let user = User.findByPk(parseInt(req.params.id));
+    	fs.unlinkSync("./public/images/users/" + user.avatar);
+		User.delete(parseInt(req.params.id));
+		return res.redirect('/');
+	}
 };
 module.exports = usersController;
