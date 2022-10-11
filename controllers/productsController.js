@@ -1,20 +1,17 @@
-const { deepStrictEqual } = require('assert');
+const { deepStrictEqual } = require('assert'); // De donde salio esto?
 const fs = require('fs');
-const path = require('path');
-const productsFilePath = path.join(__dirname, '../database/products.json');
+const Product = require('../utils/Product');
 
 const productsController = {
     list : (req, res) => {
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'))
+        const products = Product.findAll()
         res.render('products/products', {products, title:'All Products'});
     },
     create: (req, res) => {
         res.render('products/product-create', {title:'New Product'});
     },
     store: (req, res) => {
-        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
         let newProduct = {
-            id : Date.now(),
             name : req.body.name,
             brand : req.body.brand,
             price: parseInt(req.body.price), 
@@ -30,27 +27,23 @@ const productsController = {
         req.body.lastVisited.toLowerCase() == "si" ? newProduct.lastVisited = true : newProduct.lastVisited = false; 
         req.body.dispatch.toLowerCase() == "si" ? newProduct.dispatch = true : newProduct.dispatch = false; 
         req.file ? newProduct.image = req.file.filename : newProduct.image = "";
-        products.push(newProduct);
-        products = JSON.stringify(products, null, ' ');
-        fs.writeFileSync(productsFilePath, products);
+        Product.create(newProduct)
         res.redirect('/products');
     },
     detail: (req, res) => {
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        let productToDetail = products.find(p => {return p.id == parseInt(req.params.id)});
+        let productToDetail = Product.findByPk(req.params.id);
         res.render('products/product-detail', {product: productToDetail, title:'Detail'});
     },
     edit : (req, res) => {
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        let productToEdit = products.find(p => {return p.id == parseInt(req.params.id)});
+        let productToEdit = Product.findByPk(req.params.id);
         res.render('products/product-edit', { product: productToEdit, title:'Edit Product'});
     },
     update: (req, res) => {
-        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        let products = Product.findAll();
         // De los productos dejame solamente todos los ids. Sobre ese array de ids, buscame el índice de aquel que coincida con el id pasado por parámetro. Para después sobreescribir los cambios refiriendo a esa posición en el array products.
-        let productIndex = products.map(p => p.id).indexOf(parseInt(req.params.id))
+        let productIndex = products.map(p => p.id).indexOf(parseInt(req.params.id));
         // Ahora en vez del índice busco el objeto (producto) entero
-        let productToUpdate = products.find(p => {return p.id == parseInt(req.params.id)});
+        let productToUpdate = Product.findByPk(req.params.id);
         // Vuelco las propiedades del producto original en lo que va a ser el producto actualizado, usando spread. El resto de las propiedades (nuevas) las sobreescribo
         let productUpdated = {
             ...productToUpdate,
@@ -77,21 +70,13 @@ const productsController = {
             productUpdated.image = req.file.filename;
         }
         products[productIndex] = productUpdated;
-        products = JSON.stringify(products, null, ' ');
-        fs.writeFileSync(productsFilePath, products);
+        fs.writeFileSync(Product.fileName, JSON.stringify(products, null, ' '));
         res.redirect(`/products/${productUpdated.id}`)
     },
     delete: (req, res) => {
-        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        //Busco el índice para luego hacer splice
-        let productIndex = products.map(p => p.id).indexOf(parseInt(req.params.id))
-        //Busco el producto para después borrar la imágen
-        let product = products.find(p => { return p.id == parseInt(req.params.id)});
+        let product = Product.findByPk(req.params.id)
         fs.unlinkSync('./public/images/products/' + product.image);
-
-        products.splice(productIndex, 1);
-        products = JSON.stringify(products, null, ' ');
-        fs.writeFileSync(productsFilePath, products);
+        Product.delete(req.params.id)
         res.redirect('/products');
 
     }
