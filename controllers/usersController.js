@@ -144,9 +144,13 @@ const usersController = {
         }
     },
     delete: (req, res) => {
-        let user = User.findByPk(parseInt(req.params.id));
-        fs.unlinkSync('./public/images/users/' + user.avatar);
-        User.delete(parseInt(req.params.id));
+        const userLogged = req.session.userLogged;
+        // Borramos el avatar guardado
+        fs.unlinkSync('./public/images/users/' + userLogged.avatar);
+        // Borramos al user de la BD
+        User.delete(userLogged.id);
+        // Destruimos la session
+        req.session.destroy();
         return res.redirect('/');
     },
 };
