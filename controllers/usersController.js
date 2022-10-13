@@ -143,6 +143,10 @@ const usersController = {
             res.redirect('/');
         }
     },
+    confirmDelete: (req, res) => {
+        let userToDelete = User.findByPk(parseInt(req.params.id));
+        res.render('users/deleteUser', {userToDelete, title : 'Confirm delete'})
+    },
     delete: (req, res) => {
         const userLogged = req.session.userLogged;
         // Borramos el avatar guardado

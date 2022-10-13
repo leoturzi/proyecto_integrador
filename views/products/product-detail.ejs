@@ -1,188 +1,196 @@
 <%- include('../partials/head', {title})%>
 <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
-<div class="container container-product-detail--fixed">
+<div class="container--fixed">
 	<main>
-		<section class="producto-detalle">
-			<div class="producto-detalle-card">
+		<section class="card-details">
+			<div class="card-details__container">
 				<img
 					src="/images/products/<%= product.image || 'default.jpg' %>"
 					alt="<%= product.name %>"
 				/>
-				<div class="producto-detalle-card-info">
-					<h3 class="producto-detalle-card-info_nombre">
+				<div class="card-detail__info">
+					<h3 class="card-detail__name">
 						<%= product.name %>
 					</h3>
-					<p class="producto-detalle-card-info_desc">
+					<p class="card-detail__short-desc">
 						<%= product.shortDesc %>
 					</p>
-					<div class="producto-detalle-card-info_precio">
+					<div class="card-detail__price">
 						<p>$<%= product.price %></p>
 					</div>
 
-					<button class="btn btn-detalle">Comprar</button>
-					<div class="producto-detalle-metodos-pago">
+					<a href="/cart" class="btn btn-product-edit btn-anchor">Agregar al carrito</a>
+					<div class="card-details__payment-methods">
 						<h3>Metodos de pago</h3>
 						<img src="/images/metodos-de-pago2.png" alt="" />
 					</div>
-					<div class="producto-detalle-descripcion">
+					<div class="card-details__long-desc">
 						<h3>Descripcion</h3>
 						<p>
 							<%= product.longDesc %>
 						</p>
 					</div>
 
-					<a href="/products/<%= product.id %>/edit" class="btn btn-product-edit btn-anchor">EDITAR PRODUCTO</a>
-					<a href="" class="btn btn-product-edit btn-anchor">
-					<form action="/products/<%= product.id %>?_method=DELETE" method="POST">
-						<button type="submit" class="btn btn-detalle btn-especial01">ELIMINAR</button>
-					</form>
-					</a>
 					<a href="/products" class="btn btn-product-edit btn-anchor">VOLVER</a>
+					<% if (locals.isAdmin) { %>
+						<a href="/products/<%= product.id %>/edit" class="btn btn-product-edit btn-anchor">EDITAR PRODUCTO</a>
+						<a href="" class="btn danger btn-product-edit btn-anchor">
+						<form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+							<button type="submit" class="btn btn-details btn--transparent btn--no-shadow">ELIMINAR</button>
+						</form>
+						</a>
+					<% } %>
 
 				</div>
 				
 			</div>
 			
 		</section>
-		<section class="interes">
-			<div class="interes-text">
+		<section class="interest">
+			<div class="interest__text">
 				<h3>Te puede interesar</h3>
 				<h4>ver todo</h4>
 			</div>
-			<ul class="listado">
-				<li class="producto">
+			<ul class="products-list">
+				<li class="card">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto">
+				<li class="card">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card-img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card-precio">$ 150.000</p>
+					<p class="card-envio">Envio gratis</p>
+					<p class="card-nombre">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto">
+				<li class="card">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card-img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card-precio">$ 150.000</p>
+					<p class="card-envio">Envio gratis</p>
+					<p class="card-nombre">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto">
+				<li class="card">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto display-lg">
+				<li class="card display-lg">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto display-lg">
+				<li class="card display-lg">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto display-xl">
+				<li class="card display-xl">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto display-xxl">
+				<li class="card display-xxl">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
 			</ul>
 		</section>
-		<section class="marcas">
-			<h3>Encontra las mejores marcas!!!</h3>
-			<div class="marcas-img">
+		<section class="brands">
+			<h3 class="brands__title">Encontra las mejores marcas!!!</h3>
+			<div class="brands__img-container">
 				<img
 					src="https://musicopolix.com/img/m/480-brands_default.jpg"
 					alt="Gibson"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/262-brands_default.jpg"
 					alt="Alhambra"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/136-brands_default.jpg"
 					alt="Fender"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/125-brands_default.jpg"
 					alt="Boss"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/124-brands_default.jpg"
 					alt="Roland"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/57-brands_default.jpg    "
 					alt="Yamaha"
+					class="brands__img"
 				/>
 			</div>
 		</section>

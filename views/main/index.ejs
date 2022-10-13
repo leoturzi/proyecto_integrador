@@ -1,86 +1,90 @@
 <%- include('../partials/head', {title})%>
 <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
-<div class="container">
+<div class="container--fixed">
+	<!-- <img src="https://rstatic.stores.musicarts.com/locations/3450_gonzales_la.jpg" alt="" /> -->
 	<main>
 		<section class="hero">
-			<div class="hero-cont"><img src="https://rstatic.stores.musicarts.com/locations/3450_gonzales_la.jpg" alt="" />
-				<div class="hero-titulo"><h1>Nueva Era</h1><h2>MUSIC STORE</h2></div>
-				<div class="hero-filter"></div>
-			</div>
+			<img src="https://rstatic.stores.musicarts.com/locations/3450_gonzales_la.jpg" alt="" />
+				<div class="hero__text">
+					<h1 class="hero__title">Nueva Era</h1>
+					<h2 class="hero__subtitle">MUSIC STORE</h2>
+				</div>
+				<div class="hero--filter"></div>
 		</section>
-		<section class="categorias">
-			<div class="categorias-text">
+		
+		<section class="categories">
+			<div class="categories__titles">
 				<h3>Comprar por Instrumento</h3>
 				<h4>ver todo</h4>
 			</div>
-			<ul class="categorias-cont">
-				<li class="categorias-item">
-					<div class="categorias-container">
+			<ul class="categories__container">
+				<li class="categories__item">
+					<div class="categories__img-container">
 						<img
 							src="images/categories/cat-guitarras.jpg"
 							alt="Guitarras"
-							class="categorias-img"
+							class="categories__img"
 						/>
 					</div>
 					<h4>Guitarras</h4>
 				</li>
-				<li class="categorias-item">
-					<div class="categorias-container">
+				<li class="categories__item">
+					<div class="categories__img-container">
 						<img
 							src="images/categories/cat-baterias.jpg"
 							alt="Baterias"
-							class="categorias-img"
+							class="categories__img"
 						/>
 					</div>
 					<h4>Baterias</h4>
 				</li>
-				<li class="categorias-item">
-					<div class="categorias-container">
+				<li class="categories__item">
+					<div class="categories__img-container">
 						<img
 							src="images/categories/cat-teclados.jpg"
 							alt="Teclados"
-							class="categorias-img"
+							class="categories__img"
 						/>
 					</div>
 					<h4>Teclados</h4>
 				</li>
-				<li class="categorias-item">
-					<div class="categorias-container">
+				<li class="categories__item">
+					<div class="categories__img-container">
 						<img
 							src="images/categories/cat-amplificadores.jpg"
 							alt="Amplificadores"
-							class="categorias-img"
+							class="categories__img"
 						/>
 					</div>
 					<h4>Amplificadores</h4>
 				</li>
-				<li class="categorias-item">
-					<div class="categorias-container">
+				<li class="categories__item">
+					<div class="categories__img-container">
 						<img
 							src="images/categories/cat-armonicas.jpg"
 							alt="Armónicas"
-							class="categorias-img"
+							class="categories__img"
 						/>
 					</div>
 					<h4>Armónicas</h4>
 				</li>
-				<li class="categorias-item">
-					<div class="categorias-container">
+				<li class="categories__item">
+					<div class="categories__img-container">
 						<img
 							src="images/categories/cat-microfonos.jpg"
 							alt="Micrófonos"
-							class="categorias-img"
+							class="categories__img"
 						/>
 					</div>
 					<h4>Micrófonos</h4>
 				</li>
-				<li class="categorias-item">
-					<div class="categorias-container">
+				<li class="categories__item">
+					<div class="categories__img-container">
 						<img
 						src="images/categories/cat-saxofones.jpg"
 						alt="Saxofones"
-						class="categorias-img"
+						class="categories__img"
 						/>
 					</div>
 					<h4>Saxofones</h4>
@@ -88,154 +92,150 @@
 			</ul>
 		</section>
 		
-		<section class="interes">
-			<div class="interes-text">
+		<section class="interest">
+			<div class="interest__text">
 				<h3>Te puede interesar</h3>
 				<h4>ver todo</h4>
 			</div>
-			<ul class="listado">
-				<li class="producto">
+			<ul class="products-list">
+				<li class="card">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto">
+				<li class="card">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto">
+				<li class="card">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto">
+				<li class="card">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto display-lg">
+				<li class="card display-lg">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto display-lg">
+				<li class="card display-lg">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto display-xl">
+				<li class="card display-xl">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
-				<li class="producto display-xxl">
+				<li class="card display-xxl">
 					<img
 						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
 						alt="Gibson Les Paul"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio">$ 150.000</p>
-					<p class="producto-envio">Envio gratis</p>
-					<p class="producto-nombre">
+					<p class="card__price">$ 150.000</p>
+					<p class="card__dispatch">Envio gratis</p>
+					<p class="card__name">
 						Gibson 1958 Les Paul Standar LB Guitarra electrica
 					</p>
 					<button class="btn">Comprar</button>
 				</li>
 			</ul>
 		</section>
-		<!-- <section class="anuncios">
-			<div class="anuncios-cont">
-				<img src="/images/publicidad-2.png" alt="">
-				<button class="btn">Ofertas</button>
-			</div>
-			<div class="anuncios-cont">
-				<img src="/images/publicidad-1.png" alt="">
-				<button class="btn">Clases de Musica</button>
-			</div>
-		</section> -->
-		<section class="marcas">
-			<h3>Encontra las mejores marcas!!!</h3>
-			<div class="marcas-img">
+		<section class="brands">
+			<h3 class="brands__title">Encontra las mejores marcas!!!</h3>
+			<div class="brands__img-container">
 				<img
 					src="https://musicopolix.com/img/m/480-brands_default.jpg"
 					alt="Gibson"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/262-brands_default.jpg"
 					alt="Alhambra"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/136-brands_default.jpg"
 					alt="Fender"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/125-brands_default.jpg"
 					alt="Boss"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/124-brands_default.jpg"
 					alt="Roland"
+					class="brands__img"
 				/>
 				<img
 					src="https://musicopolix.com/img/m/57-brands_default.jpg    "
 					alt="Yamaha"
+					class="brands__img"
 				/>
 			</div>
 		</section>

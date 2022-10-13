@@ -1,22 +1,22 @@
 <%- include('../partials/head', {title})%>
 <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
-<div class="container container-product-list--fixed">
+<div class="container--fixed">
 	<main>
-		<ul class="listado-nowrap">
+		<ul class="products-list">
 			<% for (let product of products) { %>
-			<a href="/products/<%=product.id%>" class="producto-link">
-				<li class="producto producto--aligned">
+			<a href="/products/<%=product.id%>" class="card__link">
+				<li class="card card--aligned">
 					<img
 						src="/images/products/<%= product.image || 'default.jpg' %>"
 						alt="<%= product.name %>"
-						class="producto-img"
+						class="card__img"
 					/>
-					<p class="producto-precio"> $<%= product.price %></p>
+					<p class="card__price"> $<%= product.price %></p>
 					<% if (product.dispatch) { %>
-					<p class="producto-envio">Envio gratis</p>
+					<p class="card__dispatch">Envio gratis</p>
 					<% } %>
-					<p class="producto-nombre">
+					<p class="card__name">
 						<%= product.name %>
 					</p>
 					<button class="btn">Comprar</button>

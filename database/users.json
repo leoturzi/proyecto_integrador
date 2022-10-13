@@ -468,7 +468,8 @@
   "email": "leogturzi@gmail.com",
   "password": "$2a$10$BEe8vV/KrJyZHsH9TyiIbubk0QtA4YiGV/jyDuOzD9fBtuHeg1IGO",
   "tyc": "on",
-  "avatar": "1664733846445_img.png"
+  "avatar": "1664733846445_img.png",
+  "type": "admin"
  },
  {
   "id": 44,
@@ -477,6 +478,7 @@
   "email": "fc@gmail.com",
   "password": "$2a$10$gVRr.7ohtpJdgMskTfcAvO79eMxALcZpoTbEWSM/NFgqwZTSL9V.m",
   "tyc": "on",
-  "avatar": "1664858404936_img.png"
+  "avatar": "1664858404936_img.png",
+  "type": "admin"
  }
 ]

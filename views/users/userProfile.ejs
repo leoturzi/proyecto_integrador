@@ -1,6 +1,6 @@
 <%- include('../partials/head', {title: 'Profile'})%> <%-
 include('../partials/header')%> <%- include('../partials/nav')%>
-<div class="container container-register--fixed">
+<div class="container--fixed">
 	<main>
 		<div class="login-container">
 			<h3>Tu informacion</h3>
@@ -19,9 +19,6 @@ include('../partials/header')%> <%- include('../partials/nav')%>
 					<button class="btn"><a href="edit/<%=user.id %>">Editar Datos de Perfil</a></button>
 					<button class="btn">Cambiar Password</button>
 					<button class="btn"><a href="logout">Log Out</a></button>
-					<form action="/users/delete/<%= user.id %>?_method=DELETE" method="POST">
-						<button class="btn">Borrar perfil</button>
-					</form>
 				</div>
 			</div>
 		</div>

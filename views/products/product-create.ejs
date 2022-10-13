@@ -1,63 +1,68 @@
-<%- include('../partials/head', {title})%>
-<%- include('../partials/header')%>
+<%- include('../partials/head', {title})%> <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
-<div class="container container-product-create--fixed">
-	<main>
-		<section>
-			<form action="/products" method="POST" enctype="multipart/form-data" class="product-create-form-container">
-				<h1>Formulario de Creación de Producto</h1>
-				<div class="input-container">
-					<label for="name">Nombre</label>
-					<input type="text" name="name" id="name">
-				</div>
-				<div class="input-container">
-					<label for="category">Categoría (drums, guitar, trumpet, bass, oboe, clarinet, amplifier, microphone)</label>
-					<input type="text" name="category" id="category">
-				</div>
-				<div class="input-container">
-					<label for="brand">Marca</label>
-					<input type="text" name="brand" id="brand">
-				</div>
-				<div class="input-container">
-					<label for="shortDesc">Descripción breve</label>
-					<textarea name="shortDesc" cols="30" rows="3" id="shortDesc"></textarea>
-				</div>
-				<div class="input-container">
-					<label for="longDesc">Descripción detallada</label>
-					<textarea name="longDesc" cols="30" rows="10" id="longDesc"></textarea>
-				</div>
-				<div class="input-container">
-                    <label for="color">Color</label>
-                    <input type="text" name="color" id="color">
-                </div>
-				<div class="input-container">
-					<label for="price">Precio</label>
-					<input type="text" name="price" id="price">
-				</div>
-				<div class="input-container">
-					<label for="image">Imágen</label>
-					<input type="file" name="image" id="image">
-				</div>
-				<div class="input-container">
-					<label for="dispatch">Envío Gratis (Si/No)</label>
-					<input type="text" name="dispatch" id="dispatch">
-				</div>
-				<div class="input-container">
-					<label for="discount">Descuento </label>
-					<input type="text" name="discount" id="discount">
-				</div>
-				<div class="input-container">
-					<label for="lastVisited">Ultima Visita (Si/No)</label>
-					<input type="text" name="lastVisited" id="lastVisited">
-				</div>
-				<div class="btn-product-create-container">
-					<button class="btn btn-product-create">Crear Producto</button>
-					<a href="/" class="btn btn-product-create btn-anchor"><div>Volver</div></a>
-				</div>
-			</form>
-				</div>
-			</div>
-		</section>
-	</main>
+<div class="container--fixed">
+  <main>
+    <form
+      action="/products"
+      method="POST"
+      enctype="multipart/form-data"
+      class="product-create__form"
+    >
+      <h1>Formulario de Creación de Producto</h1>
+      <div class="input-container">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" />
+      </div>
+      <div class="input-container">
+        <label for="category"
+          >Categoría (drums, guitar, trumpet, bass, oboe, clarinet, amplifier,
+          microphone)</label
+        >
+        <input type="text" name="category" id="category" />
+      </div>
+      <div class="input-container">
+        <label for="brand">Marca</label>
+        <input type="text" name="brand" id="brand" />
+      </div>
+      <div class="input-container">
+        <label for="shortDesc">Descripción breve</label>
+        <textarea name="shortDesc" cols="30" rows="3" id="shortDesc"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="longDesc">Descripción detallada</label>
+        <textarea name="longDesc" cols="30" rows="10" id="longDesc"></textarea>
+      </div>
+      <div class="input-container">
+        <label for="color">Color</label>
+        <input type="text" name="color" id="color" />
+      </div>
+      <div class="input-container">
+        <label for="price">Precio</label>
+        <input type="text" name="price" id="price" />
+      </div>
+      <div class="input-container">
+        <label for="image">Imágen</label>
+        <input type="file" name="image" id="image" />
+      </div>
+      <div class="input-container">
+        <label for="dispatch">Envío Gratis (Si/No)</label>
+        <input type="text" name="dispatch" id="dispatch" />
+      </div>
+      <div class="input-container">
+        <label for="discount">Descuento </label>
+        <input type="text" name="discount" id="discount" />
+      </div>
+      <div class="input-container">
+        <label for="lastVisited">Ultima Visita (Si/No)</label>
+        <input type="text" name="lastVisited" id="lastVisited" />
+      </div>
+      <div class="btn-product-create__container">
+        <button class="btn btn-product-create">Crear Producto</button>
+        <a href="/" class="btn btn-product-create btn-anchor"
+          ><div>Volver</div></a
+        >
+      </div>
+    </form>
+  </main>
 </div>
 <%- include('../partials/footer') %>

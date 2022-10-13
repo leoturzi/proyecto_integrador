@@ -1,9 +1,9 @@
 <%- include('../partials/head', {title})%>
 <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
-<div class="container container-product-edit--fixed">
+<div class="container--fixed">
     <main>
-        <section class="product-edit-form-container">
+        <section class="product-edit__form">
             <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data" >
                 <h1>Editando <%= product.name %></h1>
                 <div class="input-container">

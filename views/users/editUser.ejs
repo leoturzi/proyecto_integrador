@@ -1,6 +1,6 @@
 <%- include('../partials/head', {title})%> <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
-<div class="container container-register--fixed">
+<div class="container--fixed">
 	<main>
 		<form
 			action="/users/update/<%= userToEdit.id %>?_method=PUT"
@@ -58,6 +58,11 @@
 			</div>
 			<button type="submit" class="btn">Actualizar</button>
 		</form>
+		<div class="btn-container">
+			<a href="/users/profile" class="btn btn-product-edit btn-anchor">Volver</a>
+			<a href="/users/delete/<%= userToEdit.id %>" class="btn btn-product-edit btn-anchor danger">Borrar Perfil</a>
+		</div>
+			
 	</main>
 </div>
 <%- include('../partials/footer') %>

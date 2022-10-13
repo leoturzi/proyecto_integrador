@@ -40,6 +40,7 @@ router.put(
 );
 
 // Procesar delete
+router.get('/delete/:id', authValidator, usersController.confirmDelete);
 router.delete('/delete/:id', authValidator, usersController.delete);
 
 // Perfil de Usuario Vista
