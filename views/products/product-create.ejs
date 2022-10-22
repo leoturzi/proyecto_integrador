@@ -14,15 +14,26 @@
         <input type="text" name="name" id="name" />
       </div>
       <div class="input-container">
-        <label for="category"
-          >Categoría (drums, guitar, trumpet, bass, oboe, clarinet, amplifier,
-          microphone)</label
-        >
-        <input type="text" name="category" id="category" />
+        <label for="category">Categoria:</label>
+            <select name="category" id="category">
+              <option value=""></option>
+              <% for (let i = 0; i < categories.length; i++) { %>
+                <option value="<%=categories[i].id%>">
+                  <%=categories[i].name%>
+                </option>
+              <% } %>
+            </select>
       </div>
       <div class="input-container">
-        <label for="brand">Marca</label>
-        <input type="text" name="brand" id="brand" />
+        <label for="brand">Marca:</label>
+            <select name="brand" id="brand">
+              <option value=""></option>
+              <% for (let i = 0; i < brands.length; i++) { %>
+                <option value="<%=brands[i].id%>">
+                  <%=brands[i].name%>
+                </option>
+              <% } %>
+            </select>
       </div>
       <div class="input-container">
         <label for="shortDesc">Descripción breve</label>
@@ -33,8 +44,15 @@
         <textarea name="longDesc" cols="30" rows="10" id="longDesc"></textarea>
       </div>
       <div class="input-container">
-        <label for="color">Color</label>
-        <input type="text" name="color" id="color" />
+        <label for="color">Color:</label>
+            <select name="color" id="color">
+              <option value=""></option>
+              <% for (let i = 0; i < colors.length; i++) { %>
+                <option value="<%=colors[i].id%>">
+                  <%=colors[i].name%>
+                </option>
+              <% } %>
+            </select>
       </div>
       <div class="input-container">
         <label for="price">Precio</label>
@@ -45,16 +63,19 @@
         <input type="file" name="image" id="image" />
       </div>
       <div class="input-container">
-        <label for="dispatch">Envío Gratis (Si/No)</label>
-        <input type="text" name="dispatch" id="dispatch" />
+        <p>Envío gratis:</p>
+        <input type="radio" id="dispatchYes" name="dispatch" value="1">
+        <label for="dispatchYes">Si</label><br>
+        <input type="radio" id="dispatchNo" name="dispatch" value="0">
+        <label for="dispatchNo">No</label><br>  
       </div>
       <div class="input-container">
         <label for="discount">Descuento </label>
         <input type="text" name="discount" id="discount" />
       </div>
       <div class="input-container">
-        <label for="lastVisited">Ultima Visita (Si/No)</label>
-        <input type="text" name="lastVisited" id="lastVisited" />
+        <label for="stock">Stock disponible </label>
+        <input type="text" name="stock" id="stock" />
       </div>
       <div class="btn-product-create__container">
         <button class="btn btn-product-create">Crear Producto</button>

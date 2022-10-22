@@ -1,7 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
+
 const Product = {
+	toThousand : n => {
+		return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+	},
 	fileName: path.join(__dirname, '../database/products.json'),
 
 	getData: function () {

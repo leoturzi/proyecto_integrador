@@ -1,5 +1,7 @@
 const fs = require('fs');
 const Product = require('../utils/Product');
+const db = require('../database/models');
+const Op = db.Sequelize.Op;
 
 const cartController = {
     cart: async (req, res) => {

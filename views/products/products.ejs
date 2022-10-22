@@ -13,7 +13,7 @@
 						class="card__img"
 					/>
 					<p class="card__price"> $<%= product.price %></p>
-					<% if (product.dispatch) { %>
+					<% if (product.dispatch == 1) { %>
 					<p class="card__dispatch">Envio gratis</p>
 					<% } %>
 					<p class="card__name">

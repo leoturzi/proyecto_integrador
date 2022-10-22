@@ -2,6 +2,9 @@ const { validationResult } = require('../middlewares/registerValidator');
 const bcrypt = require('bcryptjs');
 const User = require('../utils/User');
 const fs = require('fs');
+const db = require('../database/models');
+const Op = db.Sequelize.Op;
+
 
 const usersController = {
     login: (req, res) => {
