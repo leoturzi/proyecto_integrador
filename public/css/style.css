@@ -313,6 +313,16 @@ main {
 	color: #807c7c;
 	margin-left: 6px;
 }
+
+.cart-item__price {
+	display: inline-block;
+	font-size: 14px;
+}
+
+.cart-item--green {
+	font-size: 14px;
+	color: var(--text-special);
+}
 .cart-item__total-price {
 	font-size: 18px;
 	color: #807c7c;
