@@ -1,23 +1,24 @@
 const { validationResult } = require('../middlewares/registerValidator');
 const bcrypt = require('bcryptjs');
-const User = require('../utils/User');
+// const User = require('../utils/User');
 const fs = require('fs');
 const db = require('../database/models');
 const Op = db.Sequelize.Op;
-
 
 const usersController = {
     login: (req, res) => {
         // return res.send('hola');
         return res.render('users/login', { title: 'Login' });
     },
-    loginProcess: (req, res) => {
+    loginProcess: async (req, res) => {
         // volcamos valores del form en variables
         const { username, password, recordarUsuario } = req.body;
 
-        const userToLogin = User.findByField('email', username);
+        const userToLogin = await db.User.findOne({
+            where: { email: username },
+        });
 
-        if (userToLogin) {
+        if (userToLogin.length > 0) {
             const pwdMatch = bcrypt.compareSync(password, userToLogin.password);
             if (pwdMatch) {
                 // borramos password de los datos de session
@@ -55,22 +56,25 @@ const usersController = {
         }
     },
     register: (req, res) => {
-        res.render('users/register', { title: 'Register' });
+        return res.render('users/register', { title: 'Register' });
     },
-    processRegister: (req, res) => {
+
+    processRegister: async (req, res) => {
         // renderizado de errores
         const results = validationResult(req);
         if (results.errors.length > 0) {
-            res.render('users/register', {
+            return res.render('users/register', {
                 title: 'Register',
                 errors: results.mapped(),
                 oldData: req.body,
             });
         }
         // validacion de que el email utilizado para el registro no esta en uso
-        const userInDb = User.findByField('email', req.body.email);
-
-        if (userInDb) {
+        const userInDb = await db.User.findAll({
+            where: { email: req.body.email },
+        });
+        // return res.send(userInDb);
+        if (userInDb.length > 0) {
             return res.render('users/register', {
                 title: 'Register',
                 errors: { email: { msg: 'Este email ya esta registrado' } },
@@ -85,7 +89,7 @@ const usersController = {
             avatar: req.file.filename,
         };
         // agregar user al archivo users.jsons
-        User.create(userToCreate);
+        db.User.create(userToCreate);
 
         // return res.send('se guardo el usuario');
         return res.redirect('/users/login');
@@ -148,7 +152,10 @@ const usersController = {
     },
     confirmDelete: (req, res) => {
         let userToDelete = User.findByPk(parseInt(req.params.id));
-        res.render('users/deleteUser', {userToDelete, title : 'Confirm delete'})
+        res.render('users/deleteUser', {
+            userToDelete,
+            title: 'Confirm delete',
+        });
     },
     delete: (req, res) => {
         const userLogged = req.session.userLogged;

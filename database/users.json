@@ -462,16 +462,6 @@
   "type": "admin"
  },
  {
-  "id": 43,
-  "nombre": "leonardo",
-  "apellido": "turzi",
-  "email": "leogturzi@gmail.com",
-  "password": "$2a$10$BEe8vV/KrJyZHsH9TyiIbubk0QtA4YiGV/jyDuOzD9fBtuHeg1IGO",
-  "tyc": "on",
-  "avatar": "1664733846445_img.png",
-  "type": "admin"
- },
- {
   "id": 44,
   "nombre": "Fede",
   "apellido": "Cra",
@@ -480,5 +470,29 @@
   "tyc": "on",
   "avatar": "1664858404936_img.png",
   "type": "admin"
+ },
+ {
+  "id": 45,
+  "nombre": "leonardo",
+  "apellido": "turzi",
+  "email": "leogturzi@gmail.com",
+  "provincia": "Buenos Aires",
+  "calle": "rioja 956",
+  "telefono": "54954198376",
+  "password": "$2a$10$qGg4pZ/WUuf6IN5.K/QUpeenyfBwFKD2FDfzmWwtT9heHA2752mQC",
+  "tyc": "on",
+  "avatar": "1667162882166_img.jpeg"
+ },
+ {
+  "id": 46,
+  "nombre": "Leonardo",
+  "apellido": "Turzi",
+  "email": "leogturzi@sfa.com",
+  "provincia": "Buenos Aires",
+  "calle": "rioja 956",
+  "telefono": "01154198376",
+  "password": "$2a$10$TniVmOuAUqlZxUGfyE3zwu2strqtSgnik5tL6GJnLk4Sh7baDCyc2",
+  "tyc": "on",
+  "avatar": "1667162999281_img.jpeg"
  }
 ]
