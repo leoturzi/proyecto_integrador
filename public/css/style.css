@@ -733,7 +733,7 @@ main {
     margin: 20px 0 10px 0;
 }
 
-.login-container p {
+.forgot-password {
     font-size: 14px;
 }
 
@@ -803,10 +803,6 @@ main {
 
 /* END USER PROFILE VIEW*/
 
-.login-container p {
-    text-align: center;
-}
-
 .radio-container {
     display: flex;
     flex-direction: row;
@@ -820,6 +816,12 @@ main {
 
 .wrap {
     flex-wrap: wrap !important;
+}
+
+.form-error {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
 }
 
 /* 404 not found */
@@ -996,6 +998,12 @@ main {
         text-decoration: none;
         color: red;
         font-weight: 600;
+    }
+
+    .text-danger {
+        font-size: 12px;
+        color: red;
+        margin-top: 5px;
     }
 }
 
