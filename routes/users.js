@@ -22,10 +22,10 @@ router.get('/register', guestValidator, usersController.register);
 
 // Procesar Registro
 router.post(
-	'/register',
-	uploadFile.single('avatar'),
-	validations,
-	usersController.processRegister
+    '/register',
+    uploadFile.single('avatar'),
+    validations,
+    usersController.processRegister
 );
 
 // Formulario Edicion vista
@@ -33,10 +33,10 @@ router.get('/edit/:id', authValidator, usersController.edit);
 
 // Procesar update
 router.put(
-  "/update/:id",
-  uploadFile.single("avatar"),
-  editUserValidations,
-  usersController.update
+    '/edit/:id',
+    uploadFile.single('avatar'),
+    editUserValidations,
+    usersController.update
 );
 
 // Procesar delete

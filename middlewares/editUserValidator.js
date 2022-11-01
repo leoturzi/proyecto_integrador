@@ -2,8 +2,11 @@ const { body, validationResult } = require('express-validator');
 const path = require('path');
 
 const editUserValidations = [
-    body('nombre').notEmpty().withMessage('Debes ingresar un Nombre').bail(),
-    body('apellido')
+    body('first_name')
+        .notEmpty()
+        .withMessage('Debes ingresar un Nombre')
+        .bail(),
+    body('last_name')
         .notEmpty()
         .withMessage('Debes ingresar un Apellido')
         .bail(),

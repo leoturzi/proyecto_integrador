@@ -17,8 +17,8 @@ const usersController = {
         const userToLogin = await db.User.findOne({
             where: { email: username },
         });
-
-        if (userToLogin.length > 0) {
+        // return res.send(userToLogin);
+        if (userToLogin) {
             const pwdMatch = bcrypt.compareSync(password, userToLogin.password);
             if (pwdMatch) {
                 // borramos password de los datos de session
@@ -26,7 +26,7 @@ const usersController = {
                 // salvamos los datos de session
                 req.session.userLogged = userToLogin;
                 // validamos si debemos persistir la session usando cookies
-                if (req.body.recordarUsuario) {
+                if (recordarUsuario) {
                     res.cookie('userEmail', req.body.username, {
                         maxAge: 1000 * 60 * 30,
                     });
@@ -55,6 +55,7 @@ const usersController = {
             });
         }
     },
+
     register: (req, res) => {
         return res.render('users/register', { title: 'Register' });
     },
@@ -83,7 +84,7 @@ const usersController = {
         }
 
         // creacion de usuario
-        let userToCreate = {
+        const userToCreate = {
             ...req.body,
             password: bcrypt.hashSync(req.body.password, 10),
             avatar: req.file.filename,
@@ -94,6 +95,7 @@ const usersController = {
         // return res.send('se guardo el usuario');
         return res.redirect('/users/login');
     },
+
     userProfile: (req, res) => {
         // return res.send(req.session.userLogged);
         return res.render('users/userProfile', {
@@ -101,20 +103,22 @@ const usersController = {
             user: req.session.userLogged,
         });
     },
+
     logout: (req, res) => {
         res.clearCookie('userEmail');
         req.session.destroy();
         return res.redirect('/');
     },
+
     edit: (req, res) => {
-        let userToEdit = User.findByPk(parseInt(req.params.id));
-        res.render('users/editUser', {
-            userToEdit: userToEdit,
+        return res.render('users/editUser', {
+            userToEdit: req.session.userLogged,
             title: 'Edit User',
         });
     },
-    update: (req, res) => {
-        const { nombre, apellido, email } = req.body;
+
+    update: async (req, res) => {
+        const userEdits = req.body;
         const userLogged = req.session.userLogged;
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -125,30 +129,30 @@ const usersController = {
             });
         } else {
             // Almacenamos los campos editados
-            const userEdits = {
-                id: userLogged.id,
-                nombre: nombre,
-                apellido: apellido,
-                email: email,
-                avatar: req.file ? req.file.filename : userLogged.avatar,
-            };
-
             // Si el usuario cambia la imagen, borramos la anterior
             if (req.file) {
                 fs.unlinkSync('./public/images/users/' + userLogged.avatar);
             }
-
             // Actualizamos la base de datos
-            User.update(userEdits);
+            await db.User.update(
+                {
+                    first_name: userEdits.first_name,
+                    last_name: userEdits.last_name,
+                    email: userEdits.email,
+                    avatar: req.file ? req.file.filename : userLogged.avatar,
+                },
+                {
+                    where: { id: req.params.id },
+                }
+            );
 
             // Actualizamos los datos de session
             req.session.userLogged = {
                 ...userLogged,
                 ...userEdits,
             };
-
-            res.redirect('/');
         }
+        return res.redirect('/');
     },
     confirmDelete: (req, res) => {
         let userToDelete = User.findByPk(parseInt(req.params.id));
