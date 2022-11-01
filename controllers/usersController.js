@@ -154,19 +154,27 @@ const usersController = {
         }
         return res.redirect('/');
     },
-    confirmDelete: (req, res) => {
-        let userToDelete = User.findByPk(parseInt(req.params.id));
+    confirmDelete: async (req, res) => {
+        const userToDelete = await db.User.findOne({
+            where: {
+                id: parseInt(req.params.id),
+            },
+        });
         res.render('users/deleteUser', {
             userToDelete,
             title: 'Confirm delete',
         });
     },
-    delete: (req, res) => {
+    delete: async (req, res) => {
         const userLogged = req.session.userLogged;
         // Borramos el avatar guardado
         fs.unlinkSync('./public/images/users/' + userLogged.avatar);
         // Borramos al user de la BD
-        User.delete(userLogged.id);
+        await db.User.destroy({
+            where: {
+                id: parseInt(req.params.id),
+            },
+        });
         // Destruimos la session
         req.session.destroy();
         return res.redirect('/');

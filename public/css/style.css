@@ -987,6 +987,16 @@ main {
     .hero__subtitle {
         font-size: 1.5rem;
     }
+
+    .delete-user {
+        margin-top: 2rem;
+    }
+
+    .delete-user a {
+        text-decoration: none;
+        color: red;
+        font-weight: 600;
+    }
 }
 
 @media screen and (min-width: 992px) {

@@ -22,6 +22,9 @@ include('../partials/header')%> <%- include('../partials/nav')%>
                     <button class="btn">Cambiar Password</button>
                     <button class="btn"><a href="logout">Log Out</a></button>
                 </div>
+                <p class="delete-user">
+                    <a href="delete/<%= user.id  %>  ">Eliminar usuario</a>
+                </p>
             </div>
         </div>
     </main>
