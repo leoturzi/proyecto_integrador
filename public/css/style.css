@@ -51,6 +51,19 @@
     justify-content: center;
 }
 
+.profile-header {
+    width: 1.9rem;
+    height: 1.9rem;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    display: none;
+}
+
+.profile-header a img {
+    width: 100%;
+}
+
 .search-bar-mobile {
     background-color: #fff;
     display: flex;
@@ -801,6 +814,16 @@ main {
     color: white;
 }
 
+.delete-user {
+    margin-top: 2rem;
+}
+
+.delete-user a {
+    text-decoration: none;
+    color: red;
+    font-weight: 600;
+}
+
 /* END USER PROFILE VIEW*/
 
 .radio-container {
@@ -841,6 +864,7 @@ main {
     .footer__container {
         max-width: 550px;
     }
+
     .footer__container {
         margin: 0px auto;
     }
@@ -891,6 +915,10 @@ main {
     /* HEADER INICIO */
     header {
         padding: 0.5rem;
+    }
+
+    .profile-header {
+        display: block;
     }
 
     .user-panel {
@@ -988,16 +1016,6 @@ main {
 
     .hero__subtitle {
         font-size: 1.5rem;
-    }
-
-    .delete-user {
-        margin-top: 2rem;
-    }
-
-    .delete-user a {
-        text-decoration: none;
-        color: red;
-        font-weight: 600;
     }
 
     .text-danger {

@@ -17,10 +17,14 @@ include('../partials/header')%> <%- include('../partials/nav')%>
                 <p><%= user.email %></p>
                 <div class="profile-options">
                     <button class="btn">
-                        <a href="edit/<%=user.id %>">Editar Datos de Perfil</a>
+                        <a href="/users/edit/<%=user.id %>"
+                            >Editar Datos de Perfil</a
+                        >
                     </button>
                     <button class="btn">Cambiar Password</button>
-                    <button class="btn"><a href="logout">Log Out</a></button>
+                    <button class="btn">
+                        <a href="/users/logout">Log Out</a>
+                    </button>
                 </div>
                 <p class="delete-user">
                     <a href="delete/<%= user.id  %>  ">Eliminar usuario</a>

@@ -8,20 +8,35 @@
                 </a>
             </div>
             <div class="user-panel">
-                <a href="/users/login/"><i class="fa-solid fa-user user-panel__icon"></i></a>
+                <% if (locals && locals.isLogged) { %>
+                <div class="profile-header">
+                    <a href="/users/profile/"
+                        ><img
+                            src="/images/users/<%- locals.userLogged.avatar %> "
+                            alt=""
+                    /></a>
+                </div>
+                <% } else { %>
+                <a href="/users/login/"
+                    ><i class="fa-solid fa-user user-panel__icon"></i
+                ></a>
+                <% } %>
+
                 <a href="/cart/">
                     <i class="fa-solid fa-cart-shopping user-panel__icon"></i>
                 </a>
             </div>
             <form action="/search" method="GET" class="search-bar">
-                <input 
+                <input
                     name="keywords"
                     class="search-bar__input"
                     type="text"
                     placeholder="Guitarra, Bateria, etc"
                 />
                 <button type="submit" class="search-bar__button">
-                    <i class="fa-solid fa-magnifying-glass search-bar__icon"></i>
+                    <i
+                        class="fa-solid fa-magnifying-glass search-bar__icon"
+                    ></i>
                 </button>
             </form>
         </div>
@@ -36,3 +51,4 @@
             </button>
         </div>
     </header>
+</body>
