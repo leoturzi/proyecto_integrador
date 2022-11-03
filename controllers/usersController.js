@@ -31,9 +31,8 @@ const usersController = {
                         maxAge: 1000 * 60 * 30,
                     });
                 }
-
                 // redirigimos al home
-                res.redirect('/');
+                return res.redirect('/');
             } else {
                 return res.render('users/login', {
                     title: 'Login',
@@ -150,6 +149,7 @@ const usersController = {
             req.session.userLogged = {
                 ...userLogged,
                 ...userEdits,
+                avatar: req.file ? req.file.filename : userLogged.avatar,
             };
         }
         return res.redirect('/');
