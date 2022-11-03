@@ -6,7 +6,7 @@ function userLoggedValidator(req, res, next) {
     if (req.session.userLogged) {
         res.locals.isLogged = true;
         res.locals.userLogged = req.session.userLogged;
-        if (res.locals.isLogged && req.session.userLogged.type == 'admin') {
+        if (res.locals.isLogged && req.session.userLogged.type_id == '1') {
             res.locals.isAdmin = true;
         }
         next();
@@ -18,7 +18,7 @@ function userLoggedValidator(req, res, next) {
         res.locals.isLogged = true;
         req.session.userLogged = userFromCookie;
 
-        if (res.locals.isLogged && userFromCookie.type == 'admin') {
+        if (res.locals.isLogged && userFromCookie.type_id == '1') {
             res.locals.isAdmin = true;
         }
 
