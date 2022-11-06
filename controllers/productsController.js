@@ -1,100 +1,145 @@
-const { deepStrictEqual } = require('assert');
+const { deepStrictEqual } = require('assert'); // De donde salio esto?
 const fs = require('fs');
-const path = require('path');
-const productsFilePath = path.join(__dirname, '../database/products.json');
+const db = require('../database/models');
+const Op = db.Sequelize.Op;
+const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
 const productsController = {
-    list : (req, res) => {
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'))
-        res.render('products/products', {products, title:'All Products'});
+    list: (req, res) => {
+        db.Products.findAll({
+            include: [
+                { association: 'brands' },
+                { association: 'categories' },
+                { association: 'colors' },
+            ],
+        }).then((products) => {
+            return res.render('products/products', {
+                products,
+                title: 'All Products',
+            });
+        });
     },
     create: (req, res) => {
-        res.render('products/product-create', {title:'New Product'});
+        let categories = db.Categories.findAll();
+        let colors = db.Colors.findAll();
+        let brands = db.Brands.findAll();
+        Promise.all([categories, colors, brands]).then((values) => {
+            res.render('products/product-create', {
+                categories: values[0],
+                colors: values[1],
+                brands: values[2],
+                title: 'New Product',
+            });
+        });
     },
     store: (req, res) => {
-        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        let newProduct = {
-            id : Date.now(),
-            name : req.body.name,
-            brand : req.body.brand,
-            price: parseInt(req.body.price), 
-            category : req.body.category,
-            shortDesc : req.body.shortDesc,
-            longDesc : req.body.longDesc,
-            image: "",
-            dispatch : "",
-            discount: parseFloat(req.body.discount),
-            lastVisited: "",
-            color: req.body.color
-        }
-        req.body.lastVisited.toLowerCase() == "si" ? newProduct.lastVisited = true : newProduct.lastVisited = false; 
-        req.body.dispatch.toLowerCase() == "si" ? newProduct.dispatch = true : newProduct.dispatch = false; 
-        req.file ? newProduct.image = req.file.filename : newProduct.image = "";
-        products.push(newProduct);
-        products = JSON.stringify(products, null, ' ');
-        fs.writeFileSync(productsFilePath, products);
-        res.redirect('/products');
+        db.Products.create({
+            name: req.body.name,
+            brand_id: parseInt(req.body.brand),
+            price: parseInt(req.body.price),
+            category_id: parseInt(req.body.category),
+            shortDesc: req.body.shortDesc,
+            longDesc: req.body.longDesc,
+            image: req.file ? req.file.filename : '',
+            dispatch: parseInt(req.body.dispatch),
+            discount: parseInt(req.body.discount),
+            stock: parseInt(req.body.stock),
+            color_id: parseInt(req.body.color),
+        }).then((response) => {
+            res.redirect('/products');
+        });
     },
     detail: (req, res) => {
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        let productToDetail = products.find(p => {return p.id == parseInt(req.params.id)});
-        res.render('products/product-detail', {product: productToDetail, title:'Detail'});
+        db.Products.findByPk(req.params.id, {
+            include: ['brands', 'categories', 'colors'],
+        }).then((productToDetail) => {
+            res.render('products/product-detail', {
+                product: productToDetail,
+                title: 'Detail',
+            });
+        });
     },
-    edit : (req, res) => {
-        const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        let productToEdit = products.find(p => {return p.id == parseInt(req.params.id)});
-        res.render('products/product-edit', { product: productToEdit, title:'Edit Product'});
+    edit: (req, res) => {
+        let categories = db.Categories.findAll();
+        let colors = db.Colors.findAll();
+        let brands = db.Brands.findAll();
+        let productToEdit = db.Products.findByPk(req.params.id, {
+            include: [
+                { association: 'brands' },
+                { association: 'categories' },
+                { association: 'colors' },
+            ],
+        });
+        Promise.all([categories, colors, brands, productToEdit]).then(
+            (values) => {
+                res.render('products/product-edit', {
+                    categories: values[0],
+                    colors: values[1],
+                    brands: values[2],
+                    product: values[3],
+                    title: 'Edit Product',
+                });
+            }
+        );
     },
     update: (req, res) => {
-        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        // De los productos dejame solamente todos los ids. Sobre ese array de ids, buscame el índice de aquel que coincida con el id pasado por parámetro. Para después sobreescribir los cambios refiriendo a esa posición en el array products.
-        let productIndex = products.map(p => p.id).indexOf(parseInt(req.params.id))
-        // Ahora en vez del índice busco el objeto (producto) entero
-        let productToUpdate = products.find(p => {return p.id == parseInt(req.params.id)});
-        // Vuelco las propiedades del producto original en lo que va a ser el producto actualizado, usando spread. El resto de las propiedades (nuevas) las sobreescribo
-        let productUpdated = {
-            ...productToUpdate,
-            name : req.body.name,
-            brand : req.body.brand,
-            price: parseInt(req.body.price), 
-            category : req.body.category,
-            shortDesc : req.body.shortDesc,
-            longDesc : req.body.longDesc,
-            dispatch : "",
-            discount: parseFloat(req.body.discount),
-            lastVisited: "",
-            color: req.body.color
-        }
-        req.body.lastVisited.toLowerCase() == "si" ? productUpdated.lastVisited = true : productUpdated.lastVisited = false; 
-        req.body.dispatch.toLowerCase() == "si" ? productUpdated.dispatch = true : productUpdated.dispatch = false; 
-
-        //Si se sube una nueva imágen, y además el producto original tenía una imágen asignada (y no estaba vacío = ""), entonces borrame la imágen que había, para poder asignarle la nueva imágen subida.
-        if (req. file) {
-            if (productUpdated.image!="") {
-                fs.unlinkSync('./public/images/products/' + productUpdated.image)
+        db.Products.update(
+            {
+                name: req.body.name,
+                brand_id: req.body.brand,
+                price: parseInt(req.body.price),
+                category_id: req.body.category,
+                shortDesc: req.body.shortDesc,
+                longDesc: req.body.longDesc,
+                dispatch: req.body.dispatch,
+                discount: parseInt(req.body.discount),
+                stock: req.body.stock,
+                color_id: req.body.color,
+            },
+            {
+                where: {
+                    id: req.params.id,
+                },
             }
-            // Si no había imágen asignada, no hay nada que borrar, y directamente va a asignarle la nueva imágen a la propiedad image
-            productUpdated.image = req.file.filename;
-        }
-        products[productIndex] = productUpdated;
-        products = JSON.stringify(products, null, ' ');
-        fs.writeFileSync(productsFilePath, products);
-        res.redirect(`/products/${productUpdated.id}`)
+        ).then((r) => {
+            if (req.file) {
+                db.Products.findByPk(req.params.id)
+                    .then((productUpdated) => {
+                        if (productUpdated.image != '') {
+                            fs.unlinkSync(
+                                './public/images/products/' +
+                                    productUpdated.image
+                            );
+                        }
+                        db.Products.update(
+                            { image: req.file.filename },
+                            { where: { id: req.params.id } }
+                        );
+                    })
+                    .then((r) => {
+                        res.redirect(`/products/${req.params.id}`);
+                    });
+            } else {
+                res.redirect(`/products/${req.params.id}`);
+            }
+        });
     },
-    delete: (req, res) => {
-        let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        //Busco el índice para luego hacer splice
-        let productIndex = products.map(p => p.id).indexOf(parseInt(req.params.id))
-        //Busco el producto para después borrar la imágen
-        let product = products.find(p => { return p.id == parseInt(req.params.id)});
-        fs.unlinkSync('./public/images/products/' + product.image);
-
-        products.splice(productIndex, 1);
-        products = JSON.stringify(products, null, ' ');
-        fs.writeFileSync(productsFilePath, products);
-        res.redirect('/products');
-
-    }
-}
+    delete: async (req, res) => {
+        await db.Products.findByPk(req.params.id)
+            .then((prod) => {
+                fs.unlinkSync('./public/images/products/' + prod.image);
+            })
+            .catch((error) => {
+                console.log('Posiblemente la imágen ya haya sido borrada!');
+            });
+        db.Products.destroy({
+            where: {
+                id: parseInt(req.params.id),
+            },
+        }).then((resol) => {
+            res.redirect('/products');
+        });
+    },
+};
 
 module.exports = productsController;

@@ -1,24 +1,26 @@
-<nav>
-	<ul class="nav-menu">
-		<li><a href="#">Mi Cuenta</a></li>
-		<li>
-			<a href="/">Home</a>
+<nav class="nav">
+	<ul class="nav__list">
+		<li class="nav__item">
+			<a class="nav__link" href="#">Mi Cuenta</a>
 		</li>
-		<li>
-			<a href="/products/">Productos</a>
+		<li class="nav__item">
+			<a class="nav__link" href="/">Home</a>
 		</li>
-		<li>
-			<a href="#">Ofertas</a>
+		<li class="nav__item">
+			<a class="nav__link" href="/products/">Productos</a>
 		</li>
-		<li>
-			<a href="#">Nosotros</a>
+		<li class="nav__item">
+			<a class="nav__link" href="#">Ofertas</a>
 		</li>
-		<li>
-			<a href="#">Contacto</a>
+		<li class="nav__item">
+			<a class="nav__link" href="#">Nosotros</a>
 		</li>
-		<% if (locals && locals.isLogged) { %>
-		<li>
-			<a href="/products/create">Vender</a>
+		<li class="nav__item">
+			<a class="nav__link" href="#">Contacto</a>
+		</li>
+		<% if (locals && locals.isLogged && locals.isAdmin) { %>
+		<li class="nav__item">
+			<a class="nav__link" href="/products/create">Vender</a>
 		</li>
 		<% } %>
 	</ul>

@@ -1,9 +1,9 @@
 <%- include('../partials/head', {title})%>
 <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
-<div class="container container-product-edit--fixed">
+<div class="container--fixed">
     <main>
-        <section class="product-edit-form-container">
+        <section class="product-edit__form">
             <form action="/products/<%= product.id %>?_method=PUT" method="POST" enctype="multipart/form-data" >
                 <h1>Editando <%= product.name %></h1>
                 <div class="input-container">
@@ -11,25 +11,61 @@
 					<input type="text" name="name" id="name" value="<%= product.name%>">
 				</div>
 				<div class="input-container">
-					<label for="category">Categoría (drums, guitar, trumpet, bass, oboe, clarinet, amplifier, microphone)</label>
-					<input type="text" name="category" id="category" value="<%= product.category%>">
+					<label for="category">Categoría:</label>
+					<select name="category" id="category">
+					<% for (let i = 0; i < categories.length; i++) { %>
+						<% if (categories[i].id == product.category_id) { %>
+							<option value="<%=categories[i].id%>" selected>
+								<%=categories[i].name%>
+							</option>
+							<% } else { %>
+							<option value="<%=categories[i].id%>">
+								<%=categories[i].name%>
+							</option>
+							<% } %>
+						<% } %>
+					</select>
 				</div>
 				<div class="input-container">
-					<label for="brand">Marca</label>
-					<input type="text" name="brand" id="brand" value="<%= product.brand %>">
+					<label for="brand">Marca:</label>
+					<select name="brand" id="brand">
+					<% for (let i = 0; i < brands.length; i++) { %>
+						<% if (brands[i].id == product.brand_id) { %>
+							<option value="<%=brands[i].id%>" selected>
+								<%=brands[i].name%>
+							</option>
+							<% } else { %>
+							<option value="<%=brands[i].id%>">
+								<%=brands[i].name%>
+							</option>
+							<% } %>
+						<% } %>
+					</select>
 				</div>
 				<div class="input-container">
 					<label for="shortDesc">Descripción breve</label>
-					<textarea name="shortDesc" cols="30" rows="3" id="shortDesc"> <%= product.shortDesc%>"</textarea>
+					<textarea name="shortDesc" cols="30" rows="3" id="shortDesc"> <%= product.shortDesc%></textarea>
 				</div>
 				<div class="input-container">
 					<label for="longDesc">Descripción detallada</label>
 					<textarea name="longDesc" cols="30" rows="10" id="longDesc"> <%= product.longDesc%> </textarea>
 				</div>
 				<div class="input-container">
-                    <label for="color">Color</label>
-                    <input type="text" name="color" id="color" value="<%= product.color%>">
-                </div>
+					<label for="color">Color:</label>
+					<select name="color" id="color">
+					<% for (let i = 0; i < colors.length; i++) { %>
+						<% if (colors[i].id == product.color_id) { %>
+							<option value="<%=colors[i].id%>" selected>
+								<%=colors[i].name%>
+							</option>
+							<% } else { %>
+							<option value="<%=colors[i].id%>">
+								<%=colors[i].name%>
+							</option>
+							<% } %>
+						<% } %>
+					</select>
+				  </div>
 				<div class="input-container">
 					<label for="price">Precio</label>
 					<input type="text" name="price" id="price" value="<%= product.price%>">
@@ -43,18 +79,30 @@
 					<input type="file" name="newImage" id="newImage">
 				</div>
 				<div class="input-container">
-					<label for="dispatch">Envío Gratis (Si/No)</label>
-					<input type="text" name="dispatch" id="dispatch" value="<%= product.dispatch ? 'Si' : 'No' %>">
+					<div class="input-container">
+						<p>Envío gratis:</p>
+						<% if (product.dispatch == 1) { %>
+							<input type="radio" id="dispatchYes" name="dispatch" value="1" checked>
+							<label for="dispatchYes">Si</label><br>
+							<input type="radio" id="dispatchNo" name="dispatch" value="0">
+							<label for="dispatchNo">No</label><br>  
+						<% } else { %>
+							<input type="radio" id="dispatchYes" name="dispatch" value="1">
+							<label for="dispatchYes">Si</label><br>
+							<input type="radio" id="dispatchNo" name="dispatch" value="0" checked>
+							<label for="dispatchNo">No</label><br>  
+						<% } %>
+					  </div>
 				</div>
 				<div class="input-container">
 					<label for="discount">Descuento </label>
 					<input type="text" name="discount" id="discount" value="<%= product.discount %>">
 				</div>
 				<div class="input-container">
-					<label for="lastVisited">Ultima Visita (Si/No)</label>
-					<input type="text" name="lastVisited" id="lastVisited" value="<%= product.lastVisited ? 'Si' : 'No' %>">
+					<label for="stock">Stock disponible </label>
+					<input type="text" name="stock" id="stock" value="<%= product.stock %>"
 				</div>
-                <div class="btn-product-create-container">
+				  <div class="btn-product-create-container">
                     <button type="submit" class="btn btn-product-edit">Guardar Cambios</button>
                 </div>
             </form>

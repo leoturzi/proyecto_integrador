@@ -1,22 +1,31 @@
 const User = require('../utils/User');
 
 function userLoggedValidator(req, res, next) {
-	res.locals.isLogged = false;
-	if (req.session.userLogged) {
-		res.locals.isLogged = true;
-		next();
-	} else if (req.cookies.userEmail) {
-		const emailInCookie = req.cookies.userEmail;
+    res.locals.isLogged = false;
+    res.locals.isAdmin = false;
+    if (req.session.userLogged) {
+        res.locals.isLogged = true;
+        res.locals.userLogged = req.session.userLogged;
+        if (res.locals.isLogged && req.session.userLogged.type_id == '1') {
+            res.locals.isAdmin = true;
+        }
+        next();
+    } else if (req.cookies.userEmail) {
+        const emailInCookie = req.cookies.userEmail;
 
-		// buscamos en nuestra db
-		const userFromCookie = User.findByField('email', emailInCookie);
-		res.locals.isLogged = true;
-		req.session.userLogged = userFromCookie;
+        // buscamos en nuestra db
+        const userFromCookie = User.findByField('email', emailInCookie);
+        res.locals.isLogged = true;
+        req.session.userLogged = userFromCookie;
 
-		next();
-	} else {
-		next();
-	}
+        if (res.locals.isLogged && userFromCookie.type_id == '1') {
+            res.locals.isAdmin = true;
+        }
+
+        next();
+    } else {
+        next();
+    }
 }
 
 module.exports = userLoggedValidator;

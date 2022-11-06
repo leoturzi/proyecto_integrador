@@ -1,55 +1,58 @@
         
-        <footer>
-            <div class="footer-container">
-                <section class="social">
+        <footer class="footer">
+            <div class="footer__container">
+                <section class="footer__section footer-socials">
                     <img
                     src="/images/guitar-pick.png"
                     alt="Nueva Era"
-                    class="footer-logo"
+                    class="footer-socials__brand-logo"
                     />
-                    <div class="social-logos">
+                    <div class="footer-socials__logos">
                         <img
+                        class="footer-socials__img"
                         src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png"
                         alt="Instagram"
                         />
                         <img
+                        class="footer-socials__img"
                         src="https://cdn-icons-png.flaticon.com/512/1384/1384005.png"
                         alt="Facebook"
                         />
                         <img
+                        class="footer-socials__img"
                         src="https://cdn-icons-png.flaticon.com/512/1384/1384017.png"
                         alt="Twitter"
                         />
                     </div>
                 </section>
-                <section class="footer-cont">
-                    <div class="footer-cont-item">
-                        <h3>Links</h3>
+                <section class="footer__section footer-links">
+                    <div class="footer-links__list">
+                        <h3 class="footer-links__header">Links</h3>
                         <ul>
-                            <li><a href="">Home</a></li>
-                            <li><a href="">Nosotros</a></li>
-                            <li><a href="">Contacto</a></li>
+                            <li class="footer-links__item"><a href="">Home</a></li>
+                            <li class="footer-links__item"><a href="">Nosotros</a></li>
+                            <li class="footer-links__item"><a href="">Contacto</a></li>
                         </ul>
                     </div>
-                    <div class="footer-cont-item">
-                        <h3>Mi Cuenta</h3>
+                    <div class="footer-links__list">
+                        <h3 class="footer-links__header">Mi Cuenta</h3>
                         <ul>
-                            <li><a href="">Mi Cuenta</a></li>
-                            <li><a href="">Carrito</a></li>
+                            <li class="footer-links__item"><a href="">Mi Cuenta</a></li>
+                            <li class="footer-links__item"><a href="">Carrito</a></li>
                         </ul>
                     </div>
-                    <div class="footer-cont-item">
-                        <h3>Contacto</h3>
+                    <div class="footer-links__list">
+                        <h3 class="footer-links__header">Contacto</h3>
                         <ul>
-                            <li>
+                            <li class="footer-links__item">
                                 <i class="fa-brands fa-whatsapp"></i
                                     ><span> (011)-15-4324-2342</span>
                             </li>
-                            <li>
+                            <li class="footer-links__item">
                                 <i class="fa-solid fa-envelope"></i
                                     ><span> ventasweb@nuevaera.com.ar</span>
                             </li>
-                            <li>
+                            <li class="footer-links__item">
                                 <i class="fa-solid fa-clock"></i
                                     ><span
                                     > Lunes a Viernes de 10 a 14 y de 15 a 19 - Sábados de 10 a
@@ -58,16 +61,16 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="footer-cont-item">
-                            <h3>Redes Sociales</h3>
+                        <div class="footer-links__list">
+                            <h3 class="footer-links__header">Redes Sociales</h3>
                             <ul>
-                                <li>
-                                    <i class="fa-brands fa-square-facebook"></i><span> <a href="">Facebook</a></span>
+                                <li class="footer-links__item">
+                                    <i cl   ass="fa-brands fa-square-facebook"></i><span> <a href="">Facebook</a></span>
                                 </li>
-                                <li>
+                                <li class="footer-links__item">
                                     <i class="fa-brands fa-square-instagram"></i><span> <a href="">Instagram</a></span>
                                 </li>
-                                <li>
+                                <li class="footer-links__item">
                                     <i class="fa-brands fa-square-twitter"></i><span
                                         > <a href="">Twitter</a>
                                         </span
@@ -76,7 +79,7 @@
                                 </ul>
                             </div>
                 </section>
-                <section class="disclaimer">
+                <section class="footer__section footer__disclaimer">
                     <p>&copy; 2022</p>
                     <p>Desarrollado y administrado por dos randoms en DH</p>
                     <p>
@@ -90,5 +93,8 @@
                 </section>
             </div>
         </footer>
+        <% if (locals.cartScript) { %>
+            <script src="/js/cart.js"></script>
+        <% } %>
     </body>
 </html>
