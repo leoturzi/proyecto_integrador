@@ -89,7 +89,16 @@ const usersController = {
             avatar: req.file.filename,
         };
         // agregar user al archivo users.jsons
-        db.User.create(userToCreate);
+        db.User.create(userToCreate)
+        // Setamos el campo 'detail' para luego pasarlo via API 
+        .then(user => {
+            db.User.update({
+                detail : `/api/users/${user.id}`
+            },
+            {
+                where: { id: user.id}
+            })
+        });
 
         // return res.send('se guardo el usuario');
         return res.redirect('/users/login');

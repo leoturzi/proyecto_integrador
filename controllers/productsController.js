@@ -45,9 +45,19 @@ const productsController = {
             discount: parseInt(req.body.discount),
             stock: parseInt(req.body.stock),
             color_id: parseInt(req.body.color),
-        }).then((response) => {
+        })
+        .then(product => {
+            db.Products.update({
+                detail : `/api/products/${product.id}`
+            },
+            {
+                where: { id: product.id}
+            })
+        })
+        .then(ok => {
             res.redirect('/products');
-        });
+        })
+        
     },
     detail: (req, res) => {
         db.Products.findByPk(req.params.id, {
