@@ -28,7 +28,7 @@ const productsController = {
         } else if (req.params.pagenumber == 5) {
             paginado = 40
             previousPage = 4;
-        } else if (req.params.pagenumber && (req.params.pagenumber <= 0 || req.params.pagenumber > 6 || isNaN(req.params.pagenumber))){
+        } else if (req.params.pagenumber && (req.params.pagenumber <= 0 || req.params.pagenumber > 5 || isNaN(req.params.pagenumber))){
             res.json({message: 'Paginado inexistente'})
             return;
         }
