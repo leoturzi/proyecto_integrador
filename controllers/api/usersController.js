@@ -16,15 +16,19 @@ const usersController = {
         
     },
     detail: (req, res) => {
-        console.log('Hello!');
         db.User.findByPk(req.params.id, {
             attributes: ['id', 'first_name', 'last_name','email', 'detail', 'provincia', 'calle', 'avatar']
         })
-        .then(result => {
-            if (result) {
+        .then(user => {
+            if (user) {
                 return res.json({
-                    data: result,
-                    status: 200
+                    id : user['dataValues']['id'],
+                    first_name : user['dataValues']['first_name'],
+                    last_name : user['dataValues']['last_name'],
+                    email : user['dataValues']['email'],
+                    provincia : user['dataValues']['provincia'],
+                    calle : user['dataValues']['calle'],
+                    avatarURL : 'localhost:3000/images/users/' + user['dataValues']['avatar']
                 });
             } else {
                 return res.json({
