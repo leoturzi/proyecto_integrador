@@ -6,9 +6,10 @@ const productsControllerAPI = require('../../controllers/api/productsController'
 //All products
 router.get('/', productsControllerAPI.allProducts);
 
-//Products 10 per page
-router.get('/:page?/:pagenumber', productsControllerAPI.page);
-
 //Detalle
 router.get('/:id', productsControllerAPI.detail);
+
+//Products 10 per page
+router.get('/page/:pagenumber', productsControllerAPI.page);
+
 module.exports = router
