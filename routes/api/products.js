@@ -3,9 +3,11 @@ const router = express.Router()
 const productsControllerAPI = require('../../controllers/api/productsController')
 
 
-//Listado de productos
-router.get('/', productsControllerAPI.list);
-router.get('/next/:page?', productsControllerAPI.list);
+//All products
+router.get('/', productsControllerAPI.allProducts);
+
+//Products 10 per page
+router.get('/:page?/:pagenumber', productsControllerAPI.page);
 
 //Detalle
 router.get('/:id', productsControllerAPI.detail);
