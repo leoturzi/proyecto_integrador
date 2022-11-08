@@ -83,7 +83,7 @@ const productsController = {
         }
         
             return res.json({
-                finalResponse
+                ...finalResponse
             })
         })
         .catch(err => {
