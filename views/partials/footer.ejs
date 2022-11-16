@@ -95,6 +95,10 @@
         </footer>
         <% if (locals.cartScript) { %>
             <script src="/js/cart.js"></script>
-        <% } %>
+        <% } else if (locals.productValidatorScript) { %>
+            <script src="/js/productValidator.js"></script>
+        <% } else if (locals.editProductValidatorScript) { %>
+            <script src="/js/editProductValidator.js"></script>
+        <% } %>   
     </body>
 </html>
