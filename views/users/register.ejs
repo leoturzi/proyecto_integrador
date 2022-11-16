@@ -23,7 +23,7 @@
                     enctype="multipart/form-data"
                     value="<%= locals.oldData ? oldData.first_name : null %>"
                 />
-                <% if (locals.errors && errors.nombre) { %>
+                <% if (locals.errors && errors.first_name) { %>
                 <div class="text-danger"><%= errors.first_name.msg %></div>
                 <% } %>
             </div>
