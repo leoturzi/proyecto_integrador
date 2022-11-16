@@ -18,6 +18,8 @@ const userLoggedValidator = require('./middlewares/userLoggedValidator');
 
 const app = express();
 
+const PORT = process.env.PORT || 3001;
+
 // template engines
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
@@ -28,11 +30,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(
-	session({
-		secret: 'es un secreto',
-		resave: false,
-		saveUninitialized: false,
-	})
+    session({
+        secret: 'es un secreto',
+        resave: false,
+        saveUninitialized: false,
+    })
 );
 app.use(cookies());
 app.use(userLoggedValidator);
@@ -53,10 +55,10 @@ app.use('/api/users', usersRouterAPI);
 //// ERROR - Siempre al final de todo, falta hacer la vista que se va a renderizar
 
 app.use((req, res, next) => {
-	res.status(404).render('404', { title: 'pagina no encontrada' });
+    res.status(404).render('404', { title: 'pagina no encontrada' });
 });
 
 // Levantamos servidor
-app.listen(3000, () => {
-	console.log('Server is running on port 3000');
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
