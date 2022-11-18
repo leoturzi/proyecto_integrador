@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `nuevaera_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `nuevaera_db`;
 -- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: nuevaera_db
