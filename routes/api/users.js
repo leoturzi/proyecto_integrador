@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const usersControllerAPI = require('../../controllers/api/usersController');
 
-// List
+// GET user List
 router.get('/', usersControllerAPI.list);
 
-// Detail
+// GET user Detail
 router.get('/:id', usersControllerAPI.detail);
 
 module.exports = router;

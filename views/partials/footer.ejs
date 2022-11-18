@@ -93,13 +93,22 @@
                 </section>
             </div>
         </footer>
-        <% if (locals.cartScript) { %>
-            <script src="/js/cart.js"></script>
-        <% } else if (locals.productValidatorScript) { %>
+        <% if (locals.productValidatorScript) { %>
             <script src="/js/productValidator.js"></script>
-        <% } else if (locals.editProductValidatorScript) { %>
+        <% } %>
+        <% if (locals.orderDetailsScript) { %>
+            <script src="/js/orderDetails.js"></script>
+        <% } %>
+        <% if (locals.editProductValidatorScript) { %>
             <script src="/js/editProductValidator.js"></script>
+        <% } %> 
+        <%  if (locals.cartScript) { %>
+            <script src="/js/cart.js"></script>
+        <% } %> 
+        <%  if (locals.orderScript) { %>
+            <script src="/js/orders.js"></script>
         <% } %>   
         <script src="/js/utils/utils.js"></script>
+        <script src="/js/storage.js"></script>
     </body>
 </html>

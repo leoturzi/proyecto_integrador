@@ -1,0 +1,26 @@
+<%- include('../partials/head', {title: 'Cart Orders'})%> <%-
+include('../partials/header')%> <%- include('../partials/nav')%>
+<div class="container--fixed">
+    <main>
+        <div class="cart-orders">
+            <table class="cart-orders__table">
+                <tbody class="cart-orders__tbody order-details__tbody">
+                    <tr class="cart-orders__row order-details__row">
+                        <th>Detail N°</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    <!--SI el usuario tiene ordenes, va a poder acceder a cada detalle
+                    Sino, no tiene forma de acceder. El html no se limpia -->
+                </tbody>
+            </table>
+            <button class="btn btn-back">
+                <a href="/cart/orders"
+                    >Volver</a
+                >
+            </button>
+        </div>
+    </main>
+</div>
+<%- include('../partials/footer') %>

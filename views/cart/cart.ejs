@@ -1,66 +1,60 @@
-<%- include('../partials/head', {title})%>
-<%- include('../partials/header')%>
+<%- include('../partials/head', {title})%> <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
 <div class="container--fixed">
-	<main>
-		<div class="cart">
-			<div class="cart__body">
-				<h2 class="cart__title">Tu carrito</h2>
-				<% if (locals.products && locals.products.length>0) { %>
+  <main>
+    <form action="/" class="cart">
+      <div class="cart__body">
+        <h2 class="cart__title">Tu carrito</h2>
+        <!-- IF Storage is not empty -- renderCart()  -->
+      </div>
+      <div class="cart-subtotal">
+        <p class="cart-subtotal__text">Total</p>
+        <p class="cart-subtotal__total-amount"></p>
+      </div>
 
-					<% for (let product of products) { %>
-					
-					<article class="cart-item">
-						<div class="cart-item__img-container">
-							<img src="../images/products/<%=product.image%>" alt="<%=product.name%>">
-						</div>
-						<div class="cart-item__desc">
-							<div class="cart-item__upper-desc">
-								<p class="cart-item__name"><%= product.name%></p>
-								<div>
-									<p class="cart-item__color">Color : <%= product.colors.name%></p> <a class="cart-item__color-picklist" href="">Modificar</a>
-								<% if (product && (product.dispatch == 1)) { %>
-									<span class="cart-item__dispatch">Envío Gratis</span>
-								<% } %>	
-								</div>
-							</div>
-							<div class="cart-item__lower-desc">
-								<div class="cart-item__quantity-and-trash">
-									<select class="cart-item__quantity" name="quantity" id="">
-										<option value="1" selected>1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10</option>
-									</select>
-									<i class="fa-solid fa-trash-can"></i>
-									<p class="cart-item--green"> $<span class="cart-item__price"><%=toThousand(product.price)%></span></p>
-								</div>
-								
-								<p class="cart-item__total-price"></p>
-							</div>
-						</div>
-					</article>
-					<% } %>
-					<div class="cart-subtotal">
-						<p class="cart-subtotal__text">Subtotal --> </p>
-						<p class="cart-subtotal__total-amount">Checkea los ids guardados en el Storage y después los pide a la API. Hacer cuando llegue el momento.</p>
-					</div>
-			</div>
-			<a href="/products" class="btn btn-product-edit btn-anchor">Seguir comprado</a>
-			<br>
-			<a href="/cart/dispatch" class="btn btn-product-edit btn-anchor">Continuar</a>
-				<% }  else { %>
-					<p class="cart-subtotal__text">No tienes agregado ningún producto al carrito de compras</p>
+      <article class="checkout-form">
+		<div class="--two-columns">
+			<div class="--width50">
+				<div class="input-container">
+					<label for="localidad">Localidad</label>
+					<input type="text" id="localidad"/>
 				</div>
-				<a href="/products" class="btn btn-product-edit btn-anchor">Buscar productos</a>
-				<% } %>
+				<div class="input-container">
+					<label for="calle">Calle</label>
+					<input type="text" id="calle"/>
+				</div>
 			</div>
-	</main>
+			<div class="--width50">
+				<div class="input-container">
+					<label for="paymentMethod">Método de pago</label>
+					<select id="paymentMethod">
+					  <option value=""></option>
+					  <option value="Tarjeta de Credito">Crédito</option>
+					  <option value="Tarjeta de Debito">Débito</option>
+					  <option value="Efectivo">Efectivo</option>
+					  <option value="Criptomonedas">Cripto</option>
+					</select>
+				  </div>
+				<div class="input-container">
+					<label for="phone">Teléfono de contacto</label>
+					<input type="text" id="phone"/>
+				</div>
+			</div>
+		</div>
+
+        <div>
+          <a href="/products" class="btn btn-product-edit btn-anchor"
+            >Seguir comprado</a
+          >
+          <br />
+          <button type="submit" class="btn btn-product-edit">Finalizar compra</button>
+        </div>
+      </article>
+
+      <!-- IF storage is empty -->
+
+      <!-- renderEmptyCart() > Empty Cart -->
+    </form>
+  </main>
 </div>
 <%- include('../partials/footer', {cartScript}) %>

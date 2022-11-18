@@ -1,9 +1,7 @@
-const { deepStrictEqual } = require("assert"); // De donde salio esto?
 const { validationResult } = require("../middlewares/createProductValidator");
 const fs = require("fs");
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
-const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const productsController = {
   list: (req, res) => {
@@ -83,12 +81,13 @@ const productsController = {
     }
   },
   detail: (req, res) => {
+    let cartScript = true;
     db.Products.findByPk(req.params.id, {
       include: ["brands", "categories", "colors"],
     }).then((productToDetail) => {
       res.render("products/product-detail", {
         product: productToDetail,
-        title: "Detail",
+        title: "Detail"
       });
     });
   },

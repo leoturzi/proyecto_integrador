@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-  let alias = "order_details";
+  let alias = "OrderDetails";
   let cols = {
     id: {
       type: dataTypes.INTEGER.UNSIGNED,
@@ -30,6 +30,8 @@ module.exports = (sequelize, dataTypes) => {
 }
   const OrderDetails = sequelize.define(alias, cols, config);
   OrderDetails.associate = (models) => {
+    // No llevan alias porque al momento de usar db.OrderDetails
+    // los resultados te traen la asociación automáticamente, sin necesidad de aclarar
     OrderDetails.belongsTo(models.Orders, {
       foreignKey: "order_id"
     });

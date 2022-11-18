@@ -15,6 +15,7 @@ const usersController = {
         })
         
     },
+    // No pueden ir campos como password
     detail: (req, res) => {
         db.User.findByPk(req.params.id, {
             attributes: ['id', 'first_name', 'last_name','email', 'detail', 'provincia', 'calle', 'avatar']

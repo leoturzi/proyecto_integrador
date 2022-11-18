@@ -12,7 +12,7 @@
                 <div class="profile-header">
                     <a href="/users/profile/"
                         ><img
-                            src="/images/users/<%- locals.userLogged.avatar %> "
+                            src="/images/users/<%= locals.userLogged.avatar %> "
                             alt=""
                     /></a>
                 </div>
@@ -24,6 +24,7 @@
 
                 <a href="/cart/">
                     <i class="fa-solid fa-cart-shopping user-panel__icon"></i>
+                    <span class="cart-item-counter"></span>
                 </a>
             </div>
             <form action="/search" method="GET" class="search-bar">

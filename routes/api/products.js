@@ -3,13 +3,13 @@ const router = express.Router()
 const productsControllerAPI = require('../../controllers/api/productsController')
 
 
-//All products
+//GET All products
 router.get('/', productsControllerAPI.allProducts);
 
-//Detalle
+// GET 1 product detail
 router.get('/:id', productsControllerAPI.detail);
 
-//Products 10 per page
+// GET Products 10 per page (not scalable :,())
 router.get('/page/:pagenumber', productsControllerAPI.page);
 
 module.exports = router

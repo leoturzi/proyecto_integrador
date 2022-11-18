@@ -5,10 +5,13 @@
 	<main>
 		<section class="card-details">
 			<div class="card-details__container">
-				<img
-					src="/images/products/<%= product.image || 'default.jpg' %>"
-					alt="<%= product.name %>"
-				/>
+				<div class="card-details__img-container">
+					<img
+						class="card-details__img"
+						src="/images/products/<%= product.image || 'default.jpg' %>"
+						alt="<%= product.name %>"
+					/>
+				</div>
 				<div class="card-detail__info">
 					<h3 class="card-detail__name">
 						<%= product.name %>
@@ -20,7 +23,7 @@
 						<p>$<%= product.price %></p>
 					</div>
 
-					<a href="/cart" class="btn btn-product-edit btn-anchor">Agregar al carrito</a>
+					<a href="#" class="btn btn-product-edit btn-anchor btn-addToCart" data-id="<%=product.id%>">Agregar al carrito</a>
 					<div class="card-details__payment-methods">
 						<h3>Metodos de pago</h3>
 						<img src="/images/metodos-de-pago2.png" alt="" />

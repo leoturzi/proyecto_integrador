@@ -1,15 +1,16 @@
 const express = require('express');
 const path = require('path');
 
-// routes
+// Routers
 const mainRouter = require('./routes/main');
 const productsRouter = require('./routes/products');
 const usersRouter = require('./routes/users');
 const cartRouter = require('./routes/cart');
 
-//API
+//API Routers
 const productsRouterAPI = require('./routes/api/products');
 const usersRouterAPI = require('./routes/api/users');
+const cartRouterAPI = require('./routes/api/cart')
 // middlewares
 const methodOverride = require('method-override');
 const session = require('express-session');
@@ -39,18 +40,16 @@ app.use(
 app.use(cookies());
 app.use(userLoggedValidator);
 
-// Router index
+// Routers
 app.use('/', mainRouter);
-// Router products
 app.use('/products', productsRouter);
-// Router users
 app.use('/users', usersRouter);
-// Router cart
 app.use('/cart', cartRouter);
 
-//Router API
+//Routers API
 app.use('/api/products', productsRouterAPI);
 app.use('/api/users', usersRouterAPI);
+app.use('/api/cart', cartRouterAPI);
 
 //// ERROR - Siempre al final de todo, falta hacer la vista que se va a renderizar
 
