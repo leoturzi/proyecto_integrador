@@ -80,7 +80,7 @@ window.addEventListener('load', (e) => {
             // Después de todo el forEach para renderizar el carrito.ejs según lo que haya en el storage
             // Ahí si, con todos los precios y cantidades, actualizo el "TOTAL $---"
             .then(r => {
-                totalAmountOutput.innerText = `$${toThousand(parseFloat(getSubtotal(fetchedProducts)).toFixed(2))}`
+                updateTotal();
                 // Y a cada cesto de basura le agrego el listener para borrar
                 // Lo busco por una clase común a todos los botonos
                 // Extraigo el target.dataset.pid y mando ese dato a la función para remover items del storage
@@ -211,6 +211,7 @@ window.addEventListener('load', (e) => {
             // Y hacemos que coincida la realidad con lo que ve el usuario. Limpiamos el html.
             renderEmptyCart();
         }
+        updateTotal();
     }
     
     function renderEmptyCart() {
@@ -230,6 +231,9 @@ window.addEventListener('load', (e) => {
     
     function checkCart() {
         cart = localStorage.cart ? JSON.parse(localStorage.cart) : [];
+    }
+    function updateTotal(){
+        totalAmountOutput.innerText = `$${toThousand(parseFloat(getSubtotal(fetchedProducts)).toFixed(2))}`
     }
     // Ni bien carga o si venimos de una redirección, revisar el storage para mantener actualizado el HTML
     checkCart()

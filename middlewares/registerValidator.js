@@ -1,15 +1,22 @@
 const { body, validationResult } = require('express-validator');
 const path = require('path');
+const fs = require('fs');
 
 const validations = [
     body('avatar')
         .custom((value, { req }) => {
             const file = req.file;
-            // extensiones validas
+            const validExt = ['.jpg', '.png', '.jpeg'];
+            const fileExt = path.extname(file.originalname);
             if (!file) {
                 throw new Error(
                     'Debes subir una imagen en formato jpg, jpeg o png'
                 );
+            } else if (!validExt.includes(fileExt)){
+                fs.unlinkSync(file.path);
+                throw new Error(
+                    'Debes subir una imagen en formato jpg, jpeg o png'
+                    );
             }
             return true;
         })

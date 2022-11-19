@@ -13,10 +13,10 @@ const validations = [
                     'Debes subir una imagen'
                 );
             } else if (!validExt.includes(fileExt)){
-                fs.unlinkSync(file.path)
+                fs.unlinkSync(file.path);
                 throw new Error(
                     'Debes subir una imagen en formato jpg, jpeg o png'
-                );
+                    );
             }
 
             return true;

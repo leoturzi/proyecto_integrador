@@ -256,6 +256,9 @@ main {
 .btn-back {
     width: 30%;
     margin: 20px 0px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
 }
 
 .danger {
@@ -796,6 +799,10 @@ tr:nth-child(even) {
 .login-container button {
     font-size: 20px;
     margin: 20px 0 10px 0;
+}
+
+.btn-back {
+    font-size: 20px;
 }
 
 .forgot-password {
