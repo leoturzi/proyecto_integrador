@@ -7,7 +7,8 @@
 			<div class="interest__text">
 				<h3>Resultados de la búsqueda: "<%= productsQuery %>"</h3>
 			</div>
-			<% if (productsQuery.length > 0) { %>
+			<% if (queryProducts.length > 0) { %>
+				<% console.log(queryProducts)%>
             <ul class="products-list">
 				<% for (let product of queryProducts) { %>
 				<a href="/products/<%=product.id%>" class="card__link">

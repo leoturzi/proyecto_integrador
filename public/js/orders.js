@@ -11,7 +11,6 @@ window.addEventListener('load', (e) => {
             tableBody.innerHTML =
             `
             <tr class="cart-orders__row">
-                <th>Status</th>
                 <th>Date</th>
                 <th>Shipping Address</th>
                 <th>Payment Method</th>
@@ -43,7 +42,6 @@ window.addEventListener('load', (e) => {
             let creationTime = order.created_at;
             orderRow.innerHTML= 
             `
-                <td>${order.order_status}</td>
                 <td>${creationTime.substring(0,10)}</td>
                 <td>${order.shippingAddress}</td>
                 <td>${order.paymentMethod}</td>

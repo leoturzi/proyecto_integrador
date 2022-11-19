@@ -141,7 +141,7 @@ window.addEventListener('load', (e) => {
     // Cuando la orden se cree, va a retornar la respuesta con el order_id, que vamos a guardar en createdOrderId
     async function createOrderAndOrderDetails (config) {
         let orderRawResponse = await fetch(`/api/cart/orders/create`, config)
-        let parsedOrderResponse = await orderRawResponse.json()
+        let parsedOrderResponse = await orderRawResponse.json();
         createdOrderId = parsedOrderResponse.order.id;
         // Hecha la compra, chau storage, y borramos el render de cada articulo del carrito
         vaciarStorage()
@@ -166,9 +166,20 @@ window.addEventListener('load', (e) => {
             fetch(`/api/cart/orders/createDetails`,config2)
             .then(response => response.json())
             .then(parsedResponse => {
-                console.log(parsedResponse)
+                cartToast.fire({
+                    toast: false,
+                    icon: 'success',
+                    title: `Order submitted`,
+                    text:'Redirecting...',
+                    position: 'center',
+                    backdrop: true,
+                    didClose: () => {
+                        Swal.showLoading()
+                        window.location.href = `/cart/orders/details/${createdOrderId}`;
+                    }
+                  })
             })       
-        })   
+        })
     }
 
     // Sección derecha del carrito. Precio x cantidad
@@ -202,6 +213,10 @@ window.addEventListener('load', (e) => {
             itemInCart.remove();
             // Actualizamos el numerito del ícono
             refreshCounter();
+            cartToast.fire({
+                icon: 'warning',
+                title: `Item removed from the cart`,
+              });
         } else {
             // Y si no hay nada en el carrito es porque ese elemento era el único y último
             // Sacamos el array entero del storage.
@@ -210,6 +225,10 @@ window.addEventListener('load', (e) => {
             fetchedProducts = [];
             // Y hacemos que coincida la realidad con lo que ve el usuario. Limpiamos el html.
             renderEmptyCart();
+              cartToast.fire({
+                icon: 'info',
+                title: 'You have emptied your cart'
+              });
         }
         updateTotal();
     }
@@ -235,6 +254,13 @@ window.addEventListener('load', (e) => {
     function updateTotal(){
         totalAmountOutput.innerText = `$${toThousand(parseFloat(getSubtotal(fetchedProducts)).toFixed(2))}`
     }
+
+    const cartToast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+      })
     // Ni bien carga o si venimos de una redirección, revisar el storage para mantener actualizado el HTML
     checkCart()
 })
