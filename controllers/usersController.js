@@ -63,6 +63,9 @@ const usersController = {
         // renderizado de errores
         const results = validationResult(req);
         if (results.errors.length > 0) {
+            if (req.file?.filename) {
+                fs.unlinkSync(`./public/images/users/${req.file.filename}`);
+            }
             return res.render('users/register', {
                 title: 'Register',
                 errors: results.mapped(),
@@ -86,19 +89,21 @@ const usersController = {
         const userToCreate = {
             ...req.body,
             password: bcrypt.hashSync(req.body.password, 10),
-            avatar: req.file.filename,
+            avatar: req.file?.filename ? req.file.filename : 'default.jpg',
         };
         // agregar user al archivo users.jsons
         db.User.create(userToCreate)
-        // Setamos el campo 'detail' para luego pasarlo via API 
-        .then(user => {
-            db.User.update({
-                detail : `/api/users/${user.id}`
-            },
-            {
-                where: { id: user.id}
-            })
-        });
+            // Setamos el campo 'detail' para luego pasarlo via API
+            .then((user) => {
+                db.User.update(
+                    {
+                        detail: `/api/users/${user.id}`,
+                    },
+                    {
+                        where: { id: user.id },
+                    }
+                );
+            });
 
         // return res.send('se guardo el usuario');
         return res.redirect('/users/login');

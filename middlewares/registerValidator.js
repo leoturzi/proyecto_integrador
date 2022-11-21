@@ -3,24 +3,6 @@ const path = require('path');
 const fs = require('fs');
 
 const validations = [
-    body('avatar')
-        .custom((value, { req }) => {
-            const file = req.file;
-            const validExt = ['.jpg', '.png', '.jpeg'];
-            const fileExt = path.extname(file.originalname);
-            if (!file) {
-                throw new Error(
-                    'Debes subir una imagen en formato jpg, jpeg o png'
-                );
-            } else if (!validExt.includes(fileExt)){
-                fs.unlinkSync(file.path);
-                throw new Error(
-                    'Debes subir una imagen en formato jpg, jpeg o png'
-                    );
-            }
-            return true;
-        })
-        .bail(),
     body('first_name')
         .notEmpty()
         .withMessage('Debes ingresar un Nombre')
@@ -60,6 +42,16 @@ const validations = [
         .withMessage(
             'El password debe contener minimo 8 caracteres, 1 mayuscula, 1 minuscula y 1 numero'
         ),
+    body('avatar')
+        .custom((value, { req }) => {
+            if (req.isInvalidExt) {
+                return false;
+            }
+            if (req.file) {
+                return true;
+            }
+        })
+        .withMessage('Debes subir una imagen en formato jpg, jpeg o png'),
 ];
 
 module.exports = { validations, validationResult };
