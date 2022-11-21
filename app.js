@@ -10,7 +10,7 @@ const cartRouter = require('./routes/cart');
 //API Routers
 const productsRouterAPI = require('./routes/api/products');
 const usersRouterAPI = require('./routes/api/users');
-const cartRouterAPI = require('./routes/api/cart')
+const cartRouterAPI = require('./routes/api/cart');
 // middlewares
 const methodOverride = require('method-override');
 const session = require('express-session');
@@ -50,8 +50,6 @@ app.use('/cart', cartRouter);
 app.use('/api/products', productsRouterAPI);
 app.use('/api/users', usersRouterAPI);
 app.use('/api/cart', cartRouterAPI);
-
-//// ERROR - Siempre al final de todo, falta hacer la vista que se va a renderizar
 
 app.use((req, res, next) => {
     res.status(404).render('404', { title: 'pagina no encontrada' });

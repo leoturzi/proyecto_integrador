@@ -78,7 +78,6 @@ const usersController = {
             });
         }
         // validacion de que el email utilizado para el registro no esta en uso
-        let userInDb;
         try {
             const userInDb = await db.User.findAll({
                 where: { email: req.body.email },
