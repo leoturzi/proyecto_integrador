@@ -13,10 +13,15 @@ const usersController = {
     loginProcess: async (req, res) => {
         // volcamos valores del form en variables
         const { username, password, recordarUsuario } = req.body;
+        let userToLogin;
+        try {
+            userToLogin = await db.User.findOne({
+                where: { email: username },
+            });
+        } catch (error) {
+            throw new Error('Hubo un error al conectarse a la db');
+        }
 
-        const userToLogin = await db.User.findOne({
-            where: { email: username },
-        });
         // return res.send(userToLogin);
         if (userToLogin) {
             const pwdMatch = bcrypt.compareSync(password, userToLogin.password);
@@ -73,44 +78,50 @@ const usersController = {
             });
         }
         // validacion de que el email utilizado para el registro no esta en uso
-        const userInDb = await db.User.findAll({
-            where: { email: req.body.email },
-        });
-        // return res.send(userInDb);
-        if (userInDb.length > 0) {
-            return res.render('users/register', {
-                title: 'Register',
-                errors: { email: { msg: 'Este email ya esta registrado' } },
-                oldData: req.body,
+        let userInDb;
+        try {
+            const userInDb = await db.User.findAll({
+                where: { email: req.body.email },
             });
+            if (userInDb.length > 0) {
+                return res.render('users/register', {
+                    title: 'Register',
+                    errors: { email: { msg: 'Este email ya esta registrado' } },
+                    oldData: req.body,
+                });
+            }
+
+            // creacion de usuario
+            const userToCreate = {
+                ...req.body,
+                password: bcrypt.hashSync(req.body.password, 10),
+                avatar: req.file?.filename ? req.file.filename : 'default.jpg',
+            };
+            // agregar user al archivo users.jsons
+            db.User.create(userToCreate)
+                // Setamos el campo 'detail' para luego pasarlo via API
+                .then((user) => {
+                    db.User.update(
+                        {
+                            detail: `/api/users/${user.id}`,
+                        },
+                        {
+                            where: { id: user.id },
+                        }
+                    );
+                    return res.redirect('/users/login');
+                })
+                .catch((err) => {
+                    throw new Error(
+                        'occurio un error durante la creacion del usuario, intente mas tarde'
+                    );
+                });
+        } catch (error) {
+            throw new Error('Ocurrio un error al validar email');
         }
-
-        // creacion de usuario
-        const userToCreate = {
-            ...req.body,
-            password: bcrypt.hashSync(req.body.password, 10),
-            avatar: req.file?.filename ? req.file.filename : 'default.jpg',
-        };
-        // agregar user al archivo users.jsons
-        db.User.create(userToCreate)
-            // Setamos el campo 'detail' para luego pasarlo via API
-            .then((user) => {
-                db.User.update(
-                    {
-                        detail: `/api/users/${user.id}`,
-                    },
-                    {
-                        where: { id: user.id },
-                    }
-                );
-            });
-
-        // return res.send('se guardo el usuario');
-        return res.redirect('/users/login');
     },
 
     userProfile: (req, res) => {
-        // return res.send(req.session.userLogged);
         return res.render('users/userProfile', {
             title: 'Profile',
             user: req.session.userLogged,
@@ -147,26 +158,34 @@ const usersController = {
                 fs.unlinkSync('./public/images/users/' + userLogged.avatar);
             }
             // Actualizamos la base de datos
-            await db.User.update(
-                {
-                    first_name: userEdits.first_name,
-                    last_name: userEdits.last_name,
-                    email: userEdits.email,
-                    avatar: req.file ? req.file.filename : userLogged.avatar,
-                },
-                {
-                    where: { id: req.params.id },
-                }
-            );
+            try {
+                await db.User.update(
+                    {
+                        first_name: userEdits.first_name,
+                        last_name: userEdits.last_name,
+                        email: userEdits.email,
+                        avatar: req.file
+                            ? req.file.filename
+                            : userLogged.avatar,
+                    },
+                    {
+                        where: { id: req.params.id },
+                    }
+                );
 
-            // Actualizamos los datos de session
-            req.session.userLogged = {
-                ...userLogged,
-                ...userEdits,
-                avatar: req.file ? req.file.filename : userLogged.avatar,
-            };
+                // Actualizamos los datos de session
+                req.session.userLogged = {
+                    ...userLogged,
+                    ...userEdits,
+                    avatar: req.file ? req.file.filename : userLogged.avatar,
+                };
+                return res.redirect('/');
+            } catch (error) {
+                throw new Error(
+                    'Ocurrio un problema al actualizar la informacion, intente nuevamente mas tarde'
+                );
+            }
         }
-        return res.redirect('/');
     },
     confirmDelete: async (req, res) => {
         const userToDelete = await db.User.findOne({
@@ -184,14 +203,21 @@ const usersController = {
         // Borramos el avatar guardado
         fs.unlinkSync('./public/images/users/' + userLogged.avatar);
         // Borramos al user de la BD
-        await db.User.destroy({
-            where: {
-                id: parseInt(req.params.id),
-            },
-        });
+        try {
+            await db.User.destroy({
+                where: {
+                    id: parseInt(req.params.id),
+                },
+            });
+            req.session.destroy();
+            return res.redirect('/');
+        } catch (error) {
+            throw new Error(
+                'Ocurrio un error al intentar eliminar la cuenta, por favor intente nuevamente'
+            );
+        }
+
         // Destruimos la session
-        req.session.destroy();
-        return res.redirect('/');
     },
 };
 module.exports = usersController;
