@@ -1,7 +1,6 @@
 const express = require('express');
-const router = express.Router()
-const cartControllerAPI = require('../../controllers/api/cartController')
-
+const router = express.Router();
+const cartControllerAPI = require('../../controllers/api/cartController');
 
 // GET all orders
 router.get('/orders', cartControllerAPI.allOrders);
@@ -10,5 +9,11 @@ router.get('/orders/details/:orderId', cartControllerAPI.orderDetails);
 // POST - Create order
 router.post('/orders/create', cartControllerAPI.createOrder);
 // POST - create EACH orderDetail (pivot table)
-router.post('/orders/createDetails',cartControllerAPI.createOrderDetailsRecord);
-module.exports = router
+router.post(
+    '/orders/createDetails',
+    cartControllerAPI.createOrderDetailsRecord
+);
+// POST - Update cart
+router.post('/update_cart', cartControllerAPI.update_cart);
+
+module.exports = router;

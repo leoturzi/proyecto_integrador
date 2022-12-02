@@ -18,6 +18,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const cookies = require('cookie-parser');
 const userLoggedValidator = require('./middlewares/userLoggedValidator');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use(bodyParser.text());
 app.use(
     session({
         secret: 'es un secreto',
