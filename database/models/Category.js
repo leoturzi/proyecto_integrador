@@ -8,6 +8,12 @@ module.exports = (sequelize, dataTypes) => {
         },
         name : {
             type : dataTypes.STRING
+        },
+        image : {
+            type : dataTypes.STRING
+        },
+        title : {
+            type : dataTypes.STRING
         }
     };
     const config = {

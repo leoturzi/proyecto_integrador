@@ -16,192 +16,52 @@
 		<section class="categories">
 			<div class="categories__titles">
 				<h3>Comprar por Instrumento</h3>
-				<h4>ver todo</h4>
+				<h4><a href="/products/" class="categories-seeAll">ver todo</a></h4>
 			</div>
 			<ul class="categories__container">
-				<li class="categories__item">
-					<div class="categories__img-container">
-						<img
-							src="images/categories/cat-guitarras.jpg"
-							alt="Guitarras"
-							class="categories__img"
-						/>
-					</div>
-					<h4>Guitarras</h4>
-				</li>
-				<li class="categories__item">
-					<div class="categories__img-container">
-						<img
-							src="images/categories/cat-baterias.jpg"
-							alt="Baterias"
-							class="categories__img"
-						/>
-					</div>
-					<h4>Baterias</h4>
-				</li>
-				<li class="categories__item">
-					<div class="categories__img-container">
-						<img
-							src="images/categories/cat-teclados.jpg"
-							alt="Teclados"
-							class="categories__img"
-						/>
-					</div>
-					<h4>Teclados</h4>
-				</li>
-				<li class="categories__item">
-					<div class="categories__img-container">
-						<img
-							src="images/categories/cat-amplificadores.jpg"
-							alt="Amplificadores"
-							class="categories__img"
-						/>
-					</div>
-					<h4>Amplificadores</h4>
-				</li>
-				<li class="categories__item">
-					<div class="categories__img-container">
-						<img
-							src="images/categories/cat-armonicas.jpg"
-							alt="Armónicas"
-							class="categories__img"
-						/>
-					</div>
-					<h4>Armónicas</h4>
-				</li>
-				<li class="categories__item">
-					<div class="categories__img-container">
-						<img
-							src="images/categories/cat-microfonos.jpg"
-							alt="Micrófonos"
-							class="categories__img"
-						/>
-					</div>
-					<h4>Micrófonos</h4>
-				</li>
-				<li class="categories__item">
-					<div class="categories__img-container">
-						<img
-						src="images/categories/cat-saxofones.jpg"
-						alt="Saxofones"
-						class="categories__img"
-						/>
-					</div>
-					<h4>Saxofones</h4>
-				</li>
+				<% if (locals.categories) { %>
+					<% for (let category of categories) { %>
+						<li class="categories__item" data-category="<%= category.name%>">
+							<div class="categories__img-container" data-category="<%= category.name%>">
+								<img
+									src="images/categories/<%= category.image%>"
+									alt="<%= category.title%>"
+									class="categories__img"
+									data-category="<%= category.name%>"
+								/>
+							</div>
+							<h4 data-category="<%= category.name%>"><%= category.title%></h4>
+						</li>
+					<% } %>
+				<% } %>
 			</ul>
 		</section>
 		
 		<section class="interest">
 			<div class="interest__text">
 				<h3>Te puede interesar</h3>
-				<h4>ver todo</h4>
+				<h4><a href="/products/" class="categories-seeAll">ver todo</a></h4>
 			</div>
-			<ul class="products-list">
-				<li class="card">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card display-lg">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card display-lg">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card display-xl">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card display-xxl">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
+			<ul class="products-list main-product-list">
+				<% if (locals.products && locals.products.length > 0) { %>
+					<% for (let product of products) { %>
+						<a href="/products/<%=product.id%>" class="main-flexchild card__link">
+							<li class="card card--aligned main-card">
+								<img
+									src="/images/products/<%= product.image || 'default.jpg' %>"
+									alt="<%=product.name%>"
+									class="card__img"
+								/>
+								<p class="card__price">$ <%=product.price%></p>
+								<% if (product.dispatch == "1") { %>
+								<p class="card__dispatch">Envio gratis</p>
+								<% } %>
+								<p class="card__name"> <%=product.name%> </p>
+								<button class="btn">Comprar</button>
+							</li>
+						</a>
+					<% } %>
+				<% } %>
 			</ul>
 		</section>
 		<section class="brands">

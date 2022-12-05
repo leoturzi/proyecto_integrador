@@ -18,7 +18,7 @@ const uploadFile = multer({
         const validExt = ['.jpg', '.png', '.jpeg'];
 
         if (fileData) {
-            const fileExt = path.extname(fileData.originalname);
+            const fileExt = (path.extname(fileData.originalname)).toLowerCase();
             if (!validExt.includes(fileExt)) {
                 req.isInvalidExt = true;
                 return cb(null, false);

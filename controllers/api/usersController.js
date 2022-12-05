@@ -24,8 +24,8 @@ const usersController = {
                 'last_name',
                 'email',
                 'detail',
-                'provincia',
-                'calle',
+                'province',
+                'street',
                 'avatar',
                 'cart',
             ],
@@ -37,8 +37,8 @@ const usersController = {
                         first_name: user['dataValues']['first_name'],
                         last_name: user['dataValues']['last_name'],
                         email: user['dataValues']['email'],
-                        provincia: user['dataValues']['provincia'],
-                        calle: user['dataValues']['calle'],
+                        provincia: user['dataValues']['province'],
+                        calle: user['dataValues']['street'],
                         cart: user['dataValues']['cart'],
                         avatarURL:
                             'localhost:3000/images/users/' +

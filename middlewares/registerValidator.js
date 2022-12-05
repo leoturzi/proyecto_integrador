@@ -18,7 +18,7 @@ const validations = [
         .isEmail()
         .withMessage('Debes ingresar un email Valido')
         .bail(),
-    body('provincia')
+    body('province')
         .custom((value) => {
             if (value === '') {
                 throw new Error('Debes seleccionar una provincia');
@@ -26,7 +26,7 @@ const validations = [
             return true;
         })
         .bail(),
-    body('calle').notEmpty().withMessage('Debes ingresar una calle').bail(),
+    body('street').notEmpty().withMessage('Debes ingresar una calle').bail(),
     body('phone').notEmpty().withMessage('Debes ingresar un telefono').bail(),
     body('password')
         .notEmpty()

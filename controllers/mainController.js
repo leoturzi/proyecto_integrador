@@ -3,9 +3,17 @@ const Op = db.Sequelize.Op;
 
 const mainController = {
     index : (req, res) => {
-        db.Products.findAll()
-        .then(results => {
-            res.render('main/index', { products : results, title:'Home'});
+        let categoryRedirect = true;
+        let allCategories = db.Categories.findAll();
+        let someProducts = db.Products.findAll({limit: 12});
+        Promise.all([someProducts, allCategories])
+        .then(values => {
+            res.render('main/index', {
+                products : values[0],
+                categories : values[1],
+                title:'Home',
+                categoryRedirect
+            })
         })
     },
     /*

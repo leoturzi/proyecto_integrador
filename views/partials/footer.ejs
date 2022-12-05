@@ -29,16 +29,16 @@
                     <div class="footer-links__list">
                         <h3 class="footer-links__header">Links</h3>
                         <ul>
-                            <li class="footer-links__item"><a href="">Home</a></li>
-                            <li class="footer-links__item"><a href="">Nosotros</a></li>
-                            <li class="footer-links__item"><a href="">Contacto</a></li>
+                            <li class="footer-links__item"><a href="/">Home</a></li>
+                            <li class="footer-links__item"><a href="/about">Nosotros</a></li>
+                            <li class="footer-links__item"><a href="/contact">Contacto</a></li>
                         </ul>
                     </div>
                     <div class="footer-links__list">
                         <h3 class="footer-links__header">Mi Cuenta</h3>
                         <ul>
-                            <li class="footer-links__item"><a href="">Mi Cuenta</a></li>
-                            <li class="footer-links__item"><a href="">Carrito</a></li>
+                            <li class="footer-links__item"><a href="/users/profile/">Mi Cuenta</a></li>
+                            <li class="footer-links__item"><a href="/cart/">Carrito</a></li>
                         </ul>
                     </div>
                     <div class="footer-links__list">
@@ -50,7 +50,7 @@
                             </li>
                             <li class="footer-links__item">
                                 <i class="fa-solid fa-envelope"></i
-                                    ><span> ventasweb@nuevaera.com.ar</span>
+                                    ><span> <a href="mailto:ventasweb@nuevaera.com.ar?subject=Nueva Era || New Question">ventasweb@nuevaera.com.ar</a></span>
                             </li>
                             <li class="footer-links__item">
                                 <i class="fa-solid fa-clock"></i
@@ -65,14 +65,14 @@
                             <h3 class="footer-links__header">Redes Sociales</h3>
                             <ul>
                                 <li class="footer-links__item">
-                                    <i cl   ass="fa-brands fa-square-facebook"></i><span> <a href="">Facebook</a></span>
+                                    <i class="fa-brands fa-square-facebook"></i><span> <a href="https://www.facebook.com/">Facebook</a></span>
                                 </li>
                                 <li class="footer-links__item">
-                                    <i class="fa-brands fa-square-instagram"></i><span> <a href="">Instagram</a></span>
+                                    <i class="fa-brands fa-square-instagram"></i><span> <a href="https://www.instagram.com/">Instagram</a></span>
                                 </li>
                                 <li class="footer-links__item">
                                     <i class="fa-brands fa-square-twitter"></i><span
-                                        > <a href="">Twitter</a>
+                                        > <a href="https://twitter.com/">Twitter</a>
                                         </span
                                         >
                                     </li>
@@ -107,7 +107,13 @@
         <% } %> 
         <%  if (locals.orderScript) { %>
             <script src="/js/orders.js"></script>
-        <% } %>   
+        <% } %>
+        <%  if (locals.categoryRedirect) { %>
+            <script src="/js/categoryRedirect.js"></script>
+        <% } %>
+        <%  if (locals.contactFormValidator) { %>
+            <script src="/js/validators/contactFormValidator.js"></script>
+        <% } %>
         <script src="/js/utils/utils.js"></script>
         <script src="/js/storage.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

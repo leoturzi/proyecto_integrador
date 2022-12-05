@@ -198,9 +198,7 @@ const usersController = {
         });
     },
     delete: async (req, res) => {
-        const userLogged = req.session.userLogged;
-        // Borramos el avatar guardado
-        fs.unlinkSync('./public/images/users/' + userLogged.avatar);
+        const userLogged = req.session.userLogged;  
         // Borramos al user de la BD
         try {
             await db.User.destroy({
@@ -208,6 +206,10 @@ const usersController = {
                     id: parseInt(req.params.id),
                 },
             });
+            // Borramos el avatar guardado, solo si no tiene asiganada la imagen por defecto. Sino, la borraria
+            if (userLogged.avatar != 'default.jpg'){
+                fs.unlinkSync('./public/images/users/' + userLogged.avatar);
+            }
             req.session.destroy();
             return res.redirect('/');
         } catch (error) {

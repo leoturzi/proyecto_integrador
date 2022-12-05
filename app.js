@@ -8,6 +8,7 @@ const productsRouter = require('./routes/products');
 const usersRouter = require('./routes/users');
 const cartRouter = require('./routes/cart');
 const aboutRouter = require('./routes/about');
+const contactRouter = require('./routes/contact');
 
 //API Routers
 const productsRouterAPI = require('./routes/api/products');
@@ -50,6 +51,7 @@ app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/about', aboutRouter);
+app.use('/contact', contactRouter);
 
 //Routers API
 app.use('/api/products', productsRouterAPI);

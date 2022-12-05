@@ -57,8 +57,8 @@
                 <% } %>
             </div>
             <div class="input-container">
-                <label for="provincia">Provincia*</label>
-                <select style="display: block" name="provincia">
+                <label for="province">Provincia*</label>
+                <select style="display: block" name="province">
                     <option value="" selected>Seleccionar</option>
                     <option value="Buenos Aires">Buenos Aires</option>
                     <option value="Buenos Aires Capital">
@@ -89,21 +89,21 @@
                     <option value="Tierra del Fuego">Tierra del Fuego</option>
                     <option value="Tucuman">Tucuman</option>
                 </select>
-                <% if (locals.errors && errors.provincia) { %>
-                <div class="text-danger"><%= errors.provincia.msg %></div>
+                <% if (locals.errors && errors.province) { %>
+                <div class="text-danger"><%= errors.province.msg %></div>
                 <% } %>
             </div>
             <div class="input-container">
-                <label for="password">Calle*</label>
+                <label for="street">Calle*</label>
                 <input
                     type="text"
-                    id="calle"
-                    name="calle"
+                    id="street"
+                    name="street"
                     placeholder="la rioja 956"
-                    value="<%= locals.oldData ? oldData.calle : null %>"
+                    value="<%= locals.oldData ? oldData.street : null %>"
                 />
-                <% if (locals.errors && errors.calle) { %>
-                <div class="text-danger"><%= errors.calle.msg %></div>
+                <% if (locals.errors && errors.street) { %>
+                <div class="text-danger"><%= errors.street.msg %></div>
                 <% } %>
             </div>
             <div class="input-container">
