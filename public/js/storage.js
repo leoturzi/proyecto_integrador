@@ -1,4 +1,4 @@
-window.addEventListener('load', (e) => {
+window.addEventListener('load', async (e) => {
     let addToCartButtons = document.querySelectorAll('.btn-addToCart');
     let cartItemCounter = document.querySelector('.cart-item-counter');
 
@@ -58,13 +58,28 @@ window.addEventListener('load', (e) => {
     // Call refresh número de carrito, cada vez que se cargue cualquier parte del sitio.
     refreshCounter();
 
+    // Carga el carrito al storage una vez que el usuario inicia sesion
+    if (!sessionStorage.getItem('cart')) {
+        await fetch('http://localhost:3033/api/users/cart')
+            .then((userJson) => userJson.json())
+            .then((userData) => sessionStorage.setItem('cart', userData));
+    } else {
+    }
+
+    // Envia la data del cart almacenado en el storage una vez que cerramos/cambiamos de tab en el browser
     addEventListener('visibilitychange', (event) => {
         if (document.visibilityState === 'hidden') {
-            // llamado a la API
-            navigator.sendBeacon(
-                'http://localhost:3033/api/cart/update_cart',
-                JSON.stringify(sessionStorage)
-            );
+            if (sessionStorage) {
+                navigator.sendBeacon(
+                    'http://localhost:3033/api/cart/update_cart',
+                    JSON.stringify(sessionStorage.getItem('cart'))
+                );
+            } else {
+                navigator.sendBeacon(
+                    'http://localhost:3033/api/cart/update_cart',
+                    '[]'
+                );
+            }
         }
     });
 });

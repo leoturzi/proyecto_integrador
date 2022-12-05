@@ -22,20 +22,21 @@ include('../partials/header')%> <%- include('../partials/nav')%>
                         >
                     </button>
                     <button class="btn">
-                        <a href="/cart/orders"
-                            >Ordenes de compra</a
-                        >
+                        <a href="/cart/orders">Ordenes de compra</a>
                     </button>
                     <button class="btn">Cambiar Password</button>
                     <button class="btn">
-                        <a href="/users/logout">Log Out</a>
+                        <a id="logout" href="/users/logout">Log Out</a>
                     </button>
                 </div>
                 <p class="delete-user">
-                    <a href="/users/delete/<%= user.id  %>  ">Eliminar usuario</a>
+                    <a href="/users/delete/<%= user.id  %>  "
+                        >Eliminar usuario</a
+                    >
                 </p>
             </div>
         </div>
     </main>
 </div>
+<script src="/js/userProfile.js"></script>
 <%- include('../partials/footer') %>

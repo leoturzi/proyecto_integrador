@@ -85,7 +85,6 @@ const cartController = {
                         where: { id: req.session.userLogged.id },
                     }
                 );
-                console.log('cart actualizado');
                 return;
             } catch (error) {
                 throw new Error(

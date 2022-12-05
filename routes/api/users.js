@@ -5,6 +5,9 @@ const usersControllerAPI = require('../../controllers/api/usersController');
 // GET user List
 router.get('/', usersControllerAPI.list);
 
+// GET user Cart
+router.get('/cart', usersControllerAPI.getUserCart);
+
 // GET user Detail
 router.get('/:id', usersControllerAPI.detail);
 

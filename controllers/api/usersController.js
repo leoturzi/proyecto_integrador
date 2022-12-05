@@ -27,6 +27,7 @@ const usersController = {
                 'provincia',
                 'calle',
                 'avatar',
+                'cart',
             ],
         })
             .then((user) => {
@@ -38,6 +39,7 @@ const usersController = {
                         email: user['dataValues']['email'],
                         provincia: user['dataValues']['provincia'],
                         calle: user['dataValues']['calle'],
+                        cart: user['dataValues']['cart'],
                         avatarURL:
                             'localhost:3000/images/users/' +
                             user['dataValues']['avatar'],
@@ -54,6 +56,12 @@ const usersController = {
                     message: 'Something unexpected just happened',
                 });
             });
+    },
+
+    getUserCart: async (req, res) => {
+        if (req.session.userLogged) {
+            return res.send(req.session.userLogged.cart);
+        }
     },
 };
 module.exports = usersController;
