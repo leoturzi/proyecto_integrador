@@ -86,7 +86,7 @@ function MainContent(){
           <section className='mc-card last-pc'>
             <div className='mc-card__head mc-card__head--green'>
               <h1 className='mc-card__title'>Last User Registered</h1>
-              <p className='mc-card__text'>{lastUser.first_name} {lastUser.last_name}</p>
+              <p className='mc-card__text --capitalized'>{lastUser.first_name} {lastUser.last_name}</p>
               <p className='mc-card__text'>{lastUser.email}</p>
             </div>
             <div className='mc-card__img-container'>
