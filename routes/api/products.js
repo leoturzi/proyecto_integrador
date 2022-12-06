@@ -6,6 +6,9 @@ const productsControllerAPI = require('../../controllers/api/productsController'
 //GET All products
 router.get('/', productsControllerAPI.allProducts);
 
+// GET LAST product details
+router.get('/last', productsControllerAPI.lastProduct);
+
 // GET 1 product detail
 router.get('/:id', productsControllerAPI.detail);
 

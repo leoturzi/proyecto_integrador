@@ -206,6 +206,41 @@ const productsController = {
                 });
             });
     },
+    lastProduct : (req, res) => {
+        db.Products.findAll({
+            include: ['brands', 'categories', 'colors'],
+            attributes: [
+                'id',
+                'name',
+                'price',
+                'shortDesc',
+                'longDesc',
+                'image',
+                'dispatch',
+                'discount',
+            ],
+            order:[['id', 'DESC']],      
+            limit: 1,
+        })
+        .then(productList =>{
+            let lastProduct = productList[0];
+            let processedProduct = {
+              id: lastProduct["dataValues"]["id"],
+              name: lastProduct["dataValues"]["name"],
+              price: lastProduct["dataValues"]["price"],
+              image: lastProduct["dataValues"]["image"],
+              shortDesc: lastProduct["dataValues"]["shortDesc"],
+              longDesc: lastProduct["dataValues"]["longDesc"],
+              dispatch: lastProduct["dataValues"]["dispatch"],
+              discount: lastProduct["dataValues"]["discount"],
+              brand: lastProduct["dataValues"]["brands"]["dataValues"]["name"],
+              category: lastProduct["dataValues"]["categories"]["dataValues"]["name"],
+              color: lastProduct["dataValues"]["colors"]["dataValues"]["name"],
+              url:`http://localhost:${process.env.PORT}/images/products/` + lastProduct["dataValues"]["image"],
+            };
+            res.json({processedProduct});
+        })
+    }
 };
 
 module.exports = productsController;

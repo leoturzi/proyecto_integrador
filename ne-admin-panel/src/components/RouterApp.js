@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 import AllProducts from './AllProducts/AllProducts';
 import AllUsers from './AllUsers/AllUsers';
 import Statistics from './Statistics/Statistics';
-import MainContent from './MainContent';
+import MainContent from './MainContent/MainContent';
 import './RouterApp.css'
 
 import Error404 from './Error404';

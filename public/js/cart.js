@@ -133,7 +133,7 @@ window.addEventListener('load', (e) => {
             if (cart[productIndex].q == 1) {
                 cart.splice(productIndex, 1);
                 fetchedProducts.splice(productIndex, 1);
-                localStorage.setItem("cart", JSON.stringify(cart));
+                sessionStorage.setItem("cart", JSON.stringify(cart));
                 let itemInCart = document.querySelector(`.cart-item${pId}`);
                 itemInCart.remove();
                 refreshCounter();
@@ -156,7 +156,7 @@ window.addEventListener('load', (e) => {
                 --cart[productIndex].q;
                 --fetchedProducts[productIndex].q;
                 updateQuantities(pId, 'lower');
-                localStorage.setItem("cart", JSON.stringify(cart));
+                sessionStorage.setItem("cart", JSON.stringify(cart));
                 refreshCounter();
                 // Y si no hay nada en el carrito es porque ese elemento era el único y último
                 // Sacamos el array entero del storage.
@@ -173,7 +173,7 @@ window.addEventListener('load', (e) => {
             let productIndex = cart.findIndex(product => product.id == pId);
             ++cart[productIndex].q;
             ++fetchedProducts[productIndex].q;
-            localStorage.setItem("cart", JSON.stringify(cart));
+            sessionStorage.setItem("cart", JSON.stringify(cart));
             updateQuantities(pId, 'raise');
             refreshCounter();
             updateItemSubtotal(pId, productIndex)

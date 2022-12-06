@@ -1,6 +1,5 @@
+import toThousand from '../../assets/utils/toThousand';
 function ProductTableRow({id, name, price, category, brand, stock}){
-
-    const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
     return(
         <tr>

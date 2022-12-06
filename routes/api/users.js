@@ -8,6 +8,9 @@ router.get('/', usersControllerAPI.list);
 // GET user Cart
 router.get('/cart', usersControllerAPI.getUserCart);
 
+// GET user LAST USER
+router.get('/last', usersControllerAPI.lastUser);
+
 // GET user Detail
 router.get('/:id', usersControllerAPI.detail);
 

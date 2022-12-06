@@ -64,5 +64,36 @@ const usersController = {
             return res.send(req.session.userLogged.cart);
         }
     },
+    lastUser : (req, res) => {
+        db.User.findOne({
+            attributes: [
+                'id',
+                'first_name',
+                'last_name',
+                'email',
+                'detail',
+                'province',
+                'street',
+                'avatar',
+                'cart',
+            ],
+            order:[['id', 'DESC']],      
+            limit: 1,
+        })
+        .then(user => {
+            res.json({
+                user : {
+                    id: user["dataValues"]["id"],
+                    first_name: user["dataValues"]["first_name"],
+                    last_name: user["dataValues"]["last_name"],
+                    email: user["dataValues"]["email"],
+                    provincia: user["dataValues"]["province"],
+                    calle: user["dataValues"]["street"],
+                    cart: user["dataValues"]["cart"],
+                    avatarURL:`http://localhost:${process.env.PORT}/images/users/` + user["dataValues"]["avatar"],
+                }
+            });
+        })
+    }
 };
 module.exports = usersController;
