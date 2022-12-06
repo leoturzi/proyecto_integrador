@@ -2,11 +2,23 @@ const db = require('../../database/models');
 const Op = db.Sequelize.Op;
 
 const cartController = {
+    allDetails: (req, res) => {
+        db.OrderDetails.findAll()
+            .then((results) => {
+                return res.json({
+                    total: results.length,
+                    orders: results,
+                });
+            })
+            .catch((err) => {
+                res.json({
+                    message: 'Hubo un error al procesar tu consulta',
+                    error: err,
+                });
+            });
+    },
     allOrders: (req, res) => {
         db.Orders.findAll({
-            where: {
-                user_id: req.session.userLogged.id,
-            },
             include: ['products'],
         })
             .then((results) => {
@@ -17,10 +29,37 @@ const cartController = {
             })
             .catch((err) => {
                 res.json({
-                    message: 'Bad request',
+                    message: 'Hubo un error al procesar tu consulta',
                     error: err,
                 });
             });
+    },
+    allUserOrders: (req, res) => {
+        if (req.session.userLogged) {
+            db.Orders.findAll({
+                where: {
+                    user_id: req.session.userLogged.id,
+                },
+                include: ['products'],
+            })
+                .then((results) => {
+                    return res.json({
+                        total: results.length,
+                        orders: results,
+                    });
+                })
+                .catch((err) => {
+                    res.json({
+                        message: 'Hubo un error al procesar tu consulta',
+                        error: err,
+                    });
+                });
+        } else {
+            res.json({
+                status : 'error',
+                message : 'No hay ningun usuario logeado!'
+            })
+        }
     },
     orderDetails: (req, res) => {
         db.OrderDetails.findAll({
@@ -92,6 +131,22 @@ const cartController = {
                 );
             }
         }
+    },
+    lastFiveSold : (req, res) => {
+        db.OrderDetails.findAll({
+            include: [db.Products],
+            order:[['id', 'DESC']],      
+            limit: 5,
+        })
+        .then(lastItems => {
+            let items = []
+            lastItems.forEach(item => {
+                items.push(item.Product.name);
+            })
+            res.json({
+                items
+            })
+        })
     },
 };
 

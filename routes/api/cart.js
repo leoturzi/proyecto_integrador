@@ -2,8 +2,18 @@ const express = require('express');
 const router = express.Router();
 const cartControllerAPI = require('../../controllers/api/cartController');
 
-// GET all orders
-router.get('/orders', cartControllerAPI.allOrders);
+// GET all orders FROM LOGGED USER
+router.get('/orders', cartControllerAPI.allUserOrders);
+
+// GET all orders FROM LOGGED USER
+router.get('/allOrders', cartControllerAPI.allOrders);
+
+// GET all DETAILS
+router.get('/allOrderDetails', cartControllerAPI.allDetails);
+
+// GET last five sold products
+router.get('/lastFiveSold', cartControllerAPI.lastFiveSold);
+
 // GET all details of 1 order
 router.get('/orders/details/:orderId', cartControllerAPI.orderDetails);
 // POST - Create order
