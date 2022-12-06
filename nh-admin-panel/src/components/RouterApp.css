@@ -1,0 +1,12 @@
+div.content-wrapper {
+    margin-left: 0;
+    background:linear-gradient(26deg, #b5b5b5 0%, rgb(236, 236, 236) 100%);
+    min-height: 100vh;
+}
+
+
+@media screen and (min-width: 768px) {
+    div.content-wrapper {
+        margin-left: 200px;
+    }
+}

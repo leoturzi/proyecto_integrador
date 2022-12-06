@@ -1,11 +1,12 @@
 const fs = require('fs');
 const db = require('../../database/models');
 const Op = db.Sequelize.Op;
+require('dotenv').config();
 
 const usersController = {
     list: (req, res) => {
         db.User.findAll({
-            attributes: ['id', 'first_name', 'email', 'detail'],
+            attributes: ['id', 'first_name', 'email', 'last_name', 'email', 'detail'],
         })
             .then((results) => {
                 return res.json({
@@ -41,7 +42,7 @@ const usersController = {
                         calle: user['dataValues']['street'],
                         cart: user['dataValues']['cart'],
                         avatarURL:
-                            'localhost:3000/images/users/' +
+                        `http://localhost:${process.env.PORT}/images/users/` +
                             user['dataValues']['avatar'],
                     });
                 } else {

@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 require('dotenv').config();
+const cors = require('cors');
 
 // Routers
 const mainRouter = require('./routes/main');
@@ -30,6 +31,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
 // implementacion middlewares
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

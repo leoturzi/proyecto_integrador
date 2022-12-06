@@ -137,7 +137,7 @@ const productsController = {
                 return res.status(200).json({
                     product: processedProduct,
                     url:
-                        `localhost:3000/images/products/` +
+                        `http://localhost:${process.env.PORT}/images/products/` +
                         productToDetail.image,
                 });
             })
@@ -168,7 +168,7 @@ const productsController = {
                 { association: 'categories' },
                 { association: 'colors' },
             ],
-            attributes: ['id', 'name', 'category_id', 'detail'],
+            attributes: ['id', 'name', 'category_id', 'detail', 'stock', 'price'],
         });
 
         Promise.all([byCategories, allProducts])
@@ -186,6 +186,9 @@ const productsController = {
                         id: results[1][i].id,
                         name: results[1][i].name,
                         category: results[1][i].categories.name,
+                        brand: results[1][i].brands.name,
+                        price: results[1][i].price,
+                        stock: results[1][i].stock,
                         detail: results[1][i].detail,
                     };
                     processedResults.push(formattedResult);

@@ -1,0 +1,90 @@
+.mc-container {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-title {
+    font-size: 24px;
+    padding: 20px 0px;
+    text-align: center;
+
+}
+
+.panel {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px 25px;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+}
+
+.mc-img {
+    width: 185px;
+}
+
+.mc-img__container {
+    margin-bottom: 25px;
+}
+
+.options {
+    box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+}
+
+.options * {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.panel__option {
+    border-bottom: 1px solid #e1f1ff;
+    padding: 25px;
+}
+
+.panel__option:last-child {
+    border-bottom: none;
+}
+
+@media (min-width:768px) {
+    .mc-container {
+        width: 75%;
+        padding: 50px 50px 0;
+    }
+
+    .mc-img {
+        width: 205px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .mc-container {
+        width: 100%;
+    }
+
+    .options {
+        flex-direction: row;
+    }
+
+    .mc-img {
+        width: 100%;
+    }
+
+    .panel__option {
+        border-bottom: none;
+        border-right: 1px solid #e1f1ff;
+        flex-basis: 34%;
+        /* Como sabemos que van a ir solo 3 items, dividimos el basis por la cantida dde items (3), pero podriamos setearlo en 100% si no supieramos cuantos items van a entrar, para que ocupen todo el flex container
+        flex-basis: 100%; */
+        padding: 25px 50px;
+    }
+
+    .panel__option:last-child {
+        border-right: none;
+    }
+}
