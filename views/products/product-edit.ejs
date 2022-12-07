@@ -11,7 +11,7 @@
 							<div class="input-container">
 								<label for="name">Nombre</label>
 								<input type="text" name="name" id="name"
-									value='<%= locals.oldData ? oldData.name : product.name %>'>
+									value='<%= locals.oldData && oldData.name? oldData.name : product.name %>'>
 								<% if (locals.errors && errors.name) { %>
 									<div class="text-danger">
 										<%= errors.name.msg %>
@@ -80,7 +80,7 @@
 							<div class="input-container">
 								<label for="shortDesc">Descripción breve</label>
 								<textarea name="shortDesc" cols="30" rows="3"
-									id="shortDesc"> <%= locals.oldData ? oldData.shortDesc : product.shortDesc %></textarea>
+									id="shortDesc"> <%= locals.oldData && oldData.shortDesc? oldData.shortDesc : product.shortDesc %></textarea>
 								<% if (locals.errors && errors.shortDesc) { %>
 									<div class="text-danger">
 										<%= errors.shortDesc.msg %>
@@ -91,7 +91,7 @@
 							<div class="input-container">
 								<label for="longDesc">Descripción detallada</label>
 								<textarea name="longDesc" cols="30" rows="10"
-									id="longDesc"> <%= locals.oldData ? oldData.shortDesc : product.longDesc %> </textarea>
+									id="longDesc"> <%= locals.oldData && oldData.longDesc? oldData.longDesc : product.longDesc %> </textarea>
 								<% if (locals.errors && errors.longDesc) { %>
 									<div class="text-danger">
 										<%= errors.longDesc.msg %>
@@ -130,7 +130,7 @@
 							<div class="input-container">
 								<label for="price">Precio</label>
 								<input type="text" name="price" id="price"
-									value='<%= locals.oldData ? oldData.name : product.price %>'>
+									value='<%= locals.oldData && oldData.price? oldData.price : product.price %>'>
 								<% if (locals.errors && errors.color) { %>
 									<div class="text-danger">
 										<%= errors.price.msg %>
@@ -170,7 +170,7 @@
 							<div class="input-container">
 								<label for="discount">Descuento </label>
 								<input type="text" name="discount" id="discount"
-									value='<%= locals.oldData ? oldData.name : product.discount %>'>
+									value='<%= locals.oldData && oldData.discount ? oldData.discount : product.discount %>'>
 								<% if (locals.errors && errors.discount) { %>
 									<div class="text-danger">
 										<%= errors.discount.msg %>
@@ -181,7 +181,7 @@
 							<div class="input-container">
 								<label for="stock">Stock disponible </label>
 								<input type="text" name="stock" id="stock"
-									value='<%= locals.oldData ? oldData.name : product.stock %>'>
+									value='<%= locals.oldData && oldData.stock ? oldData.stock : product.stock %>'>
 								<% if (locals.errors && errors.stock) { %>
 									<div class="text-danger">
 										<%= errors.stock.msg %>
