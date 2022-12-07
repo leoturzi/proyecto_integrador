@@ -16,7 +16,7 @@ window.addEventListener('load', (e) => {
     // Si hay carrito en storage, me lo traigo
     // Por cada producto me traigo el registro entero
     // Si vinieron productos, en cada vuelta agrego cada producto al final
-    if (sessionStorage.cart) {
+    if (sessionStorage.cart && sessionStorage.cart.length > 2) {
         cart = JSON.parse(sessionStorage.cart) || [];
         cart.forEach((item, i) => {
             fetch(`/api/products/${item.id}`)
@@ -60,7 +60,9 @@ window.addEventListener('load', (e) => {
                     <div class="cart-item__lower-desc">
                     <div class="cart-item__quantity-and-trash">
                     <i class="fa-solid fa-arrow-up" data-pid="${item.id}"></i>
-                    <span class="cart-item__quantity">Q. <span class="cart-item__quantity${item.id}"> ${item.q}</span></span>
+                    <span class="cart-item__quantity">Q. <span class="cart-item__quantity${
+                        item.id
+                    }"> ${item.q}</span></span>
                     <i class="fa-solid fa-arrow-down" data-pid="${item.id}"></i>
                     <a class='item--cursor-pointer'><i class="fa-solid fa-trash-can" data-pid="${
                         item.id
@@ -69,7 +71,11 @@ window.addEventListener('load', (e) => {
                         parseFloat(product.price)
                     )}</span></p>
                     </div>
-                    <p class="cart-item__total-price">$<span class="cart-item__total-price${item.id}"> ${toThousand(parseFloat(product.price * item.q, 2).toFixed(2))}</span></p>
+                    <p class="cart-item__total-price">$<span class="cart-item__total-price${
+                        item.id
+                    }"> ${toThousand(
+                                parseFloat(product.price * item.q, 2).toFixed(2)
+                            )}</span></p>
                     </div>
                     
                 </div>
@@ -110,17 +116,19 @@ window.addEventListener('load', (e) => {
                     });
 
                     // Funcion para aumentar las cantidades de un producto del carrito
-                    let btnRaiseQuantity = document.querySelectorAll('.fa-arrow-up');
-                    btnRaiseQuantity.forEach(button => {
-                        button.addEventListener('click',(e) => {
+                    let btnRaiseQuantity =
+                        document.querySelectorAll('.fa-arrow-up');
+                    btnRaiseQuantity.forEach((button) => {
+                        button.addEventListener('click', (e) => {
                             let idProd = e.target.dataset.pid;
                             raiseQuantity(idProd, cart);
                         });
                     });
                     // Funcion para disminuirlas
-                    let btnLowerQuantity = document.querySelectorAll('.fa-arrow-down');
-                    btnLowerQuantity.forEach(button => {
-                        button.addEventListener('click',(e) => {
+                    let btnLowerQuantity =
+                        document.querySelectorAll('.fa-arrow-down');
+                    btnLowerQuantity.forEach((button) => {
+                        button.addEventListener('click', (e) => {
                             let idProd = e.target.dataset.pid;
                             lowerQuantity(idProd, cart);
                         });
@@ -128,67 +136,70 @@ window.addEventListener('load', (e) => {
                 });
         });
 
-        function lowerQuantity(pId, cart){
-            let productIndex = cart.findIndex(product => product.id == pId);
+        function lowerQuantity(pId, cart) {
+            let productIndex = cart.findIndex((product) => product.id == pId);
             if (cart[productIndex].q == 1) {
                 cart.splice(productIndex, 1);
                 fetchedProducts.splice(productIndex, 1);
-                sessionStorage.setItem("cart", JSON.stringify(cart));
+                sessionStorage.setItem('cart', JSON.stringify(cart));
                 let itemInCart = document.querySelector(`.cart-item${pId}`);
                 itemInCart.remove();
                 refreshCounter();
                 cartToast.fire({
                     icon: 'warning',
                     title: `Item removed from the cart`,
-                  });
-                if(cart.length == 0) {
+                });
+                if (cart.length == 0) {
                     sessionStorage.setItem('cart', JSON.stringify([]));
-                    navigator.sendBeacon('http://localhost:3033/api/cart/update_cart','[]');
+                    navigator.sendBeacon(
+                        'http://localhost:3033/api/cart/update_cart',
+                        '[]'
+                    );
                     fetchedProducts = [];
 
                     renderEmptyCart();
                     cartToast.fire({
                         icon: 'info',
-                        title: 'You have emptied your cart'
+                        title: 'You have emptied your cart',
                     });
                 }
             } else {
                 --cart[productIndex].q;
                 --fetchedProducts[productIndex].q;
                 updateQuantities(pId, 'lower');
-                sessionStorage.setItem("cart", JSON.stringify(cart));
+                sessionStorage.setItem('cart', JSON.stringify(cart));
                 refreshCounter();
                 // Y si no hay nada en el carrito es porque ese elemento era el único y último
                 // Sacamos el array entero del storage.
                 // Reflejamos nuestra modificación en nuestro arreglo de productos seleccionados (reflejo del storage)
-                  cartToast.fire({
+                cartToast.fire({
                     icon: 'info',
-                    title: 'Quantity decreased'
-                  });
-                  updateItemSubtotal(pId, productIndex)
+                    title: 'Quantity decreased',
+                });
+                updateItemSubtotal(pId, productIndex);
             }
             updateTotal();
         }
-        function raiseQuantity(pId, cart){
-            let productIndex = cart.findIndex(product => product.id == pId);
+        function raiseQuantity(pId, cart) {
+            let productIndex = cart.findIndex((product) => product.id == pId);
             ++cart[productIndex].q;
             ++fetchedProducts[productIndex].q;
-            sessionStorage.setItem("cart", JSON.stringify(cart));
+            sessionStorage.setItem('cart', JSON.stringify(cart));
             updateQuantities(pId, 'raise');
             refreshCounter();
-            updateItemSubtotal(pId, productIndex)
+            updateItemSubtotal(pId, productIndex);
             updateTotal();
             cartToast.fire({
                 icon: 'info',
-                title: 'Quantity increased!'
-                });
+                title: 'Quantity increased!',
+            });
         }
-        function updateQuantities(pId, action){
+        function updateQuantities(pId, action) {
             let itemQ = document.querySelector(`.cart-item__quantity${pId}`);
             let qNumber = Number(itemQ.innerText);
-            if (action == 'raise'){
+            if (action == 'raise') {
                 itemQ.innerText = ++qNumber;
-            } else if (action == 'lower'){
+            } else if (action == 'lower') {
                 itemQ.innerText = --qNumber;
             }
         }
@@ -286,7 +297,10 @@ window.addEventListener('load', (e) => {
     // Remueve todo el carrito, y además te limpia el HTML
     function vaciarStorage() {
         sessionStorage.setItem('cart', JSON.stringify([]));
-        navigator.sendBeacon('http://localhost:3033/api/cart/update_cart','[]');
+        navigator.sendBeacon(
+            'http://localhost:3033/api/cart/update_cart',
+            '[]'
+        );
         renderEmptyCart();
     }
 
@@ -318,7 +332,7 @@ window.addEventListener('load', (e) => {
             sessionStorage.setItem('cart', '[]');
             fetchedProducts = [];
             // Y hacemos que coincida la realidad con lo que ve el usuario. Limpiamos el html.
-            renderEmptyCart();
+            vaciarStorage();
             cartToast.fire({
                 icon: 'info',
                 title: 'You have emptied your cart',
@@ -352,9 +366,16 @@ window.addEventListener('load', (e) => {
         )}`;
     }
 
-    function updateItemSubtotal(pId, pIndex){
-        let itemSubtotal = document.querySelector(`.cart-item__total-price${pId}`);
-        itemSubtotal.innerText = toThousand(parseFloat(fetchedProducts[pIndex].price * fetchedProducts[pIndex].q, 2).toFixed(2));
+    function updateItemSubtotal(pId, pIndex) {
+        let itemSubtotal = document.querySelector(
+            `.cart-item__total-price${pId}`
+        );
+        itemSubtotal.innerText = toThousand(
+            parseFloat(
+                fetchedProducts[pIndex].price * fetchedProducts[pIndex].q,
+                2
+            ).toFixed(2)
+        );
     }
 
     const cartToast = Swal.mixin({

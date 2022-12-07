@@ -5,22 +5,14 @@ const fs = require('fs');
 const validations = [
     body('image')
         .custom((value, { req }) => {
-            const file = req.file;
-            const validExt = ['.jpg', '.png', '.jpeg'];
-            const fileExt = path.extname(file.originalname);
-            if (!file) {
-                throw new Error(
-                    'Debes subir una imagen'
-                );
-            } else if (!validExt.includes(fileExt)){
-                fs.unlinkSync(file.path);
-                throw new Error(
-                    'Debes subir una imagen en formato jpg, jpeg o png'
-                    );
+            if (req.isInvalidExt) {
+                return false;
             }
-
-            return true;
+            if (req.file) {
+                return true;
+            }
         })
+        .withMessage('Debes subir una imagen en formato jpg, jpeg o png')
         .bail(),
     body('name')
         .notEmpty()
@@ -42,8 +34,14 @@ const validations = [
             return true;
         })
         .bail(),
-    body('shortDesc').notEmpty().withMessage('Debes ingresar una descripción corta').bail(),
-    body('longDesc').notEmpty().withMessage('Debes ingresar una descripción larga').bail(),
+    body('shortDesc')
+        .notEmpty()
+        .withMessage('Debes ingresar una descripción corta')
+        .bail(),
+    body('longDesc')
+        .notEmpty()
+        .withMessage('Debes ingresar una descripción larga')
+        .bail(),
     body('color')
         .custom((value) => {
             if (value === '') {
@@ -53,10 +51,20 @@ const validations = [
         })
         .bail(),
     body('price').notEmpty().withMessage('Debes ingresar un precio').bail(),
-    body('dispatch').notEmpty().withMessage('Debes elegir si el envío es gratuito o no').bail(),
-    body('discount').notEmpty().withMessage('Debes indicar un descuento. Ingresa un número entre 0 y 100').bail(),
-    body('stock').notEmpty().withMessage('Debes ingresar stock disponible').bail()
-
+    body('dispatch')
+        .notEmpty()
+        .withMessage('Debes elegir si el envío es gratuito o no')
+        .bail(),
+    body('discount')
+        .notEmpty()
+        .withMessage(
+            'Debes indicar un descuento. Ingresa un número entre 0 y 100'
+        )
+        .bail(),
+    body('stock')
+        .notEmpty()
+        .withMessage('Debes ingresar stock disponible')
+        .bail(),
 ];
 
 module.exports = { validations, validationResult };

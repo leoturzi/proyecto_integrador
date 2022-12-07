@@ -140,6 +140,9 @@
                     placeholder="Contraseña"
                 />
             </div>
+            <% if (locals.errors && errors.tyc) { %>
+            <div class="text-danger"><%= errors.tyc.msg %></div>
+            <% } %>
             <button type="submit" class="btn">Registrarme</button>
             <p class="registro">
                 Ya tenés cuenta?

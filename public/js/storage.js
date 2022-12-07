@@ -62,7 +62,10 @@ window.addEventListener('load', async (e) => {
     if (!sessionStorage.getItem('cart')) {
         await fetch('http://localhost:3033/api/users/cart')
             .then((userJson) => userJson.json())
-            .then((userData) => sessionStorage.setItem('cart', userData));
+            .then((userData) => {
+                sessionStorage.setItem('cart', userData);
+                refreshCounter();
+            });
     } else {
     }
 
@@ -74,12 +77,13 @@ window.addEventListener('load', async (e) => {
                     'http://localhost:3033/api/cart/update_cart',
                     JSON.stringify(sessionStorage.getItem('cart'))
                 );
-            } else {
-                navigator.sendBeacon(
-                    'http://localhost:3033/api/cart/update_cart',
-                    '[]'
-                );
             }
+            // else {
+            //     navigator.sendBeacon(
+            //         'http://localhost:3033/api/cart/update_cart',
+            //         '[]'
+            //     );
+            // }
         }
     });
 });

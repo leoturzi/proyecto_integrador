@@ -52,6 +52,9 @@ const validations = [
             }
         })
         .withMessage('Debes subir una imagen en formato jpg, jpeg o png'),
+    body('tyc')
+        .exists()
+        .withMessage('Debes Aceptar los terminos y condiciones'),
 ];
 
 module.exports = { validations, validationResult };
