@@ -12,7 +12,7 @@
 						alt="<%= product.name %>"
 						class="card__img"
 					/>
-					<p class="card__price"> $<%= toThousand(product.price) %></p>
+					<p class="card__price"> $ <%= toThousand(product.price) %></p>
 					<% if (product.dispatch == 1) { %>
 					<p class="card__dispatch">Envio gratis</p>
 					<% } %>

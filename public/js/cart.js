@@ -68,10 +68,10 @@ window.addEventListener('load', (e) => {
                         item.id
                     }"></i></a>
                     <p class="cart-item--green"> <span class="cart-item__price">$ ${toThousand(
-                        parseFloat(product.price)
+                        parseInt((product.price * (100 - product.discount))/100)
                     )}</span></p>
                     </div>
-                    <p class="cart-item__total-price">$<span class="cart-item__total-price${item.id}">${toThousand(parseFloat(product.price * item.q, 2).toFixed(2))}</span></p>
+                    <p class="cart-item__total-price">$ <span class="cart-item__total-price${item.id}">${toThousand(parseInt(((product.price * (100 - product.discount))/100) * item.q))}</span></p>
                     </div>
                     
                 </div>
@@ -84,6 +84,7 @@ window.addEventListener('load', (e) => {
                         fetchedProducts.push({
                             id: product.id,
                             price: product.price,
+                            discount: product.discount,
                             q: item.q,
                         });
                     } else {
@@ -175,7 +176,7 @@ window.addEventListener('load', (e) => {
             let fullShippingAddress = street.value + ', ' + city.value;
             // Preparamos el body del POST para crear la orden
             let formData = {
-                amount: parseFloat(getSubtotal(fetchedProducts)).toFixed(2),
+                amount: parseFloat(getSubtotal(fetchedProducts)),
                 shippingAddress: fullShippingAddress,
                 phone: phone.value,
                 paymentMethod: paymentMethod.value,
@@ -250,7 +251,7 @@ window.addEventListener('load', (e) => {
     // Sección derecha del carrito. Precio x cantidad
     function getSubtotal(products) {
         return products.reduce((acum, elem) => {
-            return (acum += elem.price * elem.q);
+            return (acum += parseInt(((elem.price * (100 - elem.discount))/100) * elem.q));
         }, 0);
     }
 
@@ -331,7 +332,7 @@ window.addEventListener('load', (e) => {
     }
     function updateTotal() {
         totalAmountOutput.innerText = `$${toThousand(
-            parseFloat(getSubtotal(fetchedProducts)).toFixed(2)
+            parseInt(getSubtotal(fetchedProducts))
         )}`;
     }
 
@@ -339,12 +340,8 @@ window.addEventListener('load', (e) => {
         let itemSubtotal = document.querySelector(
             `.cart-item__total-price${pId}`
         );
-        itemSubtotal.innerText = toThousand(
-            parseFloat(
-                fetchedProducts[pIndex].price * fetchedProducts[pIndex].q,
-                2
-            ).toFixed(2)
-        );
+        itemSubtotal.innerText = toThousand(parseInt(((fetchedProducts[pIndex].price * (100 - fetchedProducts[pIndex].discount))/100) * fetchedProducts[pIndex].q))
+        
     }
 
     const cartToast = Swal.mixin({

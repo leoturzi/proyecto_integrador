@@ -22,7 +22,7 @@ window.addEventListener('load', (e) => {
                 <td>${detail.id}</td>
                 <td>${detail.Product.name}</td>
                 <td>${detail.quantity}</td>
-                <td>$ ${toThousand((detail.Product.price).toFixed(2))}</td>            
+                <td>$ ${toThousand((detail.Product.price))}</td>            
                 `
                 tableBody.append(detailRow)
             })

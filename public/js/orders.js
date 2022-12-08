@@ -11,11 +11,11 @@ window.addEventListener('load', (e) => {
             tableBody.innerHTML =
             `
             <tr class="cart-orders__row">
-                <th>Date</th>
-                <th>Shipping Address</th>
-                <th>Payment Method</th>
+                <th>Fecha</th>
+                <th>Domicilio</th>
+                <th>Método de pago</th>
                 <th>Total</th>
-                <th>Details</th>
+                <th>Detalles</th>
             </tr>
             `;
             renderOrders(allOrders)
@@ -48,7 +48,7 @@ window.addEventListener('load', (e) => {
                 <td>${creationTime.toLocaleDateString('es-ES')}</td>
                 <td>${order.shippingAddress}</td>
                 <td>${order.paymentMethod}</td>
-                <td>$${toThousand(order.amount.toFixed(2))}</td>
+                <td>$${toThousand(order.amount)}</td>
                 <td><a href="/cart/orders/details/${order.id}"">Ver</a></td>
             `
             tableBody.append(orderRow)
