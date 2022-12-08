@@ -20,9 +20,14 @@
 						<%= productToDetail.shortDesc %>
 					</p>
 					<div class="card-detail__price">
-						<p>$ <%= toThousand(productToDetail.price) %></p>
+						<% if( productToDetail.discount == 0) { %>
+							<p>$ <%= toThousand(productToDetail.price) %></p>
+						<% } else { %>
+							<p class="--newPrice">$ <%= toThousand(parseInt((productToDetail.price * (100 - productToDetail.discount)) /100)) %></p>
+							<p class="--oldPrice">$ <%= toThousand(productToDetail.price) %></p>
+						<% } %>
 					</div>
-
+					
 					<a href="#" class="btn btn-product-edit btn-anchor btn-addToCart" data-id="<%=productToDetail.id%>">Agregar al carrito</a>
 					<div class="card-details__payment-methods">
 						<h3>Metodos de pago</h3>
@@ -65,7 +70,12 @@
 									alt="<%=product.name%>"
 									class="card__img"
 								/>
-								<p class="card__price">$ <%=toThousand(product.price)%></p>
+								<% if( product.discount == 0) { %>
+									<p>$ <%= toThousand(product.price) %></p>
+								<% } else { %>
+									<p class="card__price --newPrice">$ <%= toThousand(parseInt((product.price * (100 - product.discount)) /100)) %></p>
+									<span class="card__price --discountOff"><%=product.discount%>% off!</span>
+								<% } %>
 								<% if (product.dispatch == "1") { %>
 								<p class="card__dispatch">Envio gratis</p>
 								<% } %>

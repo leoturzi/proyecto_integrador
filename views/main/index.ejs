@@ -52,7 +52,14 @@
 									alt="<%=product.name%>"
 									class="card__img"
 								/>
-								<p class="card__price">$ <%=toThousand(product.price)%></p>
+								
+								<% if( product.discount == 0) { %>
+									<p>$ <%= toThousand(product.price) %></p>
+								<% } else { %>
+									<p class="card__price --newPrice">$ <%= toThousand(parseInt((product.price * (100 - product.discount)) /100)) %></p>
+									<span class="card__price --discountOff"><%=product.discount%>% off!</span>
+								<% } %>
+								
 								<% if (product.dispatch == "1") { %>
 								<p class="card__dispatch">Envio gratis</p>
 								<% } %>
