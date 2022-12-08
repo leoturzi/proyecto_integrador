@@ -228,6 +228,7 @@ const usersController = {
                 fs.unlinkSync('./public/images/users/' + userLogged.avatar);
             }
             req.session.destroy();
+            res.clearCookie('userEmail');
             return res.redirect('/');
         } catch (error) {
             throw new Error(
