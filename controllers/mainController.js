@@ -1,18 +1,20 @@
 const db = require('../database/models');
 const Op = db.Sequelize.Op;
+let toThousand = require('../utils/toThousand')
 
 const mainController = {
     index : (req, res) => {
         let categoryRedirect = true;
         let allCategories = db.Categories.findAll();
-        let someProducts = db.Products.findAll({limit: 12});
+        let someProducts = db.Products.findAll({limit: 12, order: db.Sequelize.literal('rand()')});
         Promise.all([someProducts, allCategories])
         .then(values => {
             res.render('main/index', {
                 products : values[0],
                 categories : values[1],
                 title:'Home',
-                categoryRedirect
+                categoryRedirect,
+                toThousand
             })
         })
     },
@@ -39,7 +41,7 @@ const mainController = {
             order:[['name', 'DESC']]
         })
         .then(queryResults => {
-            res.render('main/results', {queryProducts : queryResults, productsQuery, title:'Search results'});
+            res.render('main/results', {queryProducts : queryResults, productsQuery, title:'Search results', toThousand});
         }) 
     }
 }

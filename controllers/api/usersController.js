@@ -61,7 +61,11 @@ const usersController = {
 
     getUserCart: async (req, res) => {
         if (req.session.userLogged) {
-            return res.send(req.session.userLogged.cart);
+            return res.json(req.session.userLogged.cart);
+        } else {
+            return res.json({
+                error : 'No hay ningun usuario logeado aun!'
+            })
         }
     },
     lastUser : (req, res) => {

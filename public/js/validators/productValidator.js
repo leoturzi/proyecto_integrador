@@ -41,6 +41,9 @@ window.addEventListener("load", function () {
       errores.color = "Debes elegir un color";
     } else if (price.value.length < 1 || isNaN(parseInt(price.value))) {
       errores.price = "Debes completar el precio. Ingresa solo numeros";
+    } else if (!image.value) {
+      errores.image =
+        "Debes subir una imagen";
     } else if (
       image.value &&
       !image.value.slice(-4).includes(".jpg" || ".png") &&
@@ -53,8 +56,16 @@ window.addEventListener("load", function () {
     } else if (discount.value.length < 1) {
       errores.discount =
         "Debes indicar el descuento a aplicar. Ingresa un número entre 0 y 100";
+    } else if (isNaN(discount.value) || (parseInt(discount.value) < 0) || (parseInt(discount.value) >= 100)) {
+      console.log(isNaN(discount.value))
+      console.log(parseInt(discount.value) < 0)
+      console.log(parseInt(discount.value) >= 100)
+      errores.discount =
+        "Debes ingresar un numero entre 0 y 99";
     } else if (stock.value.length < 1) {
-      errores.stock = "Debes completar el stock inicial. Ingresa solo números";
+      errores.stock = "Debes completar el stock inicial";
+    } else if (isNaN(stock.value)) {
+      "Ingresa solo números";
     }
     if (Object.keys(errores).length >= 1) {
       nameError.innerText = errores.name ? errores.name : "";
@@ -66,6 +77,7 @@ window.addEventListener("load", function () {
       priceError.innerText = errores.price ? errores.price : "";
       imageError.innerText = errores.image ? errores.image : "";
       discountError.innerText = errores.discount ? errores.discount : "";
+      dispatchError.innerText = errores.dispatch ? errores.dispatch : "";
       stockError.innerText = errores.stock ? errores.stock : "";
       dispatchError.innerText = errores.dispatch ? errores.dispatch : "";
     } else {

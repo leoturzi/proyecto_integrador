@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const db = require('../database/models');
 const Op = db.Sequelize.Op;
+let provinces = ['Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Corrientes', 'Entre Rios', ' Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquen', 'Rio Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 'Tucuman']
 
 const usersController = {
     login: (req, res) => {
@@ -48,6 +49,15 @@ const usersController = {
                     },
                 });
             }
+        } else if (!userToLogin && username.trim() === '') {
+            return res.render('users/login', {
+                title: 'Login',
+                errors: {
+                    email: {
+                        msg: 'Ingresa tu nombre de usuario',
+                    },
+                },
+            });
         } else {
             return res.render('users/login', {
                 title: 'Login',
@@ -61,10 +71,11 @@ const usersController = {
     },
 
     register: (req, res) => {
-        return res.render('users/register', { title: 'Register' });
+        return res.render('users/register', { title: 'Register', provinces});
     },
 
     processRegister: async (req, res) => {
+        
         // renderizado de errores
         console.log(req.body);
         const results = validationResult(req);
@@ -74,6 +85,7 @@ const usersController = {
             }
             return res.render('users/register', {
                 title: 'Register',
+                provinces,
                 errors: results.mapped(),
                 oldData: req.body,
             });
@@ -154,9 +166,9 @@ const usersController = {
         } else {
             // Almacenamos los campos editados
             // Si el usuario cambia la imagen, borramos la anterior
-            if (req.file) {
-                fs.unlinkSync('./public/images/users/' + userLogged.avatar);
-            }
+            // if (req.file) {
+            //     fs.unlinkSync('./public/images/users/' + userLogged.avatar);
+            // }
             // Actualizamos la base de datos
             try {
                 await db.User.update(
@@ -173,12 +185,16 @@ const usersController = {
                     }
                 );
 
+                if (req.file && userLogged.avatar != 'default.jpg') {
+                    fs.unlinkSync('./public/images/users/' + userLogged.avatar);
+                }
                 // Actualizamos los datos de session
                 req.session.userLogged = {
                     ...userLogged,
                     ...userEdits,
                     avatar: req.file ? req.file.filename : userLogged.avatar,
                 };
+                
                 return res.redirect('/');
             } catch (error) {
                 throw new Error(

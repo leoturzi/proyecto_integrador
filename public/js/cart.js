@@ -142,6 +142,10 @@ window.addEventListener('load', (e) => {
                 cart.splice(productIndex, 1);
                 fetchedProducts.splice(productIndex, 1);
                 sessionStorage.setItem('cart', JSON.stringify(cart));
+                navigator.sendBeacon(
+                    'http://localhost:3033/api/cart/update_cart',
+                    sessionStorage.getItem('cart')
+                    );
                 let itemInCart = document.querySelector(`.cart-item${pId}`);
                 itemInCart.remove();
                 refreshCounter();
@@ -151,10 +155,7 @@ window.addEventListener('load', (e) => {
                 });
                 if (cart.length == 0) {
                     sessionStorage.setItem('cart', JSON.stringify([]));
-                    navigator.sendBeacon(
-                        'http://localhost:3033/api/cart/update_cart',
-                        '[]'
-                    );
+                    navigator.sendBeacon('http://localhost:3033/api/cart/update_cart', sessionStorage.getItem('cart'));
                     fetchedProducts = [];
 
                     renderEmptyCart();
@@ -168,6 +169,10 @@ window.addEventListener('load', (e) => {
                 --fetchedProducts[productIndex].q;
                 updateQuantities(pId, 'lower');
                 sessionStorage.setItem('cart', JSON.stringify(cart));
+                navigator.sendBeacon(
+                    'http://localhost:3033/api/cart/update_cart',
+                    sessionStorage.getItem('cart')
+                    );
                 refreshCounter();
                 // Y si no hay nada en el carrito es porque ese elemento era el único y último
                 // Sacamos el array entero del storage.
@@ -185,6 +190,10 @@ window.addEventListener('load', (e) => {
             ++cart[productIndex].q;
             ++fetchedProducts[productIndex].q;
             sessionStorage.setItem('cart', JSON.stringify(cart));
+            navigator.sendBeacon(
+                'http://localhost:3033/api/cart/update_cart',
+                sessionStorage.getItem('cart')
+                );
             updateQuantities(pId, 'raise');
             refreshCounter();
             updateItemSubtotal(pId, productIndex);
@@ -317,6 +326,10 @@ window.addEventListener('load', (e) => {
             fetchedProducts.splice(productIndex, 1);
             sessionStorage.setItem('cart', JSON.stringify(cart));
             // Al mismo tiempo, deleteamos el HTML vinculado (por supuesto...) al ID real del objeto.
+            navigator.sendBeacon(
+                'http://localhost:3033/api/cart/update_cart',
+                sessionStorage.getItem('cart')
+                );
             let itemInCart = document.querySelector(`.cart-item${pId}`);
             itemInCart.remove();
             // Actualizamos el numerito del ícono
@@ -330,6 +343,10 @@ window.addEventListener('load', (e) => {
             // Sacamos el array entero del storage.
             // Reflejamos nuestra modificación en nuestro arreglo de productos seleccionados (reflejo del storage)
             sessionStorage.setItem('cart', '[]');
+            navigator.sendBeacon(
+                'http://localhost:3033/api/cart/update_cart',
+                JSON.stringify([])
+                );
             fetchedProducts = [];
             // Y hacemos que coincida la realidad con lo que ve el usuario. Limpiamos el html.
             vaciarStorage();
@@ -385,5 +402,5 @@ window.addEventListener('load', (e) => {
         timer: 2000,
     });
     // Ni bien carga o si venimos de una redirección, revisar el storage para mantener actualizado el HTML
-    checkCart();
+    checkCart();    
 });

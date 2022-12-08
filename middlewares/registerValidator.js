@@ -26,8 +26,12 @@ const validations = [
             return true;
         })
         .bail(),
-    body('street').notEmpty().withMessage('Debes ingresar una calle').bail(),
-    body('phone').notEmpty().withMessage('Debes ingresar un telefono').bail(),
+    body('street')
+        .notEmpty().withMessage('Debes ingresar una calle').bail()
+        .isAlphanumeric(['es-ES'], {ignore : ' '}).withMessage('El campo debe contener tanto la calle como la altura ').bail(),
+    body('phone')
+        .notEmpty().withMessage('Debes ingresar un telefono').bail()
+        .isNumeric().withMessage('Debes ingresar solo numeros').bail(),
     body('password')
         .notEmpty()
         .withMessage('Debes ingresar un password')
@@ -44,10 +48,9 @@ const validations = [
         ),
     body('avatar')
         .custom((value, { req }) => {
-            if (req.isInvalidExt) {
+            if (req.file &&req.isInvalidExt) {
                 return false;
-            }
-            if (req.file) {
+            } else {
                 return true;
             }
         })

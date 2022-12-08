@@ -3,8 +3,12 @@ const Op = db.Sequelize.Op;
 
 const cartController = {
     cart: async (req, res) => {
+        let cartExists = false;
+        if (JSON.parse(req.session.userLogged.cart).length > 0) {
+            cartExists = true
+        }
         let cartScript = true;
-        res.render('cart/cart',{title:'Cart', cartScript});
+        res.render('cart/cart',{title:'Cart', cartScript, cartExists});
     },
     details: (req, res) => {
             let orderDetailsScript = true;

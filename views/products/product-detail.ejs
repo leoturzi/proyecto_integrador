@@ -8,22 +8,22 @@
 				<div class="card-details__img-container">
 					<img
 						class="card-details__img"
-						src="/images/products/<%= product.image || 'default.jpg' %>"
-						alt="<%= product.name %>"
+						src="/images/products/<%= productToDetail.image || 'default.jpg' %>"
+						alt="<%= productToDetail.name %>"
 					/>
 				</div>
 				<div class="card-detail__info">
 					<h3 class="card-detail__name">
-						<%= product.name %>
+						<%= productToDetail.name %>
 					</h3>
 					<p class="card-detail__short-desc">
-						<%= product.shortDesc %>
+						<%= productToDetail.shortDesc %>
 					</p>
 					<div class="card-detail__price">
-						<p>$<%= product.price %></p>
+						<p>$<%= toThousand(productToDetail.price) %></p>
 					</div>
 
-					<a href="#" class="btn btn-product-edit btn-anchor btn-addToCart" data-id="<%=product.id%>">Agregar al carrito</a>
+					<a href="#" class="btn btn-product-edit btn-anchor btn-addToCart" data-id="<%=productToDetail.id%>">Agregar al carrito</a>
 					<div class="card-details__payment-methods">
 						<h3>Metodos de pago</h3>
 						<img src="/images/metodos-de-pago2.png" alt="" />
@@ -31,15 +31,15 @@
 					<div class="card-details__long-desc">
 						<h3>Descripcion</h3>
 						<p>
-							<%= product.longDesc %>
+							<%= productToDetail.longDesc %>
 						</p>
 					</div>
 
 					<a href="/products" class="btn btn-product-edit btn-anchor">VOLVER</a>
 					<% if (locals.isAdmin) { %>
-						<a href="/products/<%= product.id %>/edit" class="btn btn-product-edit btn-anchor">EDITAR PRODUCTO</a>
+						<a href="/products/<%= productToDetail.id %>/edit" class="btn btn-product-edit btn-anchor">EDITAR PRODUCTO</a>
 						<a href="" class="btn danger btn-product-edit btn-anchor">
-						<form action="/products/<%= product.id %>?_method=DELETE" method="POST">
+						<form action="/products/<%= productToDetail.id %>?_method=DELETE" method="POST">
 							<button type="submit" class="btn btn-details btn--transparent btn--no-shadow">ELIMINAR</button>
 						</form>
 						</a>
@@ -53,113 +53,28 @@
 		<section class="interest">
 			<div class="interest__text">
 				<h3>Te puede interesar</h3>
-				<h4>ver todo</h4>
+				<h4><a href="/products/" class="categories-seeAll">ver todo</a></h4>
 			</div>
-			<ul class="products-list">
-				<li class="card">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card-img"
-					/>
-					<p class="card-precio">$ 150.000</p>
-					<p class="card-envio">Envio gratis</p>
-					<p class="card-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card-img"
-					/>
-					<p class="card-precio">$ 150.000</p>
-					<p class="card-envio">Envio gratis</p>
-					<p class="card-nombre">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card display-lg">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card display-lg">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card display-xl">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
-				<li class="card display-xxl">
-					<img
-						src="https://musicopolix.com/173830-home_default/lpr58volbnh1.jpg"
-						alt="Gibson Les Paul"
-						class="card__img"
-					/>
-					<p class="card__price">$ 150.000</p>
-					<p class="card__dispatch">Envio gratis</p>
-					<p class="card__name">
-						Gibson 1958 Les Paul Standar LB Guitarra electrica
-					</p>
-					<button class="btn">Comprar</button>
-				</li>
+			<ul class="products-list main-product-list">
+				<% if (locals.products && locals.products.length > 0) { %>
+					<% for (let product of products) { %>
+						<a href="/products/<%=product.id%>" class="main-flexchild card__link">
+							<li class="card card--aligned main-card">
+								<img
+									src="/images/products/<%= product.image || 'default.jpg' %>"
+									alt="<%=product.name%>"
+									class="card__img"
+								/>
+								<p class="card__price">$ <%=toThousand(product.price)%></p>
+								<% if (product.dispatch == "1") { %>
+								<p class="card__dispatch">Envio gratis</p>
+								<% } %>
+								<p class="card__name"> <%=product.name%> </p>
+								<button class="btn">Comprar</button>
+							</li>
+						</a>
+					<% } %>
+				<% } %>
 			</ul>
 		</section>
 		<section class="brands">

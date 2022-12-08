@@ -4,11 +4,11 @@ const path = require('path');
 const editUserValidations = [
     body('first_name')
         .notEmpty()
-        .withMessage('Debes ingresar un Nombre')
+        .withMessage('Debes ingresar un nombre')
         .bail(),
     body('last_name')
         .notEmpty()
-        .withMessage('Debes ingresar un Apellido')
+        .withMessage('Debes ingresar un apellido')
         .bail(),
     body('email')
         .notEmpty()

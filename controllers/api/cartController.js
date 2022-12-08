@@ -115,7 +115,7 @@ const cartController = {
     },
     update_cart: async (req, res) => {
         if (req.session.userLogged) {
-            try {
+            try {                
                 await db.User.update(
                     {
                         cart: req.body,
@@ -124,12 +124,19 @@ const cartController = {
                         where: { id: req.session.userLogged.id },
                     }
                 );
-                return;
+                req.session.userLogged.cart = req.body
+                return res.json({
+                    message : 'Carrito Actualizado'
+                })
             } catch (error) {
                 throw new Error(
                     'Ocurrio un problema al actualizar la informacion, intente nuevamente mas tarde'
                 );
             }
+        } else {
+            return res.json({
+                error : 'No hay ningun usuario logeado aun!'
+            })
         }
     },
     lastFiveSold : (req, res) => {

@@ -6,7 +6,7 @@ include('../partials/header')%> <%- include('../partials/nav')%>
             <h3>Tu informacion</h3>
 
             <div class="img-profile">
-                <img src="/images/users/<%= user.avatar && user.avatar != '' ? user.avatar : 'default.jpg' %> " alt="user.first_name"/>
+                <img src="/images/users/<%= user.avatar && user.avatar != '' ? user.avatar : 'default.jpg' %> " alt="<%=user.first_name%>"/>
             </div>
             <div class="info-profile">
                 <h3>Nombre:</h3>

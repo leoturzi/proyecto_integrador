@@ -2,10 +2,12 @@
 <%- include('../partials/nav')%>
 <div class="container--fixed">
   <main>
+	<% if (locals.cartExists) { %>
     <form action="/" class="cart">
       <div class="cart__body">
         <h2 class="cart__title">Tu carrito</h2>
         <!-- IF Storage is not empty -- renderCart()  -->
+		
       </div>
       <div class="cart-subtotal">
         <p class="cart-subtotal__text">Total</p>
@@ -52,7 +54,12 @@
       </article>
 
       <!-- IF storage is empty -->
-
+	  <% } else { %>
+		<div>
+            <p class="cart-subtotal__text">No tienes agregado ningún producto al carrito de compras</p>
+            <a href="/products" class="btn btn-product-edit btn-anchor">Buscar productos</a>
+        </div>
+		<% } %>
       <!-- renderEmptyCart() > Empty Cart -->
     </form>
   </main>

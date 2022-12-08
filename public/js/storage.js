@@ -33,11 +33,19 @@ window.addEventListener('load', async (e) => {
                     });
                 }
                 sessionStorage.setItem('cart', JSON.stringify(cart));
+                navigator.sendBeacon(
+                    'http://localhost:3033/api/cart/update_cart',
+                    sessionStorage.getItem('cart')
+                    );
             } else {
                 sessionStorage.setItem(
                     'cart',
                     JSON.stringify([{ id: e.target.dataset.id, q: 1 }])
                 );
+                navigator.sendBeacon(
+                    'http://localhost:3033/api/cart/update_cart',
+                    sessionStorage.getItem('cart')
+                    );
                 cartToast.fire({
                     icon: 'success',
                     title: `Item added to cart`,
@@ -63,25 +71,36 @@ window.addEventListener('load', async (e) => {
         await fetch('http://localhost:3033/api/users/cart')
             .then((userJson) => userJson.json())
             .then((userData) => {
-                sessionStorage.setItem('cart', userData);
-                refreshCounter();
+                if (!userData.error) {
+                    userData = JSON.parse(userData);
+                    if (userData.length != 0) {                        
+                        sessionStorage.setItem('cart', JSON.stringify(userData));
+                        refreshCounter();
+                    }
+                } else if (userData.error) {
+                    return;
+                    console.log('pido carrito pero no hay')
+                }
             });
-    } else {
-    }
+    } 
+    // else {
+    //     console.log('no estoy pidiendo ningun carrito')
+    // }
 
     // Envia la data del cart almacenado en el storage una vez que cerramos/cambiamos de tab en el browser
     addEventListener('visibilitychange', (event) => {
         if (document.visibilityState === 'hidden') {
-            if (sessionStorage) {
+            if (sessionStorage && sessionStorage.getItem('cart')!== null) {
                 navigator.sendBeacon(
                     'http://localhost:3033/api/cart/update_cart',
-                    JSON.stringify(sessionStorage.getItem('cart'))
+                    sessionStorage.getItem('cart')
+                    // JSON.stringify(sessionStorage.getItem('cart'))
                 );
             }
-            // else {
+            // else if (sessionStorage && sessionStorage.getItem('cart') === null) {
             //     navigator.sendBeacon(
             //         'http://localhost:3033/api/cart/update_cart',
-            //         '[]'
+            //         JSON.stringify([])
             //     );
             // }
         }

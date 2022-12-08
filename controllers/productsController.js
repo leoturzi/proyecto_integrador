@@ -2,7 +2,7 @@ const { validationResult } = require("../middlewares/createProductValidator");
 const fs = require("fs");
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
-
+let toThousand = require('../utils/toThousand')
 const productsController = {
   list: (req, res) => {
     db.Products.findAll({
@@ -11,10 +11,12 @@ const productsController = {
         { association: "categories" },
         { association: "colors" },
       ],
+      order: db.Sequelize.literal('rand()')
     }).then((products) => {
       return res.render("products/products", {
         products,
         title: "All Products",
+        toThousand
       });
     });
   },
@@ -29,7 +31,7 @@ const productsController = {
         colors: values[1],
         brands: values[2],
         title: "New Product",
-        productValidatorScript,
+        productValidatorScript
       });
     });
   },
@@ -81,13 +83,17 @@ const productsController = {
     }
   },
   detail: (req, res) => {
-    let cartScript = true;
-    db.Products.findByPk(req.params.id, {
+    let someProducts = db.Products.findAll({limit: 12, order: db.Sequelize.literal('rand()')});
+    let productToDetail = db.Products.findByPk(req.params.id, {
       include: ["brands", "categories", "colors"],
-    }).then((productToDetail) => {
+    })
+    Promise.all([someProducts, productToDetail])
+    .then((values) => {
       res.render("products/product-detail", {
-        product: productToDetail,
-        title: "Detail"
+        products : values[0],
+        productToDetail : values[1],
+        title: "Detail",
+        toThousand
       });
     });
   },
@@ -115,7 +121,9 @@ const productsController = {
     });
   },
   update: (req, res) => {
+    console.log('HOLA')
     const results = validationResult(req);
+    console.log(results.errors)
     if (results.errors.length > 0) {
       let editProductValidatorScript = true;
       let categories = db.Categories.findAll();
@@ -137,7 +145,8 @@ const productsController = {
             product: values[3],
             title: "Edit Product",
             editProductValidatorScript,
-            oldData: req.body
+            oldData: req.body,
+            errors: results.mapped(),
           });
         }
       );
