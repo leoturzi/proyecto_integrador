@@ -105,6 +105,9 @@
         <%  if (locals.cartScript) { %>
             <script src="/js/cart.js"></script>
         <% } %> 
+        <%  if (locals.cartScript && locals.cartExists) { %>
+            <script src="/js/validators/checkoutValidator.js"></script>
+        <% } %> 
         <%  if (locals.orderScript) { %>
             <script src="/js/orders.js"></script>
         <% } %>

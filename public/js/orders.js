@@ -39,10 +39,13 @@ window.addEventListener('load', (e) => {
             let orderRow = document.createElement('tr');
             orderRow.setAttribute('class', 'cart-orders__row');
             orderRow.classList.add(`cart-orders__row-${i}`)
-            let creationTime = order.created_at;
+            let creationTime = new Date();
+
+            // let creationTime2 = order.created_at;
+            // <td>${creationTime2.substring(0,10)}</td>
             orderRow.innerHTML= 
             `
-                <td>${creationTime.substring(0,10)}</td>
+                <td>${creationTime.toLocaleDateString('es-ES')}</td>
                 <td>${order.shippingAddress}</td>
                 <td>${order.paymentMethod}</td>
                 <td>$${toThousand(order.amount.toFixed(2))}</td>

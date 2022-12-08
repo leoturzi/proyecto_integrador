@@ -14,6 +14,7 @@ window.addEventListener('load', async (e) => {
 
     addToCartButtons.forEach((button) => {
         button.addEventListener('click', (e) => {
+            e.preventDefault()
             if (sessionStorage.cart) {
                 let cart = JSON.parse(sessionStorage.cart);
                 let productIndex = cart.findIndex(

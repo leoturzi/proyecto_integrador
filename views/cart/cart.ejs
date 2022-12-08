@@ -19,27 +19,38 @@
 			<div class="--width50">
 				<div class="input-container">
 					<label for="city">Localidad</label>
-					<input type="text" id="city"/>
+					<select style="display: block" name="city" id="city">
+						<option value="">---Seleccionar</option>
+						<% for (let i = 0; i < provinces.length; i++) { %>
+							<option value="<%=provinces[i]%>"%>>
+							  <%=provinces[i]%>
+							</option>
+						<% } %>
+					</select>
+					<p class="form-error" id="cityError"></p>
 				</div>
 				<div class="input-container">
-					<label for="street">Calle</label>
+					<label for="street">Direccion</label>
 					<input type="text" id="street"/>
+					<p class="form-error" id="streetError"></p>
 				</div>
 			</div>
 			<div class="--width50">
 				<div class="input-container">
 					<label for="paymentMethod">Método de pago</label>
 					<select id="paymentMethod">
-					  <option value=""></option>
+					  <option value="">---Seleccionar</option>
 					  <option value="Tarjeta de Credito">Crédito</option>
 					  <option value="Tarjeta de Debito">Débito</option>
 					  <option value="Efectivo">Efectivo</option>
 					  <option value="Criptomonedas">Cripto</option>
 					</select>
+					<p class="form-error" id="paymentMethodError"></p>
 				  </div>
 				<div class="input-container">
 					<label for="phone">Teléfono de contacto</label>
 					<input type="text" id="phone"/>
+					<p class="form-error" id="phoneError"></p>
 				</div>
 			</div>
 		</div>
@@ -49,7 +60,7 @@
             >Seguir comprado</a
           >
           <br />
-          <button type="submit" class="btn btn-product-edit">Finalizar compra</button>
+          <button type="submit" class="btn btn-product-edit" id="btnSubmitOrder">Finalizar compra</button>
         </div>
       </article>
 

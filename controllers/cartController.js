@@ -1,5 +1,6 @@
 const db = require('../database/models');
 const Op = db.Sequelize.Op;
+let provinces = ['Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Corrientes', 'Entre Rios', ' Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquen', 'Rio Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 'Tucuman']
 
 const cartController = {
     cart: async (req, res) => {
@@ -8,7 +9,7 @@ const cartController = {
             cartExists = true
         }
         let cartScript = true;
-        res.render('cart/cart',{title:'Cart', cartScript, cartExists});
+        res.render('cart/cart',{title:'Cart', cartScript, cartExists, provinces});
     },
     details: (req, res) => {
             let orderDetailsScript = true;

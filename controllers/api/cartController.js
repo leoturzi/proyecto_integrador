@@ -155,6 +155,16 @@ const cartController = {
             })
         })
     },
+    totalProductsSold : (req, res) => {
+        db.OrderDetails.findAll({
+            include: [db.Products]
+        }).then(details => {
+            res.json({
+                details
+            })
+        })
+
+    }
 };
 
 module.exports = cartController;

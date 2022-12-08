@@ -10,12 +10,21 @@ function Statistics(){
     const [totalProducts, setTotalProducts] = useState([]);
     const [totalOrders, setTotalOrders] = useState([]);
     const [totalEarnings, setTotalEarnings] = useState([]);
-    const [sales, setSales] = useState([]);
-    // const [theMostSold, settheMostSold] = useState([]);
-
+    const [totalQuantities, setTotalQuantities] = useState([]);
     useEffect(() => {
-        
 
+        fetch(`http://localhost:3033/api/cart/totalProductsSold`)
+        .then(response => response.json())
+        .then(data => {
+            let totalProdVendidos = data.details.reduce((acum, order) => { 
+                return acum + order.quantity
+            }, 0)
+            setTotalQuantities({
+                title : 'Cantidades de Items vendidos',
+                info : totalProdVendidos
+            })
+        })
+        
         fetch(`http://localhost:3033/api/cart/allOrders`)
         .then(response => response.json())
         .then(data => {
@@ -31,13 +40,6 @@ function Statistics(){
                 info : `$${toThousand(earnings)}`
             })
 
-            let totalProdVendidos = data.orders.reduce((acum, order)=>{
-                return acum + order.products.length;
-            },0)
-            setSales({
-                title : 'Total Productos Vendidos',
-                info : totalProdVendidos
-            })
         })
 
         fetch(`http://localhost:3033/api/products`)
@@ -78,7 +80,7 @@ function Statistics(){
         })
     }, [])
 
-    let dataSets = [last5Sold, totalCategories, totalUsers, totalProducts, totalOrders, totalEarnings, sales];
+    let dataSets = [last5Sold, totalCategories, totalUsers, totalProducts, totalOrders, totalEarnings, totalQuantities];
     return(
         <>
             <h1 className="main-title">ESTADISTICAS</h1>

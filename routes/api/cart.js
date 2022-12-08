@@ -14,6 +14,9 @@ router.get('/allOrderDetails', cartControllerAPI.allDetails);
 // GET last five sold products
 router.get('/lastFiveSold', cartControllerAPI.lastFiveSold);
 
+// GET the number of the Total quantities sold
+router.get('/totalProductsSold', cartControllerAPI.totalProductsSold);
+
 // GET all details of 1 order
 router.get('/orders/details/:orderId', cartControllerAPI.orderDetails);
 // POST - Create order

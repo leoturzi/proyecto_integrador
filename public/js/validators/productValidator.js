@@ -57,9 +57,7 @@ window.addEventListener("load", function () {
       errores.discount =
         "Debes indicar el descuento a aplicar. Ingresa un número entre 0 y 100";
     } else if (isNaN(discount.value) || (parseInt(discount.value) < 0) || (parseInt(discount.value) >= 100)) {
-      console.log(isNaN(discount.value))
-      console.log(parseInt(discount.value) < 0)
-      console.log(parseInt(discount.value) >= 100)
+
       errores.discount =
         "Debes ingresar un numero entre 0 y 99";
     } else if (stock.value.length < 1) {

@@ -152,14 +152,14 @@ const productsController = {
         // Lo mismo que en fila 40. Pidieron esto.
         let byCategories = db.Products.findAll({
             attributes: [
-                'categories.name',
+                'categories.title',
                 [
                     db.Sequelize.fn('count', db.Sequelize.col('category_id')),
                     'count',
                 ],
             ],
             include: ['categories'],
-            group: ['categories.name', 'categories.id'],
+            group: ['categories.title', 'categories.id'],
         });
 
         let allProducts = db.Products.findAll({
@@ -177,7 +177,7 @@ const productsController = {
 
                 for (let i = 0; i < results[0].length; i++) {
                     countByCategories[
-                        results[0][i]['dataValues']['categories']['name']
+                        results[0][i]['dataValues']['categories']['title']
                     ] = results[0][i]['dataValues']['count'];
                 }
                 let processedResults = [];

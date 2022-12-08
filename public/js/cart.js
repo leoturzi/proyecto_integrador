@@ -71,11 +71,7 @@ window.addEventListener('load', (e) => {
                         parseFloat(product.price)
                     )}</span></p>
                     </div>
-                    <p class="cart-item__total-price">$<span class="cart-item__total-price${
-                        item.id
-                    }"> ${toThousand(
-                                parseFloat(product.price * item.q, 2).toFixed(2)
-                            )}</span></p>
+                    <p class="cart-item__total-price">$<span class="cart-item__total-price${item.id}">${toThousand(parseFloat(product.price * item.q, 2).toFixed(2))}</span></p>
                     </div>
                     
                 </div>
@@ -136,99 +132,53 @@ window.addEventListener('load', (e) => {
                 });
         });
 
-        function lowerQuantity(pId, cart) {
-            let productIndex = cart.findIndex((product) => product.id == pId);
-            if (cart[productIndex].q == 1) {
-                cart.splice(productIndex, 1);
-                fetchedProducts.splice(productIndex, 1);
-                sessionStorage.setItem('cart', JSON.stringify(cart));
-                navigator.sendBeacon(
-                    'http://localhost:3033/api/cart/update_cart',
-                    sessionStorage.getItem('cart')
-                    );
-                let itemInCart = document.querySelector(`.cart-item${pId}`);
-                itemInCart.remove();
-                refreshCounter();
-                cartToast.fire({
-                    icon: 'warning',
-                    title: `Item removed from the cart`,
-                });
-                if (cart.length == 0) {
-                    sessionStorage.setItem('cart', JSON.stringify([]));
-                    navigator.sendBeacon('http://localhost:3033/api/cart/update_cart', sessionStorage.getItem('cart'));
-                    fetchedProducts = [];
-
-                    renderEmptyCart();
-                    cartToast.fire({
-                        icon: 'info',
-                        title: 'You have emptied your cart',
-                    });
-                }
-            } else {
-                --cart[productIndex].q;
-                --fetchedProducts[productIndex].q;
-                updateQuantities(pId, 'lower');
-                sessionStorage.setItem('cart', JSON.stringify(cart));
-                navigator.sendBeacon(
-                    'http://localhost:3033/api/cart/update_cart',
-                    sessionStorage.getItem('cart')
-                    );
-                refreshCounter();
-                // Y si no hay nada en el carrito es porque ese elemento era el único y último
-                // Sacamos el array entero del storage.
-                // Reflejamos nuestra modificación en nuestro arreglo de productos seleccionados (reflejo del storage)
-                cartToast.fire({
-                    icon: 'info',
-                    title: 'Quantity decreased',
-                });
-                updateItemSubtotal(pId, productIndex);
-            }
-            updateTotal();
-        }
-        function raiseQuantity(pId, cart) {
-            let productIndex = cart.findIndex((product) => product.id == pId);
-            ++cart[productIndex].q;
-            ++fetchedProducts[productIndex].q;
-            sessionStorage.setItem('cart', JSON.stringify(cart));
-            navigator.sendBeacon(
-                'http://localhost:3033/api/cart/update_cart',
-                sessionStorage.getItem('cart')
-                );
-            updateQuantities(pId, 'raise');
-            refreshCounter();
-            updateItemSubtotal(pId, productIndex);
-            updateTotal();
-            cartToast.fire({
-                icon: 'info',
-                title: 'Quantity increased!',
-            });
-        }
-        function updateQuantities(pId, action) {
-            let itemQ = document.querySelector(`.cart-item__quantity${pId}`);
-            let qNumber = Number(itemQ.innerText);
-            if (action == 'raise') {
-                itemQ.innerText = ++qNumber;
-            } else if (action == 'lower') {
-                itemQ.innerText = --qNumber;
-            }
-        }
+        
         // Esta función puede ser que pueda ir en otra parte del código, hay que testear el scope
         // Prevenimos el default del form
         // Traemos y procesamos toda la info con la que vamos a llenar 1 registro de la tabla orders
         cartContainer.addEventListener('submit', (e) => {
             e.preventDefault();
-            let paymentMethodInput =
-                document.querySelector('#paymentMethod').value;
-            let phoneInput = document.querySelector('#phone').value;
-            let streetInput = document.querySelector('#street').value;
-            let cityInput = document.querySelector('#city').value;
-            let fullShippingAddress = streetInput + ', ' + cityInput;
+            let paymentMethod = document.querySelector("#paymentMethod");
+            let paymentMethodError = document.querySelector("#paymentMethodError");
+            let city = document.querySelector("#city");
+            let cityError = document.querySelector("#cityError");
+            let street = document.querySelector("#street");
+            let streetError = document.querySelector("#streetError");
+            let phone = document.querySelector("#phone");
+            let phoneError = document.querySelector("#phoneError");
+
+            let errores = {};
+      
+            console.log(phone.value.length > 14);
+            console.log(phone.value.length);
+
+            if (city.value == "") {
+                errores.city = "Debes elegir una localidad";
+            } else if (street.value.length < 1) {
+                errores.street = "Debes ingresar una direccion de envio";
+            } else if (paymentMethod.value == "") {
+                errores.paymentMethod = "Debes elegir un metodo de pago";
+            } else if ((phone.value.length < 8) || isNaN(parseInt(phone.value))) {
+                errores.phone = "Ingresa un telefono de contacto. Entre 8 numeros y 14";
+            } else if (phone.value.length > 14) {
+                errores.phone = "Ingresa un telefono de contacto. Entre 8 numeros y 14";
+            }
+            
+
+            if (Object.keys(errores).length >= 1) {
+                paymentMethodError.innerText = errores.paymentMethod ? errores.paymentMethod : "";
+                cityError.innerText = errores.city ? errores.city : "";
+                streetError.innerText = errores.street ? errores.street : "";
+                phoneError.innerText = errores.phone ? errores.phone : "";
+            } else {
+                
+            let fullShippingAddress = street.value + ', ' + city.value;
             // Preparamos el body del POST para crear la orden
             let formData = {
                 amount: parseFloat(getSubtotal(fetchedProducts)).toFixed(2),
                 shippingAddress: fullShippingAddress,
-                phone: phoneInput,
-                paymentMethod: paymentMethodInput,
+                phone: phone.value,
+                paymentMethod: paymentMethod.value,
             };
             // Preparamos el la config default..
             let config = {
@@ -243,6 +193,7 @@ window.addEventListener('load', (e) => {
             // El post de la orden
             // Y 1 post por cada order-detail
             createOrderAndOrderDetails(config);
+        }
         });
 
         //Todo esto si hay storage. Ahora, si no hay storage no hay carrito.
@@ -321,9 +272,10 @@ window.addEventListener('load', (e) => {
     function removeItemFromCart(pId, cart) {
         if (cart.length > 1) {
             let productIndex = cart.findIndex((product) => product.id == pId);
+            let productIndexInFetched = fetchedProducts.findIndex((product) => product.id == pId);
             // Lo sacamos de nuestro reflejo de storage, y actualizamos el storage
             cart.splice(productIndex, 1);
-            fetchedProducts.splice(productIndex, 1);
+            fetchedProducts.splice(productIndexInFetched, 1);
             sessionStorage.setItem('cart', JSON.stringify(cart));
             // Al mismo tiempo, deleteamos el HTML vinculado (por supuesto...) al ID real del objeto.
             navigator.sendBeacon(
@@ -401,6 +353,85 @@ window.addEventListener('load', (e) => {
         showConfirmButton: false,
         timer: 2000,
     });
+
+    function lowerQuantity(pId, cart) {
+        let productIndex = cart.findIndex((product) => product.id == pId);
+        let productIndexInFetched = fetchedProducts.findIndex((product) => product.id == pId);
+        if (cart[productIndex].q == 1) {
+            cart.splice(productIndex, 1);
+            fetchedProducts.splice(productIndexInFetched, 1);
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+            navigator.sendBeacon(
+                'http://localhost:3033/api/cart/update_cart',
+                sessionStorage.getItem('cart')
+                );
+            let itemInCart = document.querySelector(`.cart-item${pId}`);
+            itemInCart.remove();
+            refreshCounter();
+            cartToast.fire({
+                icon: 'warning',
+                title: `Item removed from the cart`,
+            });
+            if (cart.length == 0) {
+                sessionStorage.setItem('cart', JSON.stringify([]));
+                navigator.sendBeacon('http://localhost:3033/api/cart/update_cart', sessionStorage.getItem('cart'));
+                fetchedProducts = [];
+
+                renderEmptyCart();
+                cartToast.fire({
+                    icon: 'info',
+                    title: 'You have emptied your cart',
+                });
+            }
+        } else {
+            --cart[productIndex].q;
+            --fetchedProducts[productIndexInFetched].q;
+            updateQuantities(pId, 'lower');
+            sessionStorage.setItem('cart', JSON.stringify(cart));
+            navigator.sendBeacon(
+                'http://localhost:3033/api/cart/update_cart',
+                sessionStorage.getItem('cart')
+                );
+            refreshCounter();
+            // Y si no hay nada en el carrito es porque ese elemento era el único y último
+            // Sacamos el array entero del storage.
+            // Reflejamos nuestra modificación en nuestro arreglo de productos seleccionados (reflejo del storage)
+            cartToast.fire({
+                icon: 'info',
+                title: 'Quantity decreased',
+            });
+            updateItemSubtotal(pId, productIndexInFetched);
+        }
+        updateTotal();
+    }
+    function raiseQuantity(pId, cart) {
+        let productIndex = cart.findIndex((product) => product.id == pId);
+        let productIndexInFetched = fetchedProducts.findIndex((product) => product.id == pId);
+        ++cart[productIndex].q;
+        ++fetchedProducts[productIndexInFetched].q;
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+        navigator.sendBeacon(
+            'http://localhost:3033/api/cart/update_cart',
+            sessionStorage.getItem('cart')
+            );
+        updateQuantities(pId, 'raise');
+        refreshCounter();
+        updateItemSubtotal(pId, productIndexInFetched);
+        updateTotal();
+        cartToast.fire({
+            icon: 'info',
+            title: 'Quantity increased!',
+        });
+    }
+    function updateQuantities(pId, action) {
+        let itemQ = document.querySelector(`.cart-item__quantity${pId}`);
+        let qNumber = Number(itemQ.innerText);
+        if (action == 'raise') {
+            itemQ.innerText = ++qNumber;
+        } else if (action == 'lower') {
+            itemQ.innerText = --qNumber;
+        }
+    }
     // Ni bien carga o si venimos de una redirección, revisar el storage para mantener actualizado el HTML
     checkCart();    
 });

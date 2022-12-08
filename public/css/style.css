@@ -338,6 +338,7 @@ main {
     font-size: 14px;
     color: #807c7c;
     margin: 0px 4px;
+    white-space: nowrap;
 }
 
 .fa-arrow-up,
@@ -426,6 +427,14 @@ main {
     padding: 20px 5px;
     font-size: 9px;
     text-align: center;
+    font-style: normal;
+    letter-spacing: 0.4px;
+    font-weight: bold;
+    color: #464545;
+}
+
+.cart-orders__row td a {
+    color: #464545;
 }
 
 .cart-orders__row th,
@@ -1022,6 +1031,14 @@ h4 {
 
 input.input--width-unset {
     width: unset;
+}
+
+.contact-form__text {
+    font-weight: bold;
+}
+
+.contact-form__text:nth-child(3) {
+    text-decoration: underline;
 }
 
 @media screen and (min-width: 576px) {
