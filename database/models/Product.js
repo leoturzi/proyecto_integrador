@@ -40,7 +40,11 @@ module.exports = (sequelize, dataTypes) => {
         },
         color_id : {
             type : dataTypes.INTEGER.UNSIGNED
-        }
+        },
+        detail: {
+            type: dataTypes.STRING,
+            allowNull: true,
+        },
     };
     const config = {
         tableName : 'products',

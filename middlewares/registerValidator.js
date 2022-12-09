@@ -1,19 +1,8 @@
 const { body, validationResult } = require('express-validator');
 const path = require('path');
+const fs = require('fs');
 
 const validations = [
-    body('avatar')
-        .custom((value, { req }) => {
-            const file = req.file;
-            // extensiones validas
-            if (!file) {
-                throw new Error(
-                    'Debes subir una imagen en formato jpg, jpeg o png'
-                );
-            }
-            return true;
-        })
-        .bail(),
     body('first_name')
         .notEmpty()
         .withMessage('Debes ingresar un Nombre')
@@ -29,7 +18,7 @@ const validations = [
         .isEmail()
         .withMessage('Debes ingresar un email Valido')
         .bail(),
-    body('provincia')
+    body('province')
         .custom((value) => {
             if (value === '') {
                 throw new Error('Debes seleccionar una provincia');
@@ -37,8 +26,12 @@ const validations = [
             return true;
         })
         .bail(),
-    body('calle').notEmpty().withMessage('Debes ingresar una calle').bail(),
-    body('phone').notEmpty().withMessage('Debes ingresar un telefono').bail(),
+    body('street')
+        .notEmpty().withMessage('Debes ingresar una calle').bail()
+        .isAlphanumeric(['es-ES'], {ignore : ' '}).withMessage('El campo debe contener tanto la calle como la altura ').bail(),
+    body('phone')
+        .notEmpty().withMessage('Debes ingresar un telefono').bail()
+        .isNumeric().withMessage('Debes ingresar solo numeros').bail(),
     body('password')
         .notEmpty()
         .withMessage('Debes ingresar un password')
@@ -53,6 +46,18 @@ const validations = [
         .withMessage(
             'El password debe contener minimo 8 caracteres, 1 mayuscula, 1 minuscula y 1 numero'
         ),
+    body('avatar')
+        .custom((value, { req }) => {
+            if (req.file &&req.isInvalidExt) {
+                return false;
+            } else {
+                return true;
+            }
+        })
+        .withMessage('Debes subir una imagen en formato jpg, jpeg o png'),
+    body('tyc')
+        .exists()
+        .withMessage('Debes Aceptar los terminos y condiciones'),
 ];
 
 module.exports = { validations, validationResult };

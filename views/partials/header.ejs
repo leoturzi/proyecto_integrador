@@ -12,8 +12,8 @@
                 <div class="profile-header">
                     <a href="/users/profile/"
                         ><img
-                            src="/images/users/<%- locals.userLogged.avatar %> "
-                            alt=""
+                            src="/images/users/<%= locals.userLogged.avatar && locals.userLogged.avatar != '' ? locals.userLogged.avatar : 'default.jpg' %>"
+                            alt="locals.userLogged.first_name"
                     /></a>
                 </div>
                 <% } else { %>
@@ -25,6 +25,10 @@
                 <a href="/cart/">
                     <i class="fa-solid fa-cart-shopping user-panel__icon"></i>
                 </a>
+                <a href="/cart/">
+                    <span class="cart-item-counter"></span>
+                </a>
+
             </div>
             <form action="/search" method="GET" class="search-bar">
                 <input

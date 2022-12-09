@@ -8,10 +8,19 @@ module.exports = (sequelize, dataTypes) => {
             autoIncrement: true,
             primaryKey: true,
         },
+        created_at : { // En sequelize no figura cual es el dataType. Así funcionó. 
+            type: 'TIMESTAMP',
+        },
+        updated_at : {
+            type: 'TIMESTAMP',
+        },
         amount: {
             type: dataTypes.INTEGER.UNSIGNED,
         },
         shippingAddress: {
+            type: dataTypes.STRING,
+        },
+        paymentMethod: {
             type: dataTypes.STRING,
         },
         order_status: {
@@ -23,7 +32,7 @@ module.exports = (sequelize, dataTypes) => {
     };
     const config = {
         tableName: 'orders',
-        timestamps: false,
+        timestamps: false, // Que NO las genere automáticamente. Pero tenemos timestamps
     };
     const Order = sequelize.define(alias, cols, config);
     Order.associate = (models) => {

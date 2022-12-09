@@ -1,6 +1,6 @@
 <%- include('../partials/head', {title})%> <%- include('../partials/header')%>
 <%- include('../partials/nav')%>
-<div class="container container-register--fixed">
+<div class="container container--fixed">
     <main>
         <form
             action="/users/register"
@@ -14,6 +14,9 @@
                     <label for="avatar">Foto de perfil</label>
                     <input type="file" id="avatar" name="avatar" />
                 </div>
+                <% if (locals.errors && errors.avatar) { %>
+                <div class="text-danger"><%= errors.avatar.msg %></div>
+                <% } %>
                 <label for="first_name">Nombre*</label>
                 <input
                     type="text"
@@ -23,7 +26,7 @@
                     enctype="multipart/form-data"
                     value="<%= locals.oldData ? oldData.first_name : null %>"
                 />
-                <% if (locals.errors && errors.nombre) { %>
+                <% if (locals.errors && errors.first_name) { %>
                 <div class="text-danger"><%= errors.first_name.msg %></div>
                 <% } %>
             </div>
@@ -54,53 +57,30 @@
                 <% } %>
             </div>
             <div class="input-container">
-                <label for="provincia">Provincia*</label>
-                <select style="display: block" name="provincia">
-                    <option value="" selected>Seleccionar</option>
-                    <option value="Buenos Aires">Buenos Aires</option>
-                    <option value="Buenos Aires Capital">
-                        Buenos Aires Capital
-                    </option>
-                    <option value="Catamarca">Catamarca</option>
-                    <option value="Chaco">Chaco</option>
-                    <option value="Chubut">Chubut</option>
-                    <option value="Cordoba">Cordoba</option>
-                    <option value="Corrientes">Corrientes</option>
-                    <option value="Entre Rios">Entre Rios</option>
-                    <option value="Formosa">Formosa</option>
-                    <option value="Jujuy">Jujuy</option>
-                    <option value="La Pampa">La Pampa</option>
-                    <option value="La Rioja">La Rioja</option>
-                    <option value="Mendoza">Mendoza</option>
-                    <option value="Misiones">Misiones</option>
-                    <option value="Neuquen">Neuquen</option>
-                    <option value="Rio Negro">Rio Negro</option>
-                    <option value="Salta">Salta</option>
-                    <option value="San Juan">San Juan</option>
-                    <option value="San Luis">San Luis</option>
-                    <option value="Santa Cruz">Santa Cruz</option>
-                    <option value="Santa Fe">Santa Fe</option>
-                    <option value="Santiago del Estero">
-                        Santiago del Estero
-                    </option>
-                    <option value="Tierra del Fuego">Tierra del Fuego</option>
-                    <option value="Tucuman">Tucuman</option>
+                <label for="province">Provincia*</label>
+                <select style="display: block" name="province">
+                    <option value="">Seleccionar</option>
+                    <% for (let i = 0; i < provinces.length; i++) { %>
+                        <option value="<%=provinces[i]%>" <%= locals.oldData && oldData.province == provinces[i] ? 'selected' : ''; %>>
+                          <%=provinces[i]%>
+                        </option>
+                      <% } %>
                 </select>
-                <% if (locals.errors && errors.provincia) { %>
-                <div class="text-danger"><%= errors.provincia.msg %></div>
+                <% if (locals.errors && errors.province) { %>
+                <div class="text-danger"><%= errors.province.msg %></div>
                 <% } %>
             </div>
             <div class="input-container">
-                <label for="password">Calle*</label>
+                <label for="street">Calle*</label>
                 <input
                     type="text"
-                    id="calle"
-                    name="calle"
+                    id="street"
+                    name="street"
                     placeholder="la rioja 956"
-                    value="<%= locals.oldData ? oldData.calle : null %>"
+                    value="<%= locals.oldData ? oldData.street : null %>"
                 />
-                <% if (locals.errors && errors.calle) { %>
-                <div class="text-danger"><%= errors.calle.msg %></div>
+                <% if (locals.errors && errors.street) { %>
+                <div class="text-danger"><%= errors.street.msg %></div>
                 <% } %>
             </div>
             <div class="input-container">
@@ -137,6 +117,9 @@
                     placeholder="Contraseña"
                 />
             </div>
+            <% if (locals.errors && errors.tyc) { %>
+            <div class="text-danger"><%= errors.tyc.msg %></div>
+            <% } %>
             <button type="submit" class="btn">Registrarme</button>
             <p class="registro">
                 Ya tenés cuenta?

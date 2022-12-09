@@ -1,0 +1,19 @@
+:root {
+  --bg-header: #2f2f2f;
+  --bg-footer: #d9d9d9;
+  --bg-primary: #f8f8f8;
+  --text: #807c7c;
+  --text-secondary: #fff;
+  --text-special: #00a650;
+  --btn-primary: #3483fa;
+  --icon: #a6a6a6;
+  --bshadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  font-family: 'Roboto', sans-serif;
+}

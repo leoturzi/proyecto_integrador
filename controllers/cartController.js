@@ -1,31 +1,26 @@
-const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-const fs = require('fs');
-const Product = require('../utils/Product');
 const db = require('../database/models');
 const Op = db.Sequelize.Op;
+let provinces = ['Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Corrientes', 'Entre Rios', ' Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquen', 'Rio Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego', 'Tucuman']
 
 const cartController = {
     cart: async (req, res) => {
-        try {
-            let cartScript = true;
-            let products = await db.Products.findAll({
-                where : {
-                    id : {[Op.lte] : 4}
-                },
-                include : [{association : 'brands'},
-                        {association : 'categories'},
-                        {association : 'colors'}]
-            })
-            res.render('cart/cart',{title:'Cart', products, cartScript, toThousand});
-        } catch (error) {
-            res.render('404')
+        let cartExists = false;
+        if (JSON.parse(req.session.userLogged.cart).length > 0) {
+            cartExists = true
         }
+        let cartScript = true;
+        res.render('cart/cart',{title:'Cart', cartScript, cartExists, provinces});
     },
-    dispatch: (req, res) => {
-        res.render('cart/cart-dispatch', {title:'Dispatch'});
+    details: (req, res) => {
+            let orderDetailsScript = true;
+            res.render('cart/orderDetails',{title:'Order Details', orderDetailsScript, user : req.session.userLogged});
     },
-    payment: (req, res) => {
-        res.render('cart/payment', {title:'Payment method'});
+    orders: async (req, res) => {
+        let orderScript = true;
+        res.render('cart/orders', {
+            user : req.session.userLogged,
+            orderScript
+        });
     }
 }
 module.exports =cartController;

@@ -1,6 +1,6 @@
-const User = require('../utils/User');
+const db = require('../database/models');
 
-function userLoggedValidator(req, res, next) {
+async function userLoggedValidator(req, res, next) {
     res.locals.isLogged = false;
     res.locals.isAdmin = false;
     if (req.session.userLogged) {
@@ -14,9 +14,12 @@ function userLoggedValidator(req, res, next) {
         const emailInCookie = req.cookies.userEmail;
 
         // buscamos en nuestra db
-        const userFromCookie = User.findByField('email', emailInCookie);
+        const userFromCookie = await db.User.findOne({
+            where: {email : emailInCookie}
+        });
         res.locals.isLogged = true;
         req.session.userLogged = userFromCookie;
+        res.locals.userLogged = userFromCookie;
 
         if (res.locals.isLogged && userFromCookie.type_id == '1') {
             res.locals.isAdmin = true;
